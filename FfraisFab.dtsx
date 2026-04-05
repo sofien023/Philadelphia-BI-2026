@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="FfraisFab"
   DTS:PackageType="5"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{51C6FB4C-3489-42D1-96B4-1CD65BA9815F}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{900EA4FB-C542-4CD6-B6D6-54C33FDB2DC7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
