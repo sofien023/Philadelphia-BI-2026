@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="SOFIENLAPTOP.ENPH"
+  DTS:DTSID="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=SOFIENLAPTOP;Initial Catalog=ENPH;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Philadelphia BI 2026-{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}SOFIENLAPTOP.ENPH;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
