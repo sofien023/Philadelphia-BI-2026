@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="FfraisFab"
   DTS:PackageType="5"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{E2D1970C-84BE-4DEB-B32E-096A8B79B89E}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{B7CD2797-B3A0-407C-B376-F4557AFA5994}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -370,7 +370,7 @@ SELECT
     b.cmp_code,
     b.Qte_Consommee,
     p.prix,
-    (b.Qte_Consommee * p.prix) AS Cout_Ligne
+    (b.Qte_Consommee * ISNULL(p.prix, 0)) AS Cout_Ligne
 FROM BaseCalcul b
 OUTER APPLY (
     SELECT TOP 1 
@@ -378,12 +378,8 @@ OUTER APPLY (
     FROM d_stock p
     WHERE p.art_code = b.cmp_code
       AND p.date_prix &lt;= b.date_operation
-      AND p.prix IS NOT NULL
     ORDER BY p.date_prix DESC
-) p
-WHERE 
-    b.Qte_Consommee IS NOT NULL   -- ✅ exclure quantité NULL
-    AND p.prix IS NOT NULL        -- ✅ exclure prix NULL</property>
+) p;</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
