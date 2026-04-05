@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{AAA18D76-98F4-4224-8651-2D5042A61D00}">
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{53AE22BD-98B6-4055-891F-BF5214E074A8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -289,9 +289,13 @@
 FROM TESTPH2.dbo.OFSE s
 JOIN TESTPH2.dbo.OFD o
     ON s.OF_Num = o.OF_Num
+JOIN TESTPH2.dbo.Art a
+    ON o.Art_Code = a.Art_Code
 WHERE 
     o.Date_Create &gt;= '2021-01-01'
-    AND o.Date_Create &lt; '2025-01-01';</property>
+    AND o.Date_Create &lt; '2025-01-01'
+    AND o.ofd_QR &lt;&gt; 0
+    AND a.ArtCat_Code IN ('FabVendu', 'Fabriqué');</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."

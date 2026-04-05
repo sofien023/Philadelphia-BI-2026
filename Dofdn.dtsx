@@ -11,10 +11,24 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{A7FBDAC6-699E-45A3-87CE-47BB150249F9}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{5FEC2F97-7C2D-431F-8189-A2EE2C908AF5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SOFIENLAPTOP.ENPH 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{10E7AA37-785E-4DEB-B632-3C237FF205BE}"
+      DTS:ObjectName="SOFIENLAPTOP.ENPH 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=SOFIENLAPTOP;Initial Catalog=ENPH;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{10E7AA37-785E-4DEB-B632-3C237FF205BE}SOFIENLAPTOP.ENPH 1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -214,16 +228,19 @@
                   description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
-    ofd.OF_Num,
-    ofd.OFDN_Composant,
-    ofd.OFDN_Q,
-    ofd.OFDN_Unite
-FROM TESTPH2.dbo.OFDN ofd
-JOIN TESTPH2.dbo.OFD o
-    ON ofd.OF_Num = o.OF_Num
-WHERE 
-    o.Date_Create &gt;= '2021-01-01'
-    AND o.Date_Create &lt; '2025-01-01';</property>
+    o.OF_Num,
+    ofdn.OFDN_Composant,
+    ofdn.OFDN_Q,
+    ofdn.OFDN_Unite
+FROM TESTPH2.dbo.OFD o
+JOIN TESTPH2.dbo.Art a
+    ON o.Art_Code = a.Art_Code
+JOIN TESTPH2.dbo.OFDN ofdn
+    ON o.OF_Num = ofdn.OF_Num
+WHERE o.Date_Create &gt;= '2021-01-01'
+  AND o.Date_Create &lt; '2025-01-01'
+  AND o.ofd_QR &lt;&gt; 0
+  AND a.ArtCat_Code IN ('FabVendu', 'Fabriqué');</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -410,13 +427,13 @@ WHERE
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="157,42"
-          Id="Package\Data Flow Task\OLE DB Source"
-          TopLeft="263,73" />
-        <NodeLayout
           Size="177,42"
           Id="Package\Data Flow Task\OLE DB Destination"
           TopLeft="617,377" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Data Flow Task\OLE DB Source"
+          TopLeft="263,73" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
           TopLeft="341.5,115">
@@ -455,14 +472,6 @@ WHERE
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\OLE DB Destination">
     <Properties>
       <Property>
@@ -472,6 +481,14 @@ WHERE
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
