@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{344D727B-7D70-4C3F-88EE-50EB4226E52D}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{D57AE13A-C2FF-4F0C-AE95-4D8DE0023F18}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -240,7 +240,8 @@ JOIN TESTPH2.dbo.OFDN ofdn
 WHERE o.Date_Create &gt;= '2021-01-01'
   AND o.Date_Create &lt; '2025-01-01'
   AND o.ofd_QR &lt;&gt; 0
-  AND a.ArtCat_Code IN ('FabVendu', 'Fabriqué');</property>
+  AND a.ArtCat_Code IN ('FabVendu', 'Fabriqué')
+And ofdn.OFDN_Composant not like  'BP%';</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
