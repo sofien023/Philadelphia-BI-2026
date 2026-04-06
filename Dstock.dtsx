@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{F020E15F-B0B8-488E-A2D3-DBC153B19248}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{2E2851ED-8287-46C0-AECE-F4298B12D5FB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -278,7 +278,7 @@
     Sto_Prix,
     Sto_DateR
 FROM TESTPH2.dbo.Stock
-where   Sto_DateR &lt;&gt; 0;</property>
+where   Sto_prix &lt;&gt; 0;</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -434,7 +434,7 @@ where   Sto_DateR &lt;&gt; 0;</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="155.2,41.6"
+          Size="155,42"
           Id="Package\Data Flow Task"
           TopLeft="392,232" />
       </GraphLayout>
@@ -446,15 +446,15 @@ where   Sto_DateR &lt;&gt; 0;</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="176.8,41.6"
+          Size="177,42"
           Id="Package\Data Flow Task\OLE DB Destination"
           TopLeft="592,377" />
         <NodeLayout
-          Size="158.4,41.6"
+          Size="158,42"
           Id="Package\Data Flow Task\Derived Column"
           TopLeft="497,175" />
         <NodeLayout
-          Size="156.8,41.6"
+          Size="157,42"
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="238,73" />
         <EdgeLayout
