@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="FfraisFab"
   DTS:PackageType="5"
-  DTS:VersionBuild="21"
-  DTS:VersionGUID="{54C1CC1B-8934-4024-B06D-8FBA6D1489B7}">
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{C2CC96F3-88B0-4E0B-9507-35131F0ED678}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -369,7 +369,7 @@ SELECT
     b.date_operation,
     b.cmp_code,
     b.Qte_Consommee,
-    p.prix,
+    ISNULL(p.prix, 0) AS prix,
     (b.Qte_Consommee * ISNULL(p.prix, 0)) AS Cout_Ligne
 FROM BaseCalcul b
 OUTER APPLY (
