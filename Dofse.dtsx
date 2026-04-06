@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{BB872E47-AE0F-46CB-A0D1-A4A7536F9F05}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{70ABA0D8-5811-421F-B169-3341AC509884}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -295,6 +295,7 @@ WHERE
     o.Date_Create &gt;= '2021-01-01'
     AND o.Date_Create &lt; '2025-01-01'
     AND o.ofd_QR &lt;&gt; 0
+    AND s.OFS_Q &lt;&gt; 0
     AND a.ArtCat_Code IN ('FabVendu', 'Fabriqué');</property>
                 <property
                   dataType="System.String"
@@ -472,7 +473,7 @@ WHERE
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="180,42"
+          Size="180,41.6"
           Id="Package\dimension document"
           TopLeft="437,182" />
       </GraphLayout>
@@ -484,15 +485,15 @@ WHERE
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="177,42"
+          Size="176.8,41.6"
           Id="Package\dimension document\OLE DB Destination"
           TopLeft="547,373" />
         <NodeLayout
-          Size="158,42"
+          Size="158.4,41.6"
           Id="Package\dimension document\Derived Column"
           TopLeft="391,220" />
         <NodeLayout
-          Size="157,42"
+          Size="156.8,41.6"
           Id="Package\dimension document\OLE DB Source"
           TopLeft="193,69" />
         <EdgeLayout
