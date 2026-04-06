@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="FfraisFab"
   DTS:PackageType="5"
-  DTS:VersionBuild="18"
-  DTS:VersionGUID="{900EA4FB-C542-4CD6-B6D6-54C33FDB2DC7}">
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{4D8430D3-BDA9-4AD5-BBA4-746D67E511F1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -373,12 +373,24 @@ SELECT
     (b.Qte_Consommee * ISNULL(p.prix, 0)) AS Cout_Ligne
 FROM BaseCalcul b
 OUTER APPLY (
-    SELECT TOP 1 
-        p.prix
-    FROM d_stock p
-    WHERE p.art_code = b.cmp_code
-      AND p.date_prix &lt;= b.date_operation
-    ORDER BY p.date_prix DESC
+   SELECT 
+    COALESCE(
+        (
+            SELECT TOP 1 p.prix
+            FROM d_stock p
+            WHERE p.art_code = b.cmp_code
+              AND p.date_prix &lt;= b.date_operation
+              AND p.prix IS NOT NULL
+            ORDER BY p.date_prix DESC
+        ),
+        (
+            SELECT TOP 1 p.prix
+            FROM d_stock p
+            WHERE p.art_code = b.cmp_code
+              AND p.prix IS NOT NULL
+            ORDER BY p.date_prix DESC
+        )
+    ) AS prix
 ) p;</property>
                 <property
                   dataType="System.String"
@@ -646,7 +658,7 @@ OUTER APPLY (
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="155,42"
+          Size="155.2,41.6"
           Id="Package\Data Flow Task"
           TopLeft="390,193" />
       </GraphLayout>
@@ -658,15 +670,15 @@ OUTER APPLY (
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="177,42"
+          Size="176.8,41.6"
           Id="Package\Data Flow Task\OLE DB Destination"
           TopLeft="338,365" />
         <NodeLayout
-          Size="157,42"
+          Size="156.8,41.6"
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="267,102" />
         <NodeLayout
-          Size="158,42"
+          Size="158.4,41.6"
           Id="Package\Data Flow Task\Derived Column"
           TopLeft="497,209" />
         <EdgeLayout
