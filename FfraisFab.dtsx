@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="FfraisFab"
   DTS:PackageType="5"
-  DTS:VersionBuild="23"
-  DTS:VersionGUID="{C2CC96F3-88B0-4E0B-9507-35131F0ED678}">
+  DTS:VersionBuild="28"
+  DTS:VersionGUID="{0D3F5B1D-02E5-4A69-9560-4DA96CB7598E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -373,24 +373,16 @@ SELECT
     (b.Qte_Consommee * ISNULL(p.prix, 0)) AS Cout_Ligne
 FROM BaseCalcul b
 OUTER APPLY (
-   SELECT 
-    COALESCE(
-        (
-            SELECT TOP 1 p.prix
-            FROM d_stock p
-            WHERE p.art_code = b.cmp_code
-              AND p.date_prix &lt;= b.date_operation
-              AND p.prix IS NOT NULL
-            ORDER BY p.date_prix DESC
-        ),
-        (
-            SELECT TOP 1 p.prix
-            FROM d_stock p
-            WHERE p.art_code = b.cmp_code
-              AND p.prix IS NOT NULL
-            ORDER BY p.date_prix DESC
-        )
-    ) AS prix
+    SELECT TOP 1 p.prix
+    FROM d_stock p
+    WHERE p.art_code = b.cmp_code
+      AND p.prix IS NOT NULL
+    ORDER BY 
+        CASE 
+            WHEN p.date_prix &lt;= b.date_operation THEN 0 
+            ELSE 1 
+        END,
+        p.date_prix DESC
 ) p;</property>
                 <property
                   dataType="System.String"

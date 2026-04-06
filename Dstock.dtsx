@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{9C911C60-AEA1-41A9-8BCD-5726F0B40613}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{F020E15F-B0B8-488E-A2D3-DBC153B19248}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -277,7 +277,8 @@
     Art_Code,
     Sto_Prix,
     Sto_DateR
-FROM TESTPH2.dbo.Stock</property>
+FROM TESTPH2.dbo.Stock
+where   Sto_DateR &lt;&gt; 0;</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
