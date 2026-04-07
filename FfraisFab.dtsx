@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="FfraisFab"
   DTS:PackageType="5"
-  DTS:VersionBuild="30"
-  DTS:VersionGUID="{5327D003-940C-491E-9A33-E7BFF50668B2}">
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{E7B83F1B-1965-4B4B-8949-A6FBE0A785A8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -346,7 +346,7 @@ Suivi AS (
     FROM d_ofse
 ),
 Composants AS (
-    SELECT OF_Num, cmp_code, quantite
+    SELECT OF_Num, cmp_code, quantite,unite
     FROM d_ofdn
 ),
 BaseCalcul AS (
@@ -356,7 +356,11 @@ BaseCalcul AS (
         s.date_operation,
         o.Art_Code AS art_code,
         c.cmp_code,
-        (s.quantite * c.quantite) AS Qte_Consommee
+         CASE 
+            WHEN c.unite = 'mg' THEN (s.quantite * c.quantite) /1000.0 
+            WHEN c.unite = 'g'  THEN (s.quantite * c.quantite)           
+            WHEN c.unite = 'un'  THEN (s.quantite * c.quantite)                                    
+        END AS Qte_Consommee
     FROM Suivi s
     JOIN OFD_Filtre o ON s.of_num = o.of_num
     JOIN Composants c ON s.of_num = c.of_num
@@ -532,7 +536,7 @@ OUTER APPLY (
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Qte_Consommee]"
                       dataType="numeric"
                       name="Qte_Consommee"
-                      precision="37"
+                      precision="38"
                       scale="9" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Cout_Ligne]"
@@ -587,7 +591,7 @@ OUTER APPLY (
                       dataType="numeric"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Qte_Consommee]"
                       name="Qte_Consommee"
-                      precision="37"
+                      precision="38"
                       scale="9" />
                     <outputColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[prix]"
@@ -650,7 +654,7 @@ OUTER APPLY (
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="155,42"
+          Size="155.2,41.6"
           Id="Package\Data Flow Task"
           TopLeft="390,193" />
       </GraphLayout>
@@ -662,15 +666,15 @@ OUTER APPLY (
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="177,42"
+          Size="176.8,41.6"
           Id="Package\Data Flow Task\OLE DB Destination"
           TopLeft="338,365" />
         <NodeLayout
-          Size="157,42"
+          Size="156.8,41.6"
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="267,102" />
         <NodeLayout
-          Size="158,42"
+          Size="158.4,41.6"
           Id="Package\Data Flow Task\Derived Column"
           TopLeft="497,209" />
         <EdgeLayout
