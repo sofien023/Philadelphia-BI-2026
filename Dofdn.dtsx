@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="12"
-  DTS:VersionGUID="{D3A5C987-5760-4BFB-8265-64D23B7ECFB3}">
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{46D5C038-53D6-41F4-A14D-B475BA8602F4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -241,8 +241,41 @@ WHERE o.Date_Create &gt;= '2021-01-01'
   AND o.Date_Create &lt; '2026-01-01'
   AND o.ofd_QR &lt;&gt; 0
   AND a.ArtCat_Code IN ('FabVendu', 'Fabriqué')
-And ofdn.OFDN_Composant not like  'BP%'
-And ofdn.OFDN_Composant &lt;&gt;'RM260010';</property>
+  AND ofdn.OFDN_Composant NOT LIKE 'BP%'
+  AND ofdn.OFDN_Composant NOT IN (
+        'RM260010',
+        '43672F',
+        'AC030021',
+        'AC030022',
+        'AC030031',
+        'AC030032',
+        'AC030141',
+        'AC060010',
+        'AC060030',
+        'AC060070',
+        'FPC3115',
+        'FPC3294',
+        'FPC3295',
+        'FPC9027',
+        'FPC9039',
+        'FPG3224',
+        'MP100720',
+        'MP101230',
+        'MP300330',
+        'MP310080',
+        'MP310090',
+        'MP330040',
+        'MP331100',
+        'MP331130',
+        'MP331140',
+        'MP331490',
+        'MP331720',
+        'MP331970',
+        'PK110752',
+        'PK402250',
+        'PK500191',
+        'RM100930'
+  );</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
