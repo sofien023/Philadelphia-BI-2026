@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{2235D087-00E0-4871-B653-9C84769BAB9B}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{68A3D77C-FE0D-4185-BFDD-49862C0BF46D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -305,7 +305,7 @@ FROM TESTPH2.dbo.OFD o
 JOIN TESTPH2.dbo.Art a
     ON o.Art_Code = a.Art_Code
 WHERE o.Date_Create &gt;= '2021-01-01'
-  AND o.Date_Create &lt; '2025-01-01'
+  AND o.Date_Create &lt; '2026-01-01'
   AND o.ofd_QR &lt;&gt; 0
   AND a.ArtCat_Code IN ('FabVendu', 'Fabriqué');</property>
                 <property
@@ -508,7 +508,7 @@ WHERE o.Date_Create &gt;= '2021-01-01'
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="155,42"
+          Size="155.2,41.6"
           Id="Package\Data Flow Task"
           TopLeft="528,212" />
       </GraphLayout>
@@ -520,15 +520,15 @@ WHERE o.Date_Create &gt;= '2021-01-01'
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="177,42"
+          Size="176.8,41.6"
           Id="Package\Data Flow Task\OLE DB Destination"
           TopLeft="564,353" />
         <NodeLayout
-          Size="157,42"
+          Size="156.8,41.6"
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="210,49" />
         <NodeLayout
-          Size="158,42"
+          Size="158.4,41.6"
           Id="Package\Data Flow Task\Derived Column"
           TopLeft="479,139" />
         <EdgeLayout

@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{0C416E20-2412-47C4-9E6A-278972553D0B}">
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{D3A5C987-5760-4BFB-8265-64D23B7ECFB3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -238,7 +238,7 @@ JOIN TESTPH2.dbo.Art a
 JOIN TESTPH2.dbo.OFDN ofdn
     ON o.OF_Num = ofdn.OF_Num
 WHERE o.Date_Create &gt;= '2021-01-01'
-  AND o.Date_Create &lt; '2025-01-01'
+  AND o.Date_Create &lt; '2026-01-01'
   AND o.ofd_QR &lt;&gt; 0
   AND a.ArtCat_Code IN ('FabVendu', 'Fabriqué')
 And ofdn.OFDN_Composant not like  'BP%'

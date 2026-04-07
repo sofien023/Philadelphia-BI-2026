@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{3F91ADC6-CAB3-498B-A9D0-16CB3D54BE07}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{F159A3D4-802B-4AD2-B2B9-ABB6153DF961}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -293,7 +293,7 @@ JOIN TESTPH2.dbo.Art a
     ON o.Art_Code = a.Art_Code
 WHERE 
     o.Date_Create &gt;= '2021-01-01'
-    AND o.Date_Create &lt; '2025-01-01'
+    AND o.Date_Create &lt; '2026-01-01'
     AND o.ofd_QR &lt;&gt; 0
     AND s.OFS_Q &lt;&gt; 0
     AND a.ArtCat_Code IN ('FabVendu', 'Fabriqué');</property>
