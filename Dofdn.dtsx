@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{D57AE13A-C2FF-4F0C-AE95-4D8DE0023F18}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{0C416E20-2412-47C4-9E6A-278972553D0B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -241,7 +241,8 @@ WHERE o.Date_Create &gt;= '2021-01-01'
   AND o.Date_Create &lt; '2025-01-01'
   AND o.ofd_QR &lt;&gt; 0
   AND a.ArtCat_Code IN ('FabVendu', 'Fabriqué')
-And ofdn.OFDN_Composant not like  'BP%';</property>
+And ofdn.OFDN_Composant not like  'BP%'
+And ofdn.OFDN_Composant &lt;&gt;'RM260010';</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -416,7 +417,7 @@ And ofdn.OFDN_Composant not like  'BP%';</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="155,42"
+          Size="155.2,41.6"
           Id="Package\Data Flow Task"
           TopLeft="337,157" />
       </GraphLayout>
@@ -428,11 +429,11 @@ And ofdn.OFDN_Composant not like  'BP%';</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="177,42"
+          Size="176.8,41.6"
           Id="Package\Data Flow Task\OLE DB Destination"
           TopLeft="617,377" />
         <NodeLayout
-          Size="157,42"
+          Size="156.8,41.6"
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="263,73" />
         <EdgeLayout
