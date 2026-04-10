@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="FfraisFab"
   DTS:PackageType="5"
-  DTS:VersionBuild="31"
-  DTS:VersionGUID="{E7B83F1B-1965-4B4B-8949-A6FBE0A785A8}">
+  DTS:VersionBuild="33"
+  DTS:VersionGUID="{CE9E8B11-F3A5-4D2B-896F-93BCB9BDF56C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -346,7 +346,7 @@ Suivi AS (
     FROM d_ofse
 ),
 Composants AS (
-    SELECT OF_Num, cmp_code, quantite,unite
+    SELECT OF_Num, cmp_code, quantite, unite
     FROM d_ofdn
 ),
 BaseCalcul AS (
@@ -356,11 +356,8 @@ BaseCalcul AS (
         s.date_operation,
         o.Art_Code AS art_code,
         c.cmp_code,
-         CASE 
-            WHEN c.unite = 'mg' THEN (s.quantite * c.quantite) /1000.0 
-            WHEN c.unite = 'g'  THEN (s.quantite * c.quantite)           
-            WHEN c.unite = 'un'  THEN (s.quantite * c.quantite)                                    
-        END AS Qte_Consommee
+        c.unite AS unite_qte,
+        (s.quantite * c.quantite) AS Qte_Consommee
     FROM Suivi s
     JOIN OFD_Filtre o ON s.of_num = o.of_num
     JOIN Composants c ON s.of_num = c.of_num
@@ -372,12 +369,54 @@ SELECT
     b.art_code,
     b.date_operation,
     b.cmp_code,
+
+    b.unite_qte,
+    p.unite AS unite_prix,
+
     b.Qte_Consommee,
-    ISNULL(p.prix, 0) AS prix,
-    (b.Qte_Consommee * ISNULL(p.prix, 0)) AS Cout_Ligne
+    p.prix,
+
+    -- 🔹 Quantité normalisée (en grammes ou unité)
+    b.Qte_Consommee *
+    CASE 
+        WHEN b.unite_qte = 'KG' THEN 1000
+        WHEN b.unite_qte = 'G' THEN 1
+        WHEN b.unite_qte = 'MG' THEN 1.0/1000
+        WHEN b.unite_qte = 'UN' THEN 1
+    END AS Qte_Normalisee,
+
+    -- 🔹 Prix normalisé (prix par gramme ou unité)
+    p.prix *
+    CASE 
+        WHEN p.unite = 'KG' THEN 1.0/1000
+        WHEN p.unite = 'G' THEN 1
+        WHEN p.unite = 'MG' THEN 1000
+        WHEN p.unite = 'UN' THEN 1
+    END AS Prix_Normalise,
+
+    -- 🔹 Coût final
+    (
+        b.Qte_Consommee *
+        CASE 
+            WHEN b.unite_qte = 'KG' THEN 1000
+            WHEN b.unite_qte = 'G' THEN 1
+            WHEN b.unite_qte = 'MG' THEN 1.0/1000
+            WHEN b.unite_qte = 'UN' THEN 1
+        END
+    ) *
+    (
+        p.prix *
+        CASE 
+            WHEN p.unite = 'KG' THEN 1.0/1000
+            WHEN p.unite = 'G' THEN 1
+            WHEN p.unite = 'MG' THEN 1000
+            WHEN p.unite = 'UN' THEN 1
+        END
+    ) AS Cout_Ligne
+
 FROM BaseCalcul b
 OUTER APPLY (
-    SELECT TOP 1 p.prix
+    SELECT TOP 1 p.prix, p.unite
     FROM d_stock p
     WHERE p.art_code = b.cmp_code
       AND p.prix IS NOT NULL
@@ -386,7 +425,7 @@ OUTER APPLY (
             WHEN p.date_prix &lt;= b.date_operation THEN 0 
             ELSE 1 
         END,
-        p.prix DESC
+        p.date_prix DESC
 ) p;</property>
                 <property
                   dataType="System.String"
@@ -505,6 +544,48 @@ OUTER APPLY (
                       precision="18"
                       scale="6"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[unite_qte]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[unite_qte]"
+                      length="20"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[unite_qte]"
+                      name="unite_qte"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[unite_prix]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[unite_prix]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[unite_prix]"
+                      name="unite_prix"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Qte_Normalisee]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Qte_Normalisee]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Qte_Normalisee]"
+                      name="Qte_Normalisee"
+                      precision="38"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Prix_Normalise]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Prix_Normalise]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Prix_Normalise]"
+                      name="Prix_Normalise"
+                      precision="29"
+                      scale="12"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -536,7 +617,7 @@ OUTER APPLY (
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Qte_Consommee]"
                       dataType="numeric"
                       name="Qte_Consommee"
-                      precision="38"
+                      precision="37"
                       scale="9" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Cout_Ligne]"
@@ -550,6 +631,28 @@ OUTER APPLY (
                       name="prix"
                       precision="18"
                       scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[unite_qte]"
+                      dataType="wstr"
+                      length="20"
+                      name="unite_qte" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[unite_prix]"
+                      dataType="wstr"
+                      length="10"
+                      name="unite_prix" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Qte_Normalisee]"
+                      dataType="numeric"
+                      name="Qte_Normalisee"
+                      precision="38"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Prix_Normalise]"
+                      dataType="numeric"
+                      name="Prix_Normalise"
+                      precision="29"
+                      scale="12" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -587,11 +690,23 @@ OUTER APPLY (
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cmp_code]"
                       name="cmp_code" />
                     <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[unite_qte]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[unite_qte]"
+                      name="unite_qte" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[unite_prix]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[unite_prix]"
+                      name="unite_prix" />
+                    <outputColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Qte_Consommee]"
                       dataType="numeric"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Qte_Consommee]"
                       name="Qte_Consommee"
-                      precision="38"
+                      precision="37"
                       scale="9" />
                     <outputColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[prix]"
@@ -600,6 +715,20 @@ OUTER APPLY (
                       name="prix"
                       precision="18"
                       scale="6" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Qte_Normalisee]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Qte_Normalisee]"
+                      name="Qte_Normalisee"
+                      precision="38"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Prix_Normalise]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Prix_Normalise]"
+                      name="Prix_Normalise"
+                      precision="29"
+                      scale="12" />
                     <outputColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Cout_Ligne]"
                       dataType="numeric"
@@ -654,7 +783,7 @@ OUTER APPLY (
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="155.2,41.6"
+          Size="155,42"
           Id="Package\Data Flow Task"
           TopLeft="390,193" />
       </GraphLayout>
@@ -666,15 +795,15 @@ OUTER APPLY (
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="176.8,41.6"
+          Size="177,42"
           Id="Package\Data Flow Task\OLE DB Destination"
           TopLeft="338,365" />
         <NodeLayout
-          Size="156.8,41.6"
+          Size="157,42"
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="267,102" />
         <NodeLayout
-          Size="158.4,41.6"
+          Size="158,42"
           Id="Package\Data Flow Task\Derived Column"
           TopLeft="497,209" />
         <EdgeLayout
