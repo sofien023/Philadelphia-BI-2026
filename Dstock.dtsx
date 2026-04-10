@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{2E2851ED-8287-46C0-AECE-F4298B12D5FB}">
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{5BBCB0AA-3059-4750-AAC2-83F608169AB4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -198,6 +198,13 @@
                       cachedName="Sto_DateR"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date_prix]"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sto_DateR]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[art_unite]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="art_unite"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[unite]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[art_unite]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -220,6 +227,11 @@
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date_prix]"
                       dataType="dbDate"
                       name="date_prix" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[unite]"
+                      dataType="wstr"
+                      length="10"
+                      name="unite" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -274,11 +286,14 @@
                   description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
-    Art_Code,
-    Sto_Prix,
-    Sto_DateR
-FROM TESTPH2.dbo.Stock
-where   Sto_prix &lt;&gt; 0;</property>
+    a.Art_Code,
+    a.Sto_Prix,
+    a.Sto_DateR,
+    b.art_unite
+FROM TESTPH2.dbo.Stock a
+JOIN TESTPH2.dbo.art b
+    ON a.art_code = b.art_code
+WHERE a.Sto_prix &lt;&gt; 0;</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -344,6 +359,16 @@ where   Sto_prix &lt;&gt; 0;</property>
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sto_DateR]"
                       name="Sto_DateR"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[art_unite]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[art_unite]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[art_unite]"
+                      name="art_unite"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -362,6 +387,11 @@ where   Sto_prix &lt;&gt; 0;</property>
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Sto_DateR]"
                       dataType="dbTimeStamp"
                       name="Sto_DateR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[art_unite]"
+                      dataType="wstr"
+                      length="10"
+                      name="art_unite" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -387,6 +417,12 @@ where   Sto_prix &lt;&gt; 0;</property>
                       dataType="dbTimeStamp"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Sto_DateR]"
                       name="Sto_DateR" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[art_unite]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[art_unite]"
+                      name="art_unite" />
                     <outputColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
