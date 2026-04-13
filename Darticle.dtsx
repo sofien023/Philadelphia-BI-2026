@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Darticle"
   DTS:PackageType="5"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{2CDA90B7-1827-4705-B8F3-7F41C745BBC0}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{4605F79D-96BF-496E-B3BC-4CCC69714D3F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -211,7 +211,8 @@
       [Art_Code],
       [Art_Des],
       [ArtCat_Code],
-      [Art_Famille1]
+      [Art_Famille1],
+      [Art_Calc_DP]
 FROM [TESTPH2].[dbo].[Art]
 WHERE ArtCat_Code IN ('Fabriqué','FabVendu','Matière');</property>
                 <property
@@ -289,6 +290,16 @@ WHERE ArtCat_Code IN ('Fabriqué','FabVendu','Matière');</property>
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Art_Famille1]"
                       name="Art_Famille1"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Art_Calc_DP]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Art_Calc_DP]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Art_Calc_DP]"
+                      name="Art_Calc_DP"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -312,6 +323,11 @@ WHERE ArtCat_Code IN ('Fabriqué','FabVendu','Matière');</property>
                       dataType="wstr"
                       length="10"
                       name="Art_Famille1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Art_Calc_DP]"
+                      dataType="wstr"
+                      length="50"
+                      name="Art_Calc_DP" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -343,6 +359,12 @@ WHERE ArtCat_Code IN ('Fabriqué','FabVendu','Matière');</property>
                       length="10"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Art_Famille1]"
                       name="Art_Famille1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Art_Calc_DP]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Art_Calc_DP]"
+                      name="Art_Calc_DP" />
                     <outputColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -385,7 +407,7 @@ WHERE ArtCat_Code IN ('Fabriqué','FabVendu','Matière');</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="155,42"
+          Size="155.2,41.6"
           Id="Package\Data Flow Task"
           TopLeft="211,116" />
       </GraphLayout>
@@ -397,11 +419,11 @@ WHERE ArtCat_Code IN ('Fabriqué','FabVendu','Matière');</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="157,42"
+          Size="156.8,41.6"
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="223,158" />
         <NodeLayout
-          Size="177,42"
+          Size="176.8,41.6"
           Id="Package\Data Flow Task\OLE DB Destination"
           TopLeft="578,462" />
         <EdgeLayout
