@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="SOFIENLAPTOP"
   DTS:CreatorName="SOFIENLAPTOP\sofie"
-  DTS:DTSID="{AD739077-A0BC-4A14-BB15-C74D6538C333}"
+  DTS:DTSID="{047046F7-1C71-4CF6-A4BC-DDB800044BAA}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="17.0.1010.2"
   DTS:LocaleID="1033"
-  DTS:ObjectName="Darticle"
+  DTS:ObjectName="DartCond2"
   DTS:PackageType="5"
-  DTS:VersionBuild="21"
-  DTS:VersionGUID="{499F73F6-4F37-4EB4-80C9-A8CC42DDF2AB}">
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{721C2CB5-1D82-4C89-883F-34F926E31029}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -190,7 +190,7 @@
 FROM [TESTPH2].[dbo].[Art]
 WHERE ArtCat_Code= 'Matière'
 and Art_famille1 ='PK'
-and Art_Des like '%Notice%'
+or Art_Des like '%Notice%'
 or Art_Des like '%etui%'
 or Art_Des like '%CAISSE DE GROUPAGE%'
 or Art_Des like '%VIGNETTES%';</property>
