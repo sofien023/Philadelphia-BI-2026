@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DartCond2"
   DTS:PackageType="5"
-  DTS:VersionBuild="25"
-  DTS:VersionGUID="{6E147D08-D6B2-48A0-B09E-A31896D68F35}">
+  DTS:VersionBuild="26"
+  DTS:VersionGUID="{4B7F8B8E-BEAE-496C-AE1A-9FB6D9222061}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />

@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DartCond1"
   DTS:PackageType="5"
-  DTS:VersionBuild="26"
-  DTS:VersionGUID="{316BA55E-E94F-4499-9C29-2A4CCCB86E46}">
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{424D928D-8301-4BB5-83F5-801172AB677C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -47,7 +47,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[d_art_con2]</property>
+                  name="OpenRowset">[dbo].[d_art_con1]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
