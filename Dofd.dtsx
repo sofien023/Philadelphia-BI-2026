@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{68A3D77C-FE0D-4185-BFDD-49862C0BF46D}">
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{59F513DB-ACEF-4E39-82C1-C481D6DAF5E2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -213,6 +213,13 @@
                       cachedName="Date_Create"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date_creation]"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Date_Create]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ofd_Lot]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="ofd_Lot"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ofd_lot]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ofd_Lot]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -242,6 +249,11 @@
                       name="ofd_QR"
                       precision="18"
                       scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ofd_lot]"
+                      dataType="wstr"
+                      length="20"
+                      name="ofd_lot" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -300,7 +312,8 @@
     o.Art_Code,
     o.Date_Create,
     o.ofd_Q,
-    o.ofd_QR
+    o.ofd_QR,
+    o.ofd_Lot
 FROM TESTPH2.dbo.OFD o
 JOIN TESTPH2.dbo.Art a
     ON o.Art_Code = a.Art_Code
@@ -394,6 +407,16 @@ WHERE o.Date_Create &gt;= '2021-01-01'
                       precision="18"
                       scale="3"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ofd_Lot]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ofd_Lot]"
+                      length="20"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ofd_Lot]"
+                      name="ofd_Lot"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -423,6 +446,11 @@ WHERE o.Date_Create &gt;= '2021-01-01'
                       name="ofd_QR"
                       precision="18"
                       scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ofd_Lot]"
+                      dataType="wstr"
+                      length="20"
+                      name="ofd_Lot" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -461,6 +489,12 @@ WHERE o.Date_Create &gt;= '2021-01-01'
                       name="ofd_QR"
                       precision="18"
                       scale="3" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ofd_Lot]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ofd_Lot]"
+                      name="ofd_Lot" />
                     <outputColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
