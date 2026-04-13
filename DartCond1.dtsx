@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="SOFIENLAPTOP"
   DTS:CreatorName="SOFIENLAPTOP\sofie"
-  DTS:DTSID="{047046F7-1C71-4CF6-A4BC-DDB800044BAA}"
+  DTS:DTSID="{1C885FAB-0D29-4318-ACD5-5FBAD7D0EE3E}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="17.0.1010.2"
   DTS:LocaleID="1033"
-  DTS:ObjectName="DartCond2"
+  DTS:ObjectName="DartCond1"
   DTS:PackageType="5"
-  DTS:VersionBuild="25"
-  DTS:VersionGUID="{6E147D08-D6B2-48A0-B09E-A31896D68F35}">
+  DTS:VersionBuild="26"
+  DTS:VersionGUID="{316BA55E-E94F-4499-9C29-2A4CCCB86E46}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -21,7 +21,7 @@
       DTS:refId="Package\Data Flow Task"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{14430BCE-87AA-42C3-8F06-E1751A6CD612}"
+      DTS:DTSID="{F4BB5DC8-AABE-4254-B5FF-1240173138DE}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Data Flow Task"
@@ -188,12 +188,8 @@
       [Art_Des]
       
 FROM [TESTPH2].[dbo].[Art]
-WHERE  Art_code like 'PK4%'
-or Art_code like 'PK5%'
-or Art_code like 'PK6%'
-or Art_code like '%PK7%'
-or Art_code like '%PK8%'
-or Art_code like '%PK9%';</property>
+WHERE  Art_code like 'PK01%'
+or Art_code like 'PK1%';</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
