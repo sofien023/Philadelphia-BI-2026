@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Darticle"
   DTS:PackageType="5"
-  DTS:VersionBuild="18"
-  DTS:VersionGUID="{4605F79D-96BF-496E-B3BC-4CCC69714D3F}">
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{846215DB-C343-4BF7-A0A6-184A7D3854C9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -131,6 +131,13 @@
                       cachedName="Art_Famille1"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[famille]"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Art_Famille1]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Art_Calc_DP]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Art_Calc_DP"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[artCalc]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Art_Calc_DP]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -154,6 +161,11 @@
                       dataType="wstr"
                       length="10"
                       name="famille" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[artCalc]"
+                      dataType="wstr"
+                      length="50"
+                      name="artCalc" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
