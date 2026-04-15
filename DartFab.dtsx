@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DartFab"
   DTS:PackageType="5"
-  DTS:VersionBuild="27"
-  DTS:VersionGUID="{17021C21-9F66-42A8-9614-CB2A57BD1214}">
+  DTS:VersionBuild="28"
+  DTS:VersionGUID="{BFA57A72-4BCE-4704-9EE3-E626B31BF6D4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />

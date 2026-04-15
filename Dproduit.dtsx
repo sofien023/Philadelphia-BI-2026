@@ -1,27 +1,41 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="3/21/2026 5:25:10 PM"
+  DTS:CreationDate="4/14/2026 6:06:58 PM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="SOFIENLAPTOP"
-  DTS:CreatorName="SOFIENLAPTOP\sofie"
-  DTS:DTSID="{1C885FAB-0D29-4318-ACD5-5FBAD7D0EE3E}"
+  DTS:CreatorName="SOFIENLAPTOP\sofien"
+  DTS:DTSID="{57B4D11D-3944-4414-9A06-5D8904C45D9C}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="17.0.1010.2"
   DTS:LocaleID="1033"
-  DTS:ObjectName="DartCond1"
+  DTS:ObjectName="Dproduit"
   DTS:PackageType="5"
-  DTS:VersionBuild="28"
-  DTS:VersionGUID="{C311467B-C722-48C8-B61B-8BA56494C51E}">
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{1F5AA443-42B3-4D96-A4E1-C684E3752477}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{A30C6975-5F4E-48D9-BA54-4D6D5F9941A9}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\sofie\Downloads\nommenclature.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Data Flow Task"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{F4BB5DC8-AABE-4254-B5FF-1240173138DE}"
+      DTS:DTSID="{39B8226C-9DDA-4B0E-AE0B-6D86D133081A}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Data Flow Task"
@@ -47,7 +61,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[d_art_con1]</property>
+                  name="OpenRowset">[dbo].[d_produit]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -69,19 +83,19 @@
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">3</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
+                  name="FastLoadKeepIdentity">true</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
+                  name="FastLoadKeepNulls">true</property>
                 <property
                   dataType="System.String"
                   description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions"></property>
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
@@ -106,7 +120,7 @@
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Art_Code]"
                       cachedDataType="wstr"
-                      cachedLength="20"
+                      cachedLength="255"
                       cachedName="Art_Code"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Art_code]"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Art_Code]" />
@@ -183,14 +197,10 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT 
-      [Art_Code],
-      [Art_Des]
-      
-FROM [TESTPH2].[dbo].[Art]
-WHERE  Art_code like 'PK01%'
-or Art_code like 'PK1%'
-or Art_code like 'BP%';</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT TOP (1000) [Art_Code]
+      ,[Art_Des]
+  FROM [TESTPH2].[dbo].[Art] where Art_Code like 'BP%'
+  or Art_Code like 'FP%'</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -232,7 +242,7 @@ or Art_code like 'BP%';</property>
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Art_Code]"
-                      length="20"
+                      length="255"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Art_Code]"
                       name="Art_Code"
                       truncationRowDisposition="FailComponent" />
@@ -322,7 +332,7 @@ or Art_code like 'BP%';</property>
         <NodeLayout
           Size="155.2,41.6"
           Id="Package\Data Flow Task"
-          TopLeft="211,116" />
+          TopLeft="538,213" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -334,37 +344,37 @@ or Art_code like 'BP%';</property>
         <NodeLayout
           Size="156.8,41.6"
           Id="Package\Data Flow Task\OLE DB Source"
-          TopLeft="223,158" />
+          TopLeft="338,119" />
         <NodeLayout
           Size="176.8,41.6"
           Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="578,462" />
+          TopLeft="361,331" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="301.5,200">
+          TopLeft="416.5,161">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="365,262"
+              EndConnector="33,170"
               Start="0,0"
-              End="365,254.5">
+              End="33,162.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,127" />
+                    End="0,81" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,127"
-                    Point2="0,131"
-                    Point3="4,131" />
+                    Point1="0,81"
+                    Point2="0,85"
+                    Point3="4,85" />
                   <mssgle:LineSegment
-                    End="361,131" />
+                    End="29,85" />
                   <mssgle:CubicBezierSegment
-                    Point1="361,131"
-                    Point2="365,131"
-                    Point3="365,135" />
+                    Point1="29,85"
+                    Point2="33,85"
+                    Point3="33,89" />
                   <mssgle:LineSegment
-                    End="365,254.5" />
+                    End="33,162.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
