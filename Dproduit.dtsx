@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Dproduit"
   DTS:PackageType="5"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{DE145603-4B70-4C70-8EC8-CDFF947C823E}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{58182AE8-E20B-40D7-8906-DDA7244EAE20}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -199,6 +199,7 @@
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT TOP (1000) [Art_Code]
       ,[Art_Des]
+      ,[Art_Calc_DP]
   FROM [TESTPH2].[dbo].[Art] where Art_Code like 'FP%'</property>
                 <property
                   dataType="System.String"
@@ -255,6 +256,16 @@
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Art_Des]"
                       name="Art_Des"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Art_Calc_DP]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Art_Calc_DP]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Art_Calc_DP]"
+                      name="Art_Calc_DP"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -268,6 +279,11 @@
                       dataType="wstr"
                       length="100"
                       name="Art_Des" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Art_Calc_DP]"
+                      dataType="wstr"
+                      length="50"
+                      name="Art_Calc_DP" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -287,6 +303,12 @@
                       length="100"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Art_Des]"
                       name="Art_Des" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Art_Calc_DP]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Art_Calc_DP]"
+                      name="Art_Calc_DP" />
                     <outputColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
