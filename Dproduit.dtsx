@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Dproduit"
   DTS:PackageType="5"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{1F5AA443-42B3-4D96-A4E1-C684E3752477}">
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{DE145603-4B70-4C70-8EC8-CDFF947C823E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -199,8 +199,7 @@
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT TOP (1000) [Art_Code]
       ,[Art_Des]
-  FROM [TESTPH2].[dbo].[Art] where Art_Code like 'BP%'
-  or Art_Code like 'FP%'</property>
+  FROM [TESTPH2].[dbo].[Art] where Art_Code like 'FP%'</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
