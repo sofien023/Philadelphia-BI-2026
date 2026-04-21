@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Dproduit"
   DTS:PackageType="5"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{58182AE8-E20B-40D7-8906-DDA7244EAE20}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{9A2805EB-CAAD-48AE-94F6-35C63743CB55}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -131,6 +131,13 @@
                       cachedName="Art_Des"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[designation]"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Art_Des]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Art_Calc_DP]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Art_Calc_DP"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[art_calc]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Art_Calc_DP]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -144,6 +151,11 @@
                       dataType="wstr"
                       length="100"
                       name="designation" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[art_calc]"
+                      dataType="wstr"
+                      length="50"
+                      name="art_calc" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -351,7 +363,7 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="155.2,41.6"
+          Size="155,42"
           Id="Package\Data Flow Task"
           TopLeft="538,213" />
       </GraphLayout>
@@ -363,11 +375,11 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="156.8,41.6"
+          Size="157,42"
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="338,119" />
         <NodeLayout
-          Size="176.8,41.6"
+          Size="177,42"
           Id="Package\Data Flow Task\OLE DB Destination"
           TopLeft="361,331" />
         <EdgeLayout
