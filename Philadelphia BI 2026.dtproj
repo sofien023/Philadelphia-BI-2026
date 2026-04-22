@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">SOFIENLAPTOP</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAoiu8+7v+ik6gZ9ydOAkpTQAAAAACAAAAAAAQZgAAAAEAACAAAADpn12kxJPVi0Ta1CsXDPYWO4RaMjlg+jxXmIDs1U8KyAAAAAAOgAAAAAIAACAAAAA+HXId/JJdcgQtXyGoQGGkk6Xiva9i2QbbFq90O3DE0pAAAAAjz3RI5DYh+zVNpcnWXG15jP/R+9M53iP4WGdO6jsyaCyAFKkuE1+HgZohZ2IK/Gu3KZ/A7rNruLosse2pss5GY54MnfvtXvz8IHnn8+KwvUDRAg8q8RIupEQl20Hmht+pnhYJzaey3erqMSecbH3Jxu+PtVe8fCZaG2wx8F6ep35ePktKuyFU0yzqBT1JbFNAAAAA7RbeTWJt0bDAVEXXr+YSURmxxRS0ctMGoLCgAq7xevj1CJFkYEgIPB1Zo5OCBw2xCMdkU4IFEJztWrniFM+8UQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAoiu8+7v+ik6gZ9ydOAkpTQAAAAACAAAAAAAQZgAAAAEAACAAAAAFSWAaT5HItWZh+c+Gi1rmehLaY/8tVbGhbPyYyMSGLAAAAAAOgAAAAAIAACAAAAD/38muPLYvdlw3JgFLqgsggi6SihagvmFuwijXR//YzpAAAACWgYzGdQIq/6P1kj9fadfrphz5f0Z4AUjQWpNe37673/tlY2VpbMqGAfq9S0rYVFQl9L36okW6zSjHd7wg55zKnA43rdT3HlotXzGmHZNS6kPaudrXK/r7sUN87rDI+wHOgooYba8LVp0hrZmtq5TBcJnAIpXXWlsVXAcR7Ir9dCvQ6Z/skKpVi4AwBrHD6M5AAAAAzPCmlRl/6JS9xsJO0qNuVttrfwJS25JXGqcLT6+sRZj4AyEsowYGG10HicKTwOkboMzfIm/E7MiHs24Y6Q9UEg==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -45,6 +45,8 @@
           <SSIS:Package SSIS:Name="Nomenclature charge.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Ddate.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Fnomanclature.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="DnomD.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="DnomE.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="SOFIENLAPTOP.ENPH.conmgr" />
@@ -373,10 +375,10 @@
                 <SSIS:Property SSIS:Name="Name">Ddocument</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{7F001F2F-3BF3-44DE-9579-2EBFE4C9E6F3}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{2DCD9196-121E-4B6C-B5D9-E4A539BB51E7}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -1277,6 +1279,40 @@
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionGUID">{D51C3A8A-ABCF-4800-BEE1-7C5D130CDDA5}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="DnomD.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{66255291-4E9F-4127-BA4A-E666BD431E09}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">DnomD</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{7B9AA17F-921D-450A-81E5-883DA6A006DD}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="DnomE.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{29973E38-0FA0-4827-A004-E986C987B92B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">DnomE</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{0BEB7A43-7C8F-4249-9870-BB208BFBDBF2}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
