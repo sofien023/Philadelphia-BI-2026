@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Fnomanclature"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{7E39A344-2318-42E4-80CA-69B49CD10691}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{C25C5491-31D3-4053-9041-CD248BDBE042}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -160,6 +160,14 @@
                       cachedScale="6"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[nom_QB]"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[nom_QB]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Quantite]"
+                      cachedDataType="numeric"
+                      cachedName="Quantite"
+                      cachedPrecision="37"
+                      cachedScale="11"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Quantite]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Quantite]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -206,6 +214,12 @@
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[nom_QB]"
                       dataType="numeric"
                       name="nom_QB"
+                      precision="18"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Quantite]"
+                      dataType="numeric"
+                      name="Quantite"
                       precision="18"
                       scale="6" />
                   </externalMetadataColumns>
@@ -267,12 +281,14 @@
     d.NomD_Composant,
     n.Nom_Des,
     d.NomD_Q,
+    n.nom_QB,
+    d.NomD_Q * n.nom_QB  AS Quantite,
     d.NomD_Unite,
-    d.NomD_pos,
-    n.nom_QB
+    d.NomD_pos
 FROM [TESTPH2].[dbo].[NomenclatureE] n
 JOIN [TESTPH2].[dbo].[NomenclatureD] d
-    ON n.nom_code = d.nom_code order by Art_Code ,NomD_Pos;</property>
+    ON n.nom_code = d.nom_code
+ORDER BY n.Art_Code, d.NomD_Pos;</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -389,6 +405,17 @@ JOIN [TESTPH2].[dbo].[NomenclatureD] d
                       precision="18"
                       scale="6"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Quantite]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Quantite]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Quantite]"
+                      name="Quantite"
+                      precision="37"
+                      scale="11"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -433,6 +460,12 @@ JOIN [TESTPH2].[dbo].[NomenclatureD] d
                       name="nom_QB"
                       precision="18"
                       scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Quantite]"
+                      dataType="numeric"
+                      name="Quantite"
+                      precision="37"
+                      scale="11" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -477,6 +510,13 @@ JOIN [TESTPH2].[dbo].[NomenclatureD] d
                       length="255"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NomD_Unite]"
                       name="NomD_Unite" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Quantite]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Quantite]"
+                      name="Quantite"
+                      precision="37"
+                      scale="11" />
                     <outputColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NomD_pos]"
                       dataType="i4"
