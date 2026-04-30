@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="12"
-  DTS:VersionGUID="{5BBCB0AA-3059-4750-AAC2-83F608169AB4}">
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{B01E6544-AAE5-436E-8AB2-B24E01509509}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -45,12 +45,12 @@
                   name="Derived Column Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[Sto_DateR]"
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[StoJ_Date]"
                       cachedDataType="dbTimeStamp"
-                      cachedName="Sto_DateR"
+                      cachedName="StoJ_Date"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sto_DateR]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoJ_Date]"
                       truncationRowDisposition="FailComponent"
                       usageType="readWrite">
                       <properties>
@@ -58,13 +58,13 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">(DT_DBDATE)#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sto_DateR]}</property>
+                          name="Expression">(DT_DBDATE)#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoJ_Date]}</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">(DT_DBDATE)Sto_DateR</property>
+                          name="FriendlyExpression">(DT_DBDATE)StoJ_Date</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -185,26 +185,26 @@
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[art_code]"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Art_Code]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Sto_Prix]"
-                      cachedDataType="numeric"
-                      cachedName="Sto_Prix"
-                      cachedPrecision="18"
-                      cachedScale="6"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[prix]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sto_Prix]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Sto_DateR]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StoJ_Date]"
                       cachedDataType="dbTimeStamp"
-                      cachedName="Sto_DateR"
+                      cachedName="StoJ_Date"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date_prix]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sto_DateR]" />
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoJ_Date]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[art_unite]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StoJ_Prix]"
+                      cachedDataType="numeric"
+                      cachedName="StoJ_Prix"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[prix]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoJ_Prix]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StoJ_un]"
                       cachedDataType="wstr"
                       cachedLength="10"
-                      cachedName="art_unite"
+                      cachedName="StoJ_un"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[unite]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[art_unite]" />
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoJ_un]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -286,14 +286,13 @@
                   description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
-    a.Art_Code,
-    a.Sto_Prix,
-    a.Sto_DateR,
-    b.art_unite
-FROM TESTPH2.dbo.Stock a
-JOIN TESTPH2.dbo.art b
-    ON a.art_code = b.art_code
-WHERE a.Sto_prix &lt;&gt; 0;</property>
+    Art_Code,
+    StoJ_Prix,
+    StoJ_Date,
+    StoJ_un
+FROM TESTPH2.dbo.Stojou 
+WHERE StoJ_Prix &lt;&gt; 0
+and year(StoJ_Date) &gt;=2020;</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -340,34 +339,34 @@ WHERE a.Sto_prix &lt;&gt; 0;</property>
                       name="Art_Code"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sto_Prix]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoJ_Prix]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Sto_Prix]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sto_Prix]"
-                      name="Sto_Prix"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StoJ_Prix]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoJ_Prix]"
+                      name="StoJ_Prix"
                       precision="18"
-                      scale="6"
+                      scale="3"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sto_DateR]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoJ_Date]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Sto_DateR]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sto_DateR]"
-                      name="Sto_DateR"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StoJ_Date]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoJ_Date]"
+                      name="StoJ_Date"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[art_unite]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoJ_un]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[art_unite]"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StoJ_un]"
                       length="10"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[art_unite]"
-                      name="art_unite"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoJ_un]"
+                      name="StoJ_un"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -378,20 +377,20 @@ WHERE a.Sto_prix &lt;&gt; 0;</property>
                       length="20"
                       name="Art_Code" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Sto_Prix]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StoJ_Prix]"
                       dataType="numeric"
-                      name="Sto_Prix"
+                      name="StoJ_Prix"
                       precision="18"
-                      scale="6" />
+                      scale="3" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Sto_DateR]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StoJ_Date]"
                       dataType="dbTimeStamp"
-                      name="Sto_DateR" />
+                      name="StoJ_Date" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[art_unite]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StoJ_un]"
                       dataType="wstr"
                       length="10"
-                      name="art_unite" />
+                      name="StoJ_un" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -406,23 +405,23 @@ WHERE a.Sto_prix &lt;&gt; 0;</property>
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Art_Code]"
                       name="Art_Code" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Sto_Prix]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StoJ_Prix]"
                       dataType="numeric"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Sto_Prix]"
-                      name="Sto_Prix"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StoJ_Prix]"
+                      name="StoJ_Prix"
                       precision="18"
-                      scale="6" />
+                      scale="3" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Sto_DateR]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StoJ_Date]"
                       dataType="dbTimeStamp"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Sto_DateR]"
-                      name="Sto_DateR" />
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StoJ_Date]"
+                      name="StoJ_Date" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[art_unite]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StoJ_un]"
                       dataType="wstr"
                       length="10"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[art_unite]"
-                      name="art_unite" />
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StoJ_un]"
+                      name="StoJ_un" />
                     <outputColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -470,7 +469,7 @@ WHERE a.Sto_prix &lt;&gt; 0;</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="155,42"
+          Size="155.2,41.6"
           Id="Package\Data Flow Task"
           TopLeft="392,232" />
       </GraphLayout>
@@ -482,43 +481,39 @@ WHERE a.Sto_prix &lt;&gt; 0;</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="177,42"
-          Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="592,377" />
-        <NodeLayout
-          Size="158,42"
-          Id="Package\Data Flow Task\Derived Column"
-          TopLeft="497,175" />
-        <NodeLayout
-          Size="157,42"
+          Size="156.8,41.6"
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="238,73" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Data Flow Task\Derived Column"
+          TopLeft="430.833309793639,188.733332182235" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="316.5,115">
+          TopLeft="316.4,114.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="259.5,60"
+              EndConnector="190.833309793639,74.1333321822353"
               Start="0,0"
-              End="259.5,52.5">
+              End="190.833309793639,66.6333321822353">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26" />
+                    End="0,33.0666660911176" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,26"
-                    Point2="0,30"
-                    Point3="4,30" />
+                    Point1="0,33.0666660911176"
+                    Point2="0,37.0666660911176"
+                    Point3="4,37.0666660911176" />
                   <mssgle:LineSegment
-                    End="255.5,30" />
+                    End="186.833309793639,37.0666660911176" />
                   <mssgle:CubicBezierSegment
-                    Point1="255.5,30"
-                    Point2="259.5,30"
-                    Point3="259.5,34" />
+                    Point1="186.833309793639,37.0666660911176"
+                    Point2="190.833309793639,37.0666660911176"
+                    Point3="190.833309793639,41.0666660911176" />
                   <mssgle:LineSegment
-                    End="259.5,52.5" />
+                    End="190.833309793639,66.6333321822353" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -527,32 +522,36 @@ WHERE a.Sto_prix &lt;&gt; 0;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="637.499965168537,298.999997920791" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Derived Column Output]"
-          TopLeft="576,217">
+          TopLeft="507.233309793639,230.333332182235">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="104.5,160"
+              EndConnector="215.866655374898,68.6666657385561"
               Start="0,0"
-              End="104.5,152.5">
+              End="215.866655374898,61.1666657385561">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,76" />
+                    End="0,30.3333328692781" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,76"
-                    Point2="0,80"
-                    Point3="4,80" />
+                    Point1="0,30.3333328692781"
+                    Point2="0,34.3333328692781"
+                    Point3="4,34.3333328692781" />
                   <mssgle:LineSegment
-                    End="100.5,80" />
+                    End="211.866655374898,34.3333328692781" />
                   <mssgle:CubicBezierSegment
-                    Point1="100.5,80"
-                    Point2="104.5,80"
-                    Point3="104.5,84" />
+                    Point1="211.866655374898,34.3333328692781"
+                    Point2="215.866655374898,34.3333328692781"
+                    Point3="215.866655374898,38.3333328692781" />
                   <mssgle:LineSegment
-                    End="104.5,152.5" />
+                    End="215.866655374898,61.1666657385561" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -565,6 +564,14 @@ WHERE a.Sto_prix &lt;&gt; 0;</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\OLE DB Destination">
     <Properties>
       <Property>
@@ -574,14 +581,6 @@ WHERE a.Sto_prix &lt;&gt; 0;</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

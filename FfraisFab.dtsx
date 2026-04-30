@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="FfraisFab"
   DTS:PackageType="5"
-  DTS:VersionBuild="34"
-  DTS:VersionGUID="{7AF8460D-9D23-40C9-903A-C91F1DED528D}">
+  DTS:VersionBuild="36"
+  DTS:VersionGUID="{96926FC0-B330-44EA-BFD5-6F395A996CC0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -284,6 +284,11 @@
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
                       dataType="i4"
                       name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cmp_racine]"
+                      dataType="wstr"
+                      length="20"
+                      name="cmp_racine" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -877,6 +882,19 @@ OUTER APPLY (
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\OLE DB Source">
     <Properties>

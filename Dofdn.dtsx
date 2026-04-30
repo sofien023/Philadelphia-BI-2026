@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{370D45FF-E219-4AB3-B86A-0FD35AC28917}">
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{44031C15-85CF-4717-8981-37D2AFF10A2E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -241,7 +241,6 @@ WHERE o.Date_Create &gt;= '2021-01-01'
   AND o.Date_Create &lt; '2026-01-01'
   AND o.ofd_QR &lt;&gt; 0
   AND a.ArtCat_Code IN ('FabVendu', 'Fabriqué')
-  AND ofdn.OFDN_Composant NOT LIKE 'BP%'
   AND ofdn.OFDN_Composant NOT IN (
         'RM260010',
         '43672F',
@@ -268,8 +267,11 @@ WHERE o.Date_Create &gt;= '2021-01-01'
         'PK110752',
         'PK402250',
         'PK500191',
-        'RM100930'
-        
+        'RM100930',
+        'PK400282',
+        'PK500123',
+        'PK500600',
+        'PK500610'
   ) and ofdn.OFDN_Composant not like 'fp%';</property>
                 <property
                   dataType="System.String"
