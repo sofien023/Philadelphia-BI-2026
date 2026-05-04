@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="FfraisFab"
   DTS:PackageType="5"
-  DTS:VersionBuild="36"
-  DTS:VersionGUID="{96926FC0-B330-44EA-BFD5-6F395A996CC0}">
+  DTS:VersionBuild="42"
+  DTS:VersionGUID="{17EB481F-F1D9-4F5C-B610-D2D461983EC9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -143,7 +143,7 @@
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">3</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
@@ -178,19 +178,19 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[art_code]"
-                      cachedDataType="wstr"
-                      cachedLength="20"
-                      cachedName="art_code"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[art_code]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[art_code]" />
-                    <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[of_num]"
                       cachedDataType="wstr"
                       cachedLength="20"
                       cachedName="of_num"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[of_num]"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[of_num]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[art_code]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="art_code"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[art_code]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[art_code]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ofs_num]"
                       cachedDataType="wstr"
@@ -212,13 +212,13 @@
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cmp_code]"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[cmp_code]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[prix]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Qte_Consommee]"
                       cachedDataType="numeric"
-                      cachedName="prix"
-                      cachedPrecision="18"
-                      cachedScale="6"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[prix_unitaire]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[prix]" />
+                      cachedName="Qte_Consommee"
+                      cachedPrecision="37"
+                      cachedScale="9"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[qte_consommee]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Qte_Consommee]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Cout_Ligne]"
                       cachedDataType="numeric"
@@ -228,21 +228,20 @@
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cout]"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Cout_Ligne]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Qte_Consommee]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[prix]"
                       cachedDataType="numeric"
-                      cachedName="Qte_Consommee"
-                      cachedPrecision="37"
-                      cachedScale="9"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[qte_consommee]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Qte_Consommee]" />
+                      cachedName="prix"
+                      cachedPrecision="18"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[prix_unitaire]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[prix]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[art_code]"
-                      dataType="wstr"
-                      length="20"
-                      name="art_code" />
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ofs_num]"
                       dataType="wstr"
@@ -254,14 +253,19 @@
                       length="20"
                       name="of_num" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date_operation]"
-                      dataType="dbDate"
-                      name="date_operation" />
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[art_code]"
+                      dataType="wstr"
+                      length="20"
+                      name="art_code" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cmp_code]"
                       dataType="wstr"
                       length="20"
                       name="cmp_code" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date_operation]"
+                      dataType="dbDate"
+                      name="date_operation" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[qte_consommee]"
                       dataType="numeric"
@@ -280,15 +284,6 @@
                       name="cout"
                       precision="18"
                       scale="6" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
-                      dataType="i4"
-                      name="id" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cmp_racine]"
-                      dataType="wstr"
-                      length="20"
-                      name="cmp_racine" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -354,84 +349,77 @@ Composants AS (
     SELECT OF_Num, cmp_code, quantite, unite
     FROM d_ofdn
 ),
+-- 🔹 Facteurs extraits une seule fois
 BaseCalcul AS (
     SELECT 
         s.ofs_num,
         s.of_num,
         s.date_operation,
-        o.Art_Code AS art_code,
+        o.Art_Code       AS art_code,
         c.cmp_code,
-        c.unite AS unite_qte,
-        (s.quantite * c.quantite) AS Qte_Consommee
+        c.unite          AS unite_qte,
+        s.quantite * c.quantite AS Qte_Consommee,
+        -- Facteur de normalisation quantité (→ grammes ou unités)
+        CASE c.unite
+            WHEN 'KG'   THEN 1000.0
+            WHEN 'G'    THEN 1.0
+            WHEN 'MG'   THEN 0.001
+            WHEN 'UN'   THEN 1.0
+            ELSE             1.0      -- fallback explicite
+        END AS Facteur_Qte
     FROM Suivi s
     JOIN OFD_Filtre o ON s.of_num = o.of_num
     JOIN Composants c ON s.of_num = c.of_num
+),
+-- 🔹 Prix résolu une seule fois par (cmp_code, date_operation)
+PrixResolu AS (
+    SELECT
+        b.of_num,
+        b.ofs_num,
+        b.art_code,
+        b.date_operation,
+        b.cmp_code,
+        b.unite_qte,
+        b.Qte_Consommee,
+        b.Facteur_Qte,
+        p.prix,
+        p.unite AS unite_prix,
+        -- Facteur de normalisation prix (→ prix par gramme ou unité)
+        CASE p.unite
+            WHEN 'KG'     THEN 0.001
+            WHEN 'G'      THEN 1.0
+            WHEN 'MG'     THEN 1000.0
+            WHEN 'UN'     THEN 1.0
+            WHEN '10UN'   THEN 0.1       -- ⚠️ était 1/10 = 0 (integer division)
+            WHEN '1000UN' THEN 0.001     -- ⚠️ était 1/1000 = 0 (integer division)
+            ELSE               1.0
+        END AS Facteur_Prix
+    FROM BaseCalcul b
+    OUTER APPLY (
+        SELECT TOP 1 prix, unite
+        FROM d_stock
+        WHERE art_code = b.cmp_code
+          AND prix IS NOT NULL
+        ORDER BY
+            -- Prix antérieur à l'opération prioritaire, sinon le plus récent
+            IIF(date_prix &lt;= b.date_operation, 0, 1),
+            date_prix DESC
+    ) p
 )
-
-SELECT 
-    b.of_num,
-    b.ofs_num,
-    b.art_code,
-    b.date_operation,
-    b.cmp_code,
-
-    b.unite_qte,
-    p.unite AS unite_prix,
-
-    b.Qte_Consommee,
-    p.prix,
-
-    -- 🔹 Quantité normalisée (en grammes ou unité)
-    b.Qte_Consommee *
-    CASE 
-        WHEN b.unite_qte = 'KG' THEN 1000
-        WHEN b.unite_qte = 'G' THEN 1
-        WHEN b.unite_qte = 'MG' THEN 1.0/1000
-        WHEN b.unite_qte = 'UN' THEN 1
-    END AS Qte_Normalisee,
-
-    -- 🔹 Prix normalisé (prix par gramme ou unité)
-    p.prix *
-    CASE 
-        WHEN p.unite = 'KG' THEN 1.0/1000
-        WHEN p.unite = 'G' THEN 1
-        WHEN p.unite = 'MG' THEN 1000
-        WHEN p.unite = 'UN' THEN 1
-    END AS Prix_Normalise,
-
-    -- 🔹 Coût final
-    (
-        b.Qte_Consommee *
-        CASE 
-            WHEN b.unite_qte = 'KG' THEN 1000
-            WHEN b.unite_qte = 'G' THEN 1
-            WHEN b.unite_qte = 'MG' THEN 1.0/1000
-            WHEN b.unite_qte = 'UN' THEN 1
-        END
-    ) *
-    (
-        p.prix *
-        CASE 
-            WHEN p.unite = 'KG' THEN 1.0/1000
-            WHEN p.unite = 'G' THEN 1
-            WHEN p.unite = 'MG' THEN 1000
-            WHEN p.unite = 'UN' THEN 1
-        END
-    ) AS Cout_Ligne
-
-FROM BaseCalcul b
-OUTER APPLY (
-    SELECT TOP 1 p.prix, p.unite
-    FROM d_stock p
-    WHERE p.art_code = b.cmp_code
-      AND p.prix IS NOT NULL
-    ORDER BY 
-        CASE 
-            WHEN p.date_prix &lt;= b.date_operation THEN 0 
-            ELSE 1 
-        END,
-        p.date_prix DESC
-) p;</property>
+SELECT
+    of_num,
+    ofs_num,
+    art_code,
+    date_operation,
+    cmp_code,
+    unite_qte,
+    unite_prix,
+    Qte_Consommee,
+    prix,
+    Qte_Consommee * Facteur_Qte                         AS Qte_Normalisee,
+    prix           * Facteur_Prix                        AS Prix_Normalise,
+    Qte_Consommee * Facteur_Qte * prix * Facteur_Prix   AS Cout_Ligne
+FROM PrixResolu;</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -656,8 +644,8 @@ OUTER APPLY (
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Prix_Normalise]"
                       dataType="numeric"
                       name="Prix_Normalise"
-                      precision="29"
-                      scale="12" />
+                      precision="26"
+                      scale="9" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -732,8 +720,8 @@ OUTER APPLY (
                       dataType="numeric"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Prix_Normalise]"
                       name="Prix_Normalise"
-                      precision="29"
-                      scale="12" />
+                      precision="26"
+                      scale="9" />
                     <outputColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Cout_Ligne]"
                       dataType="numeric"
@@ -788,7 +776,7 @@ OUTER APPLY (
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="155,42"
+          Size="155.2,41.6"
           Id="Package\Data Flow Task"
           TopLeft="390,193" />
       </GraphLayout>
@@ -800,15 +788,15 @@ OUTER APPLY (
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="177,42"
+          Size="176.8,41.6"
           Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="338,365" />
+          TopLeft="581,406" />
         <NodeLayout
-          Size="157,42"
+          Size="156.8,41.6"
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="267,102" />
         <NodeLayout
-          Size="158,42"
+          Size="158.4,41.6"
           Id="Package\Data Flow Task\Derived Column"
           TopLeft="497,209" />
         <EdgeLayout
@@ -851,26 +839,26 @@ OUTER APPLY (
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-149.5,114"
+              EndConnector="93.5,155"
               Start="0,0"
-              End="-149.5,106.5">
+              End="93.5,147.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,53" />
+                    End="0,73.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,53"
-                    Point2="0,57"
-                    Point3="-4,57" />
+                    Point1="0,73.5"
+                    Point2="0,77.5"
+                    Point3="4,77.5" />
                   <mssgle:LineSegment
-                    End="-145.5,57" />
+                    End="89.5,77.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="-145.5,57"
-                    Point2="-149.5,57"
-                    Point3="-149.5,61" />
+                    Point1="89.5,77.5"
+                    Point2="93.5,77.5"
+                    Point3="93.5,81.5" />
                   <mssgle:LineSegment
-                    End="-149.5,106.5" />
+                    End="93.5,147.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
