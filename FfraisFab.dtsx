@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="FfraisFab"
   DTS:PackageType="5"
-  DTS:VersionBuild="42"
-  DTS:VersionGUID="{17EB481F-F1D9-4F5C-B610-D2D461983EC9}">
+  DTS:VersionBuild="44"
+  DTS:VersionGUID="{7EAB2029-2C5D-4694-8FB8-D161612D684B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -31,80 +31,6 @@
         <pipeline
           version="1">
           <components>
-            <component
-              refId="Package\Data Flow Task\Derived Column"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Derived Column"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[date_operation]"
-                      cachedDataType="dbDate"
-                      cachedName="date_operation"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[date_operation]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">(DT_DBDATE)#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[date_operation]}</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">(DT_DBDATE)date_operation</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
             <component
               refId="Package\Data Flow Task\OLE DB Destination"
               componentClassID="Microsoft.OLEDBDestination"
@@ -199,12 +125,6 @@
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ofs_num]"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ofs_num]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[date_operation]"
-                      cachedDataType="dbDate"
-                      cachedName="date_operation"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date_operation]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[date_operation]" />
-                    <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[cmp_code]"
                       cachedDataType="wstr"
                       cachedLength="20"
@@ -220,13 +140,11 @@
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[qte_consommee]"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Qte_Consommee]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Cout_Ligne]"
-                      cachedDataType="numeric"
-                      cachedName="Cout_Ligne"
-                      cachedPrecision="38"
-                      cachedScale="6"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cout]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Cout_Ligne]" />
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DateKey]"
+                      cachedDataType="i4"
+                      cachedName="DateKey"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date_operation]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateKey]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[prix]"
                       cachedDataType="numeric"
@@ -235,6 +153,14 @@
                       cachedScale="6"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[prix_unitaire]"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[prix]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Cout_Ligne]"
+                      cachedDataType="numeric"
+                      cachedName="Cout_Ligne"
+                      cachedPrecision="38"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cout]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Cout_Ligne]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -264,7 +190,7 @@
                       name="cmp_code" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date_operation]"
-                      dataType="dbDate"
+                      dataType="i4"
                       name="date_operation" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[qte_consommee]"
@@ -338,40 +264,58 @@
                   description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">WITH OFD_Filtre AS (
-    SELECT OF_Num, Art_Code, date_creation
+    SELECT 
+        OF_Num, 
+        Art_Code,
+        date_creation
     FROM d_ofd
 ),
+
 Suivi AS (
-    SELECT ofs_num, of_num, date_operation, quantite
+    SELECT 
+        ofs_num, 
+        of_num,
+        date_operation,   -- already DateKey
+        quantite
     FROM d_ofse
 ),
+
 Composants AS (
-    SELECT OF_Num, cmp_code, quantite, unite
+    SELECT 
+        OF_Num, 
+        cmp_code, 
+        quantite, 
+        unite
     FROM d_ofdn
 ),
--- 🔹 Facteurs extraits une seule fois
+
+-- 🔹 Base calcul
 BaseCalcul AS (
     SELECT 
         s.ofs_num,
         s.of_num,
         s.date_operation,
-        o.Art_Code       AS art_code,
+        o.Art_Code AS art_code,
         c.cmp_code,
-        c.unite          AS unite_qte,
+        c.unite AS unite_qte,
         s.quantite * c.quantite AS Qte_Consommee,
-        -- Facteur de normalisation quantité (→ grammes ou unités)
+
         CASE c.unite
-            WHEN 'KG'   THEN 1000.0
-            WHEN 'G'    THEN 1.0
-            WHEN 'MG'   THEN 0.001
-            WHEN 'UN'   THEN 1.0
-            ELSE             1.0      -- fallback explicite
+            WHEN 'KG' THEN 1000.0
+            WHEN 'G'  THEN 1.0
+            WHEN 'MG' THEN 0.001
+            WHEN 'UN' THEN 1.0
+            ELSE 1.0
         END AS Facteur_Qte
+
     FROM Suivi s
-    JOIN OFD_Filtre o ON s.of_num = o.of_num
-    JOIN Composants c ON s.of_num = c.of_num
+    JOIN OFD_Filtre o 
+        ON s.of_num = o.of_num
+    JOIN Composants c 
+        ON s.of_num = c.of_num
 ),
--- 🔹 Prix résolu une seule fois par (cmp_code, date_operation)
+
+-- 🔹 Prix résolu
 PrixResolu AS (
     SELECT
         b.of_num,
@@ -382,43 +326,60 @@ PrixResolu AS (
         b.unite_qte,
         b.Qte_Consommee,
         b.Facteur_Qte,
+
         p.prix,
         p.unite AS unite_prix,
-        -- Facteur de normalisation prix (→ prix par gramme ou unité)
+
         CASE p.unite
             WHEN 'KG'     THEN 0.001
             WHEN 'G'      THEN 1.0
             WHEN 'MG'     THEN 1000.0
             WHEN 'UN'     THEN 1.0
-            WHEN '10UN'   THEN 0.1       -- ⚠️ était 1/10 = 0 (integer division)
-            WHEN '1000UN' THEN 0.001     -- ⚠️ était 1/1000 = 0 (integer division)
-            ELSE               1.0
+            WHEN '10UN'   THEN 0.1
+            WHEN '1000UN' THEN 0.001
+            ELSE 1.0
         END AS Facteur_Prix
+
     FROM BaseCalcul b
+
     OUTER APPLY (
-        SELECT TOP 1 prix, unite
+        SELECT TOP 1 
+            prix, 
+            unite
         FROM d_stock
         WHERE art_code = b.cmp_code
           AND prix IS NOT NULL
         ORDER BY
-            -- Prix antérieur à l'opération prioritaire, sinon le plus récent
-            IIF(date_prix &lt;= b.date_operation, 0, 1),
+            CASE 
+                WHEN date_prix &lt;= b.date_operation 
+                THEN 0 
+                ELSE 1 
+            END,
             date_prix DESC
     ) p
 )
+
 SELECT
+    date_operation AS DateKey,
+
     of_num,
     ofs_num,
     art_code,
-    date_operation,
     cmp_code,
     unite_qte,
     unite_prix,
     Qte_Consommee,
     prix,
-    Qte_Consommee * Facteur_Qte                         AS Qte_Normalisee,
-    prix           * Facteur_Prix                        AS Prix_Normalise,
-    Qte_Consommee * Facteur_Qte * prix * Facteur_Prix   AS Cout_Ligne
+
+    Qte_Consommee * Facteur_Qte AS Qte_Normalisee,
+
+    prix * Facteur_Prix AS Prix_Normalise,
+
+    Qte_Consommee
+        * Facteur_Qte
+        * prix
+        * Facteur_Prix AS Cout_Ligne
+
 FROM PrixResolu;</property>
                 <property
                   dataType="System.String"
@@ -484,15 +445,6 @@ FROM PrixResolu;</property>
                       length="20"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ofs_num]"
                       name="ofs_num"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[date_operation]"
-                      dataType="dbDate"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[date_operation]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[date_operation]"
-                      name="date_operation"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[cmp_code]"
@@ -579,6 +531,15 @@ FROM PrixResolu;</property>
                       precision="29"
                       scale="12"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      name="DateKey"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -597,10 +558,6 @@ FROM PrixResolu;</property>
                       dataType="wstr"
                       length="20"
                       name="ofs_num" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[date_operation]"
-                      dataType="dbDate"
-                      name="date_operation" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cmp_code]"
                       dataType="wstr"
@@ -646,6 +603,10 @@ FROM PrixResolu;</property>
                       name="Prix_Normalise"
                       precision="26"
                       scale="9" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -653,6 +614,11 @@ FROM PrixResolu;</property>
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      name="DateKey" />
                     <outputColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[of_num]"
                       dataType="wstr"
@@ -671,11 +637,6 @@ FROM PrixResolu;</property>
                       length="20"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[art_code]"
                       name="art_code" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[date_operation]"
-                      dataType="dbDate"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[date_operation]"
-                      name="date_operation" />
                     <outputColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cmp_code]"
                       dataType="wstr"
@@ -749,13 +710,8 @@ FROM PrixResolu;</property>
           </components>
           <paths>
             <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output]"
-              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
-              name="Derived Column Output"
-              startId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]" />
-            <path
               refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
-              endId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]" />
           </paths>
@@ -776,7 +732,7 @@ FROM PrixResolu;</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="155.2,41.6"
+          Size="155,42"
           Id="Package\Data Flow Task"
           TopLeft="390,193" />
       </GraphLayout>
@@ -786,79 +742,41 @@ FROM PrixResolu;</property>
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="176.8,41.6"
-          Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="581,406" />
-        <NodeLayout
-          Size="156.8,41.6"
+          Size="157,42"
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="267,102" />
         <NodeLayout
-          Size="158.4,41.6"
-          Id="Package\Data Flow Task\Derived Column"
-          TopLeft="497,209" />
+          Size="177,42"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="427,396" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
           TopLeft="345.5,144">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="230.5,65"
+              EndConnector="170,252"
               Start="0,0"
-              End="230.5,57.5">
+              End="170,244.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.5" />
+                    End="0,122" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,28.5"
-                    Point2="0,32.5"
-                    Point3="4,32.5" />
+                    Point1="0,122"
+                    Point2="0,126"
+                    Point3="4,126" />
                   <mssgle:LineSegment
-                    End="226.5,32.5" />
+                    End="166,126" />
                   <mssgle:CubicBezierSegment
-                    Point1="226.5,32.5"
-                    Point2="230.5,32.5"
-                    Point3="230.5,36.5" />
+                    Point1="166,126"
+                    Point2="170,126"
+                    Point3="170,130" />
                   <mssgle:LineSegment
-                    End="230.5,57.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output]"
-          TopLeft="576,251">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="93.5,155"
-              Start="0,0"
-              End="93.5,147.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,73.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,73.5"
-                    Point2="0,77.5"
-                    Point3="4,77.5" />
-                  <mssgle:LineSegment
-                    End="89.5,77.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="89.5,77.5"
-                    Point2="93.5,77.5"
-                    Point3="93.5,81.5" />
-                  <mssgle:LineSegment
-                    End="93.5,147.5" />
+                    End="170,244.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -871,6 +789,14 @@ FROM PrixResolu;</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\OLE DB Destination">
     <Properties>
       <Property>
@@ -880,14 +806,6 @@ FROM PrixResolu;</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
