@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{36B1472A-E443-40A6-96EE-EA9AFFA8BB10}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{59ECBE9C-DF65-4F7C-9821-76D0E210A254}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -292,13 +292,16 @@
                   description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
-    Art_Code,
+    s.Art_Code,
     StoJ_Prix,
     StoJ_Date,
     StoJ_un
-FROM TESTPH2.dbo.Stojou 
+FROM TESTPH2.dbo.Stojou s
+join dbo.art a 
+on s.Art_Code = a.Art_Code
 WHERE StoJ_Prix &lt;&gt; 0
-and year(StoJ_Date) &gt;=2020;</property>
+and year(StoJ_Date) &gt;=2020
+and artcat_code IN ('fabvendu', 'fabriqué', 'matière');</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -491,13 +494,13 @@ and year(StoJ_Date) &gt;=2020;</property>
           Id="Package\Data Flow Task\OLE DB Destination"
           TopLeft="637.499965168537,298.999997920791" />
         <NodeLayout
-          Size="153,42"
-          Id="Package\Data Flow Task\Derived Column"
-          TopLeft="430.833309793639,188.733332182235" />
-        <NodeLayout
           Size="157,42"
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="238,73" />
+        <NodeLayout
+          Size="153,42"
+          Id="Package\Data Flow Task\Derived Column"
+          TopLeft="430.833309793639,188.733332182235" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
           TopLeft="316.4,114.6">
