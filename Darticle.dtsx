@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Darticle"
   DTS:PackageType="5"
-  DTS:VersionBuild="32"
-  DTS:VersionGUID="{6D775959-3362-4679-828A-23D76B411A66}">
+  DTS:VersionBuild="33"
+  DTS:VersionGUID="{3F22AB28-7524-4BFA-8369-BAEA4EF32B3D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -47,7 +47,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[d_article]</property>
+                  name="OpenRowset">[dbo].[dim_article]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -138,13 +138,6 @@
                       cachedName="Art_Famille1"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Art_Famille1]"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Art_Famille1]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Art_Famille2]"
-                      cachedDataType="wstr"
-                      cachedLength="15"
-                      cachedName="Art_Famille2"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Art_Famille2]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Art_Famille2]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -169,15 +162,14 @@
                       length="10"
                       name="Art_Famille1" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Art_Famille2]"
-                      dataType="wstr"
-                      length="15"
-                      name="Art_Famille2" />
-                    <externalMetadataColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Art_Calc_DP]"
                       dataType="wstr"
                       length="50"
                       name="Art_Calc_DP" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ArticleKey]"
+                      dataType="i4"
+                      name="ArticleKey" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -231,13 +223,14 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Art_Code]
-      ,[Art_Des]
-      ,[ArtCat_Code]
-      ,[Art_Famille1]
-      ,[Art_Famille2]
-      ,[Art_Calc_DP]
-  FROM [TESTPH2].[dbo].[art]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+    [Art_Code],
+    [Art_Des],
+    [ArtCat_Code],
+    [Art_Famille1],
+    [Art_Calc_DP]
+FROM [TESTPH2].[dbo].[art]
+WHERE artcat_code IN ('fabvendu', 'fabriqué', 'matière');</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -323,16 +316,6 @@
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Art_Famille1]"
                       name="Art_Famille1"
                       truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Art_Famille2]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Art_Famille2]"
-                      length="15"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Art_Famille2]"
-                      name="Art_Famille2"
-                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -361,11 +344,6 @@
                       dataType="wstr"
                       length="10"
                       name="Art_Famille1" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Art_Famille2]"
-                      dataType="wstr"
-                      length="15"
-                      name="Art_Famille2" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -397,12 +375,6 @@
                       length="10"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Art_Famille1]"
                       name="Art_Famille1" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Art_Famille2]"
-                      dataType="wstr"
-                      length="15"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Art_Famille2]"
-                      name="Art_Famille2" />
                     <outputColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Art_Calc_DP]"
                       dataType="wstr"
