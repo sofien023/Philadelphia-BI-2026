@@ -11,8 +11,8 @@
   DTS:LocaleID="3072"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{9625D659-64E1-404B-A4DC-9F32B32BB4C8}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{3D392470-36A3-4DAF-8B2D-11C86CF10D84}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -47,7 +47,7 @@
       <DTS:ObjectData>
         <ExecutePackageTask>
           <UseProjectReference>True</UseProjectReference>
-          <PackageName>Fnomanclature.dtsx</PackageName>
+          <PackageName>FaitNomanclature.dtsx</PackageName>
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
