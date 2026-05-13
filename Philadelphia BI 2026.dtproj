@@ -26,18 +26,16 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">SOFIENLAPTOP</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAoiu8+7v+ik6gZ9ydOAkpTQAAAAACAAAAAAAQZgAAAAEAACAAAABpgIq+Ufr4LyFNDAp3Ka2lPN7zIT2VrdNqXOrg+UyJSgAAAAAOgAAAAAIAACAAAADLsWhZDFtzOzpQQ1cnZNFhzgnoJ6eDMmR+ut+jarX5n5AAAAAJoEG4ebuwIRmHcyNvjDwcQ+QfDPkxRimpRl9eZAH18fyg40LHqtE6OETmLB1rjPigsPIGRJ5QdoM5MOoOLAeJu9RdwWHHbFV5siiiAL8GywviKCT0Yafg+hIudz1/kbvpZdWaugwooyOdZRO6jJeSvS3UDls0vSOSSjHzUaCmZeNS5okn7Itff/lX9x9jIJBAAAAA2iKrMPKfGSoiY0xZEVBywHwD6TF7ZSFVbGO4oFJP63RIP8s4dhtwebr3n55ovdAPT3gRX0UO5kc7JWgsQ6L3JA==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAoiu8+7v+ik6gZ9ydOAkpTQAAAAACAAAAAAAQZgAAAAEAACAAAABoDwE/wzFiAoR93CbvKaAWT4JCROWCkIWR8pii8S6RYAAAAAAOgAAAAAIAACAAAAATWUJGkXqMZd0yqTa0bArny1FrKRbLN34cH/ofK3l2V5AAAADAW/W6u4TsBinHto6/4Vh9Ep3K80BfFeITEVWksuwfWAo7DNl1IoVugIxlYjntrwrZSGN2+t/HcZjSnvGpWLK+cctiZ+t/J3bn9roNeKt2Aq4tTW3i6prrUINKjED2d4Wl02v0ALoBGw/vYmqvxizD/DrcH3phC+57950VHGEHqQyVjuQoCm9peL+0zGQMJRJAAAAA63NavxktgXbGZzpajbRfgUH+ttI38UfnZMYuo7uy3ca2m+F5TROFnPSD8c54fS1EoYUstyTGoJ7Fg73/+kyfww==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
-          <SSIS:Package SSIS:Name="Fvente.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Ddocument.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="DdocDetails.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Dofd.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Dofse.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Dofdn.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Dstock.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="FfraisFab.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Fnomanclature.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="DnomD.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="DnomE.dtsx" SSIS:EntryPoint="1" />
@@ -349,23 +347,6 @@
             </SSIS:Parameter>
           </SSIS:ProjectConnectionParameters>
           <SSIS:PackageInfo>
-            <SSIS:PackageMetaData SSIS:Name="Fvente.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{68F4B12D-8EB3-4F29-91FB-19204DB6A992}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Fvente</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">23</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{CF40FFBB-F899-47A9-A18D-7ECD7CBBFA8A}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="Ddocument.dtsx">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">{873B1316-556A-471E-9409-47DCFFD5E1FC}</SSIS:Property>
@@ -610,23 +591,6 @@
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionGUID">{AF667D24-527D-4EC4-BCA5-AED24D4690A2}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="FfraisFab.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{42FBCE10-F6A5-4EB6-ABAC-1AE516814E40}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">FfraisFab</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">48</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{F44503F1-1C5E-4567-ABBE-6F292E590837}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
