@@ -11,8 +11,8 @@
   DTS:LocaleID="3072"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{04D0B477-BF4A-430C-9D68-4358920F2304}">
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{EDDD6577-3F63-4706-B5F4-96F5F39B3F85}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -250,20 +250,44 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="132,42"
+          Size="132,41.6"
           Id="Package\Dim Article"
-          TopLeft="217,40" />
+          TopLeft="72.5555634476517,31.3333333936004" />
         <NodeLayout
-          Size="152,42"
-          Id="Package\Dim Document"
-          TopLeft="386,40" />
-        <NodeLayout
-          Size="155,42"
+          Size="155.2,41.6"
           Id="Package\Dim DocDetails"
-          TopLeft="574,39" />
+          TopLeft="429.555563447651,30.3333333936004" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Dim Document"
+          TopLeft="241.555563447652,31.3333333936004" />
+        <NodeLayout
+          Size="169.6,41.6"
+          Id="Package\Dim Nomenclature"
+          TopLeft="407.555563447652,332.3333333936" />
+        <NodeLayout
+          Size="207.2,41.6"
+          Id="Package\Dim Nomenclature Details"
+          TopLeft="141.555563447652,331.3333333936" />
+        <NodeLayout
+          Size="279.2,41.6"
+          Id="Package\Dim Nomenclature Ordres de Fabrication"
+          TopLeft="602.555563447652,230.3333333936" />
+        <NodeLayout
+          Size="192.8,41.6"
+          Id="Package\Dim Ordres Fabrication"
+          TopLeft="647.555563447652,28.3333333936004" />
+        <NodeLayout
+          Size="128.8,41.6"
+          Id="Package\Dim Stock"
+          TopLeft="670.555563447652,332.3333333936" />
+        <NodeLayout
+          Size="235.2,41.6"
+          Id="Package\Dim Suivi Ordres de Fabrication"
+          TopLeft="623.555563447652,135.3333333936" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="538,60.5">
+          TopLeft="393.555563447652,51.8333333936004">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -285,7 +309,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="349,61">
+          TopLeft="204.555563447652,52.3333333936004">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -305,25 +329,9 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="193,42"
-          Id="Package\Dim Ordres Fabrication"
-          TopLeft="792,37" />
-        <NodeLayout
-          Size="235,42"
-          Id="Package\Dim Suivi Ordres de Fabrication"
-          TopLeft="768,144" />
-        <NodeLayout
-          Size="279,42"
-          Id="Package\Dim Nomenclature Ordres de Fabrication"
-          TopLeft="747,239" />
-        <NodeLayout
-          Size="129,42"
-          Id="Package\Dim Stock"
-          TopLeft="815,341" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="729,59">
+          TopLeft="584.555563447652,50.3333333936004">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -345,7 +353,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="887,79">
+          TopLeft="742.555563447652,70.3333333936004">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -367,7 +375,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="886,186">
+          TopLeft="741.555563447652,177.3333333936">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -389,7 +397,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="883,281">
+          TopLeft="738.555563447652,272.3333333936">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -409,13 +417,9 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="170,42"
-          Id="Package\Dim Nomenclature"
-          TopLeft="552,341" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="815,362">
+          TopLeft="670.555563447652,353.3333333936">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -435,13 +439,9 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="207,42"
-          Id="Package\Dim Nomenclature Details"
-          TopLeft="286,340" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="552,361.5">
+          TopLeft="407.555563447652,352.8333333936">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
