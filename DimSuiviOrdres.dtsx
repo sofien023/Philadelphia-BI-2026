@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="SOFIENLAPTOP"
   DTS:CreatorName="SOFIENLAPTOP\sofien"
-  DTS:DTSID="{43EDE1A2-E2E5-49F1-ABF1-91C59958CBAD}"
+  DTS:DTSID="{8F9121E1-B615-4A70-BCD6-846E3638A10C}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="17.0.1010.2"
   DTS:LocaleID="1033"
-  DTS:ObjectName="Package1"
+  DTS:ObjectName="DimSuiviOrdres"
   DTS:PackageType="5"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{312DCBE2-9C7B-47A6-AD92-477DC5CFB88E}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{363261EB-B749-4BC0-9811-4CF1F138014E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />

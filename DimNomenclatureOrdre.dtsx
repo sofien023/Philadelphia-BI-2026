@@ -1,27 +1,41 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="4/22/2026 10:30:06 AM"
+  DTS:CreationDate="3/31/2026 3:20:57 PM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="SOFIENLAPTOP"
   DTS:CreatorName="SOFIENLAPTOP\sofien"
-  DTS:DTSID="{29973E38-0FA0-4827-A004-E986C987B92B}"
+  DTS:DTSID="{E90D5A26-9821-4954-9261-F9D0EE9B3EBC}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="17.0.1010.2"
   DTS:LocaleID="1033"
-  DTS:ObjectName="DnomE"
+  DTS:ObjectName="DimNomenclatureOrdre"
   DTS:PackageType="5"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{19DD1363-DAED-4FE6-8CE1-96916D18F6F3}">
+  DTS:VersionBuild="22"
+  DTS:VersionGUID="{ACFDAB1B-14D6-4CD7-9630-A2FA4E18632B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SOFIENLAPTOP.ENPH 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{10E7AA37-785E-4DEB-B632-3C237FF205BE}"
+      DTS:ObjectName="SOFIENLAPTOP.ENPH 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=SOFIENLAPTOP;Initial Catalog=ENPH;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{10E7AA37-785E-4DEB-B632-3C237FF205BE}SOFIENLAPTOP.ENPH 1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Data Flow Task"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{0b1fe7a3-a706-4086-ad63-7fa9c03e8d74}"
+      DTS:DTSID="{6A537037-984E-41D4-8AA5-5EE86F5A326F}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Data Flow Task"
@@ -47,7 +61,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[D_nomE]</property>
+                  name="OpenRowset">[dbo].[dim_OFNomenclature]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -104,68 +118,62 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Nom_Code]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OF_Num]"
                       cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="Nom_Code"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nom_code]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Nom_Code]" />
+                      cachedLength="20"
+                      cachedName="OF_Num"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[of_num]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[OF_Num]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Art_Code]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OFDN_Unite]"
                       cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="Art_Code"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Art_code]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Art_Code]" />
+                      cachedLength="20"
+                      cachedName="OFDN_Unite"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[unite]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[OFDN_Unite]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Nom_Alt]"
-                      cachedDataType="i4"
-                      cachedName="Nom_Alt"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nom_Alt]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Nom_Alt]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Nom_QB]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OFDN_Q]"
                       cachedDataType="numeric"
-                      cachedName="Nom_QB"
+                      cachedName="OFDN_Q"
                       cachedPrecision="18"
                       cachedScale="6"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nom_QB]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Nom_QB]" />
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[quantite]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[OFDN_Q]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Nom_Des]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OFDN_Composant]"
                       cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="Nom_Des"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nom_Desc]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Nom_Des]" />
+                      cachedLength="20"
+                      cachedName="OFDN_Composant"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cmp_code]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[OFDN_Composant]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nom_code]"
-                      dataType="wstr"
-                      length="255"
-                      name="Nom_code" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Art_code]"
-                      dataType="wstr"
-                      length="255"
-                      name="Art_code" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nom_Alt]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
                       dataType="i4"
-                      name="Nom_Alt" />
+                      name="id" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nom_Desc]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[of_num]"
                       dataType="wstr"
-                      length="255"
-                      name="Nom_Desc" />
+                      length="20"
+                      name="of_num" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nom_QB]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cmp_code]"
+                      dataType="wstr"
+                      length="20"
+                      name="cmp_code" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[quantite]"
                       dataType="numeric"
-                      name="Nom_QB"
+                      name="quantite"
                       precision="18"
                       scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[unite]"
+                      dataType="wstr"
+                      length="20"
+                      name="unite" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -219,13 +227,52 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
-      [Nom_Code]
-      ,[Art_Code]
-      ,[Nom_Alt]
-      ,[Nom_Des]
-      ,[Nom_QB]
-  FROM [TESTPH2].[dbo].[NomenclatureE]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+    o.OF_Num,
+    ofdn.OFDN_Composant,
+    ofdn.OFDN_Q,
+    ofdn.OFDN_Unite
+FROM TESTPH2.dbo.OFD o
+JOIN TESTPH2.dbo.Art a
+    ON o.Art_Code = a.Art_Code
+JOIN TESTPH2.dbo.OFDN ofdn
+    ON o.OF_Num = ofdn.OF_Num
+WHERE o.Date_Create &gt;= '2021-01-01'
+  AND o.Date_Create &lt; '2026-01-01'
+  AND o.ofd_QR &lt;&gt; 0
+  AND a.ArtCat_Code IN ('FabVendu', 'Fabriqué')
+  AND ofdn.OFDN_Composant NOT IN (
+        'RM260010',
+        '43672F',
+        'AC030021',
+        'AC030022',
+        'AC030031',
+        'AC030032',
+        'AC030141',
+        'AC060010',
+        'AC060030',
+        'AC060070',
+        'MP100720',
+        'MP101230',
+        'MP300330',
+        'MP310080',
+        'MP310090',
+        'MP330040',
+        'MP331100',
+        'MP331130',
+        'MP331140',
+        'MP331490',
+        'MP331720',
+        'MP331970',
+        'PK110752',
+        'PK402250',
+        'PK500191',
+        'RM100930',
+        'PK400282',
+        'PK500123',
+        'PK500600',
+        'PK500610'
+  ) and ofdn.OFDN_Composant not like 'fp%';</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -262,83 +309,70 @@
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Nom_Code]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[OF_Num]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Nom_Code]"
-                      length="255"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Nom_Code]"
-                      name="Nom_Code"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OF_Num]"
+                      length="20"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[OF_Num]"
+                      name="OF_Num"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Art_Code]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[OFDN_Composant]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Art_Code]"
-                      length="255"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Art_Code]"
-                      name="Art_Code"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OFDN_Composant]"
+                      length="20"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[OFDN_Composant]"
+                      name="OFDN_Composant"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Nom_Alt]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Nom_Alt]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Nom_Alt]"
-                      name="Nom_Alt"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Nom_Des]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Nom_Des]"
-                      length="255"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Nom_Des]"
-                      name="Nom_Des"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Nom_QB]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[OFDN_Q]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Nom_QB]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Nom_QB]"
-                      name="Nom_QB"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OFDN_Q]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[OFDN_Q]"
+                      name="OFDN_Q"
                       precision="18"
                       scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[OFDN_Unite]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OFDN_Unite]"
+                      length="20"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[OFDN_Unite]"
+                      name="OFDN_Unite"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Nom_Code]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OF_Num]"
                       dataType="wstr"
-                      length="255"
-                      name="Nom_Code" />
+                      length="20"
+                      name="OF_Num" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Art_Code]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OFDN_Composant]"
                       dataType="wstr"
-                      length="255"
-                      name="Art_Code" />
+                      length="20"
+                      name="OFDN_Composant" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Nom_Alt]"
-                      dataType="i4"
-                      name="Nom_Alt" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Nom_Des]"
-                      dataType="wstr"
-                      length="255"
-                      name="Nom_Des" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Nom_QB]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OFDN_Q]"
                       dataType="numeric"
-                      name="Nom_QB"
+                      name="OFDN_Q"
                       precision="18"
                       scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OFDN_Unite]"
+                      dataType="wstr"
+                      length="20"
+                      name="OFDN_Unite" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -347,35 +381,30 @@
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Nom_Code]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OF_Num]"
                       dataType="wstr"
-                      length="255"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Nom_Code]"
-                      name="Nom_Code" />
+                      length="20"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OF_Num]"
+                      name="OF_Num" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Art_Code]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OFDN_Composant]"
                       dataType="wstr"
-                      length="255"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Art_Code]"
-                      name="Art_Code" />
+                      length="20"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OFDN_Composant]"
+                      name="OFDN_Composant" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Nom_Alt]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Nom_Alt]"
-                      name="Nom_Alt" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Nom_Des]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Nom_Des]"
-                      name="Nom_Des" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Nom_QB]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OFDN_Q]"
                       dataType="numeric"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Nom_QB]"
-                      name="Nom_QB"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OFDN_Q]"
+                      name="OFDN_Q"
                       precision="18"
                       scale="6" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OFDN_Unite]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OFDN_Unite]"
+                      name="OFDN_Unite" />
                     <outputColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -418,9 +447,9 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="150.4,41.6"
+          Size="155,42"
           Id="Package\Data Flow Task"
-          TopLeft="60,60" />
+          TopLeft="337,157" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -430,39 +459,39 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="176.8,41.6"
+          Size="177,42"
           Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="166.500013522803,186.333334568805" />
+          TopLeft="617,377" />
         <NodeLayout
-          Size="156.8,41.6"
+          Size="157,42"
           Id="Package\Data Flow Task\OLE DB Source"
-          TopLeft="56,60" />
+          TopLeft="263,73" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="134.4,101.6">
+          TopLeft="341.5,115">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="120.500013522803,84.7333345688051"
+              EndConnector="364,262"
               Start="0,0"
-              End="120.500013522803,77.2333345688051">
+              End="364,254.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.3666672844026" />
+                    End="0,127" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,38.3666672844026"
-                    Point2="0,42.3666672844026"
-                    Point3="4,42.3666672844026" />
+                    Point1="0,127"
+                    Point2="0,131"
+                    Point3="4,131" />
                   <mssgle:LineSegment
-                    End="116.500013522803,42.3666672844026" />
+                    End="360,131" />
                   <mssgle:CubicBezierSegment
-                    Point1="116.500013522803,42.3666672844026"
-                    Point2="120.500013522803,42.3666672844026"
-                    Point3="120.500013522803,46.3666672844026" />
+                    Point1="360,131"
+                    Point2="364,131"
+                    Point3="364,135" />
                   <mssgle:LineSegment
-                    End="120.500013522803,77.2333345688051" />
+                    End="364,254.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
