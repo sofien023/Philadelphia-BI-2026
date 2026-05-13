@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DimNomenclatureDetails"
   DTS:PackageType="5"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{0E5F047B-7C4A-45A5-996D-6931851D62BC}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{C6FD203F-E546-4AD0-B60D-E3FE481E77B0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -47,7 +47,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[D_nomD]</property>
+                  name="OpenRowset">[dbo].[Dim_nomenclatureDetails]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -585,11 +585,11 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="156.8,41.6"
+          Size="157,42"
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="56,60" />
         <NodeLayout
-          Size="171.2,41.6"
+          Size="171,42"
           Id="Package\Data Flow Task\OLE DB Destination"
           TopLeft="286.666651003891,230.533331730233" />
         <EdgeLayout
