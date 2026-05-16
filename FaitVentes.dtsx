@@ -11,8 +11,8 @@
   DTS:LocaleID="3072"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{267F6B1C-8ADA-4681-A594-465B6D192473}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{D2B49BF6-04E7-4D49-8A36-38EC571BD772}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -443,6 +443,10 @@
                       name="CA_ligne"
                       precision="18"
                       scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i8"
+                      name="id" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -824,7 +828,7 @@ ORDER BY Doc_Num</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="155.2,41.6"
+          Size="155,42"
           Id="Package\Data Flow Task"
           TopLeft="355,147" />
       </GraphLayout>
@@ -836,23 +840,23 @@ ORDER BY Doc_Num</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="156.8,41.6"
+          Size="157,42"
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="324,86" />
         <NodeLayout
-          Size="132.8,41.6"
+          Size="133,42"
           Id="Package\Data Flow Task\Merge Join"
           TopLeft="483,185" />
         <NodeLayout
-          Size="176.8,41.6"
+          Size="177,42"
           Id="Package\Data Flow Task\OLE DB Destination"
           TopLeft="465,366" />
         <NodeLayout
-          Size="166.4,41.6"
+          Size="166,42"
           Id="Package\Data Flow Task\OLE DB Source 1"
           TopLeft="575.708335097672,86.6666666063997" />
         <NodeLayout
-          Size="158.4,41.6"
+          Size="158,42"
           Id="Package\Data Flow Task\Derived Column"
           TopLeft="472,284" />
         <EdgeLayout
@@ -970,5 +974,18 @@ ORDER BY Doc_Num</property>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
