@@ -11,8 +11,8 @@
   DTS:LocaleID="3072"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{D2B49BF6-04E7-4D49-8A36-38EC571BD772}">
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{630EE626-723E-4052-84D7-6FBDF01E2519}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -840,10 +840,6 @@ ORDER BY Doc_Num</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="157,42"
-          Id="Package\Data Flow Task\OLE DB Source"
-          TopLeft="324,86" />
-        <NodeLayout
           Size="133,42"
           Id="Package\Data Flow Task\Merge Join"
           TopLeft="483,185" />
@@ -852,47 +848,17 @@ ORDER BY Doc_Num</property>
           Id="Package\Data Flow Task\OLE DB Destination"
           TopLeft="465,366" />
         <NodeLayout
+          Size="158,42"
+          Id="Package\Data Flow Task\Derived Column"
+          TopLeft="472,284" />
+        <NodeLayout
           Size="166,42"
           Id="Package\Data Flow Task\OLE DB Source 1"
           TopLeft="575.708335097672,86.6666666063997" />
         <NodeLayout
-          Size="158,42"
-          Id="Package\Data Flow Task\Derived Column"
-          TopLeft="472,284" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output1]"
-          TopLeft="402.5,128">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="147,57"
-              Start="0,0"
-              End="147,49.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,24.5"
-                    Point2="0,28.5"
-                    Point3="4,28.5" />
-                  <mssgle:LineSegment
-                    End="143,28.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="143,28.5"
-                    Point2="147,28.5"
-                    Point3="147,32.5" />
-                  <mssgle:LineSegment
-                    End="147,49.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="157,42"
+          Id="Package\Data Flow Task\OLE DB Source"
+          TopLeft="324,86" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
           TopLeft="658.908335097672,128.2666666064">
@@ -971,9 +937,51 @@ ORDER BY Doc_Num</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output1]"
+          TopLeft="402.5,128">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="147,57"
+              Start="0,0"
+              End="147,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.5"
+                    Point2="0,28.5"
+                    Point3="4,28.5" />
+                  <mssgle:LineSegment
+                    End="143,28.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="143,28.5"
+                    Point2="147,28.5"
+                    Point3="147,32.5" />
+                  <mssgle:LineSegment
+                    End="147,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Source 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\OLE DB Destination">
     <Properties>

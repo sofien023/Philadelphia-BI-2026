@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DimNomenclatureOrdre"
   DTS:PackageType="5"
-  DTS:VersionBuild="26"
-  DTS:VersionGUID="{CAF66677-2D10-44BE-980B-92D28931136D}">
+  DTS:VersionBuild="29"
+  DTS:VersionGUID="{3CB869F9-0E49-4B72-829E-7EC8D6D42E19}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -237,8 +237,7 @@ JOIN TESTPH2.dbo.Art a
     ON o.Art_Code = a.Art_Code
 JOIN TESTPH2.dbo.OFDN ofdn
     ON o.OF_Num = ofdn.OF_Num
-WHERE o.Date_Create &gt;= '2022-01-01'
-  AND o.Date_Create &lt; '2026-01-01'
+WHERE o.Date_Create &gt;= '2021-01-01'
   AND o.ofd_QR &lt;&gt; 0
   AND a.ArtCat_Code IN ('FabVendu', 'Fabriqué')
 and ofdn.OFDN_Composant not like 'fp%';</property>

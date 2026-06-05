@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DimOrdres"
   DTS:PackageType="5"
-  DTS:VersionBuild="26"
-  DTS:VersionGUID="{00511112-F6DF-4B73-83DF-C3467E394E68}">
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{D8D1C4AB-FBA4-4A36-8637-461087AE523C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -323,8 +323,8 @@
 FROM TESTPH2.dbo.OFD o
 JOIN TESTPH2.dbo.Art a
     ON o.Art_Code = a.Art_Code
-WHERE o.Date_Create &gt;= '2022-01-01'
-  AND o.Date_Create &lt; '2026-01-01'
+WHERE o.Date_Create &gt;= '2021-01-01'
+  
   AND o.ofd_QR &lt;&gt; 0
   AND a.ArtCat_Code IN ('FabVendu', 'Fabriqué');</property>
                 <property

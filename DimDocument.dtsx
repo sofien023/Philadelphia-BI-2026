@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DimDocument"
   DTS:PackageType="5"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{017FE3F6-3495-4B97-8645-4B4E1BC23D13}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{9301CB57-F113-44A2-ACBB-19388667D95D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -190,6 +190,19 @@
                       cachedName="Doc_Num"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[doc_num]"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Doc_Num]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column 1]"
+                      cachedDataType="i4"
+                      cachedName="Derived Column 1"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Derived Column 1]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Doc_Type]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Doc_Type"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Type]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Doc_Type]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -432,6 +445,10 @@ WHERE
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="157,42"
+          Id="Package\Data Flow Task\OLE DB Source"
+          TopLeft="56,60" />
+        <NodeLayout
           Size="177,42"
           Id="Package\Data Flow Task\OLE DB Destination"
           TopLeft="464,325" />
@@ -439,10 +456,6 @@ WHERE
           Size="158,42"
           Id="Package\Data Flow Task\Derived Column"
           TopLeft="357,153" />
-        <NodeLayout
-          Size="157,42"
-          Id="Package\Data Flow Task\OLE DB Source"
-          TopLeft="56,60" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
           TopLeft="134.5,102">

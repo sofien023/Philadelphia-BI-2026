@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DimArticle"
   DTS:PackageType="5"
-  DTS:VersionBuild="36"
-  DTS:VersionGUID="{386D0071-9A2C-45A8-A75A-A4AD7B011F11}">
+  DTS:VersionBuild="40"
+  DTS:VersionGUID="{2733D866-6B55-4324-B202-7E8A0E2969C1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -131,6 +131,13 @@
                       cachedName="Art_Des"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Art_Des]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Art_Code]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Art_Code"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[art_code]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Art_Code]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -218,8 +225,7 @@
     [ArtCat_Code],
     [Art_Famille1],
     [Art_Calc_DP]
-FROM [TESTPH2].[dbo].[art]
-WHERE artcat_code IN ('fabvendu', 'fabriqué', 'matière');</property>
+FROM [TESTPH2].[dbo].[art]</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -414,7 +420,7 @@ WHERE artcat_code IN ('fabvendu', 'fabriqué', 'matière');</property>
         <NodeLayout
           Size="155,42"
           Id="Package\Data Flow Task"
-          TopLeft="211,116" />
+          TopLeft="209,116" />
       </GraphLayout>
     </LayoutInfo>
   </Package>

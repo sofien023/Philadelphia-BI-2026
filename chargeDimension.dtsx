@@ -11,8 +11,8 @@
   DTS:LocaleID="3072"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{EDDD6577-3F63-4706-B5F4-96F5F39B3F85}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{6178CAEF-F569-4F4B-B26C-F53D8E97A3F2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -65,40 +65,6 @@
         <ExecutePackageTask>
           <UseProjectReference>True</UseProjectReference>
           <PackageName>DimDocument.dtsx</PackageName>
-        </ExecutePackageTask>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Dim Nomenclature"
-      DTS:CreationName="Microsoft.ExecutePackageTask"
-      DTS:Description="Execute Package Task"
-      DTS:DTSID="{77AD2A28-53EA-4954-A83F-23DA95876271}"
-      DTS:ExecutableType="Microsoft.ExecutePackageTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Dim Nomenclature"
-      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <ExecutePackageTask>
-          <UseProjectReference>True</UseProjectReference>
-          <PackageName>DimNomenclature.dtsx</PackageName>
-        </ExecutePackageTask>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Dim Nomenclature Details"
-      DTS:CreationName="Microsoft.ExecutePackageTask"
-      DTS:Description="Execute Package Task"
-      DTS:DTSID="{4F5AF991-F5AD-4A09-B66D-D39F1B0A8DA1}"
-      DTS:ExecutableType="Microsoft.ExecutePackageTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Dim Nomenclature Details"
-      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <ExecutePackageTask>
-          <UseProjectReference>True</UseProjectReference>
-          <PackageName>DimNomenclatureDetails.dtsx</PackageName>
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -220,22 +186,6 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 5"
       DTS:To="Package\Dim Stock" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
-      DTS:CreationName=""
-      DTS:DTSID="{DD5C6987-5855-4F74-9EE3-CAF24FB99CF6}"
-      DTS:From="Package\Dim Stock"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 6"
-      DTS:To="Package\Dim Nomenclature" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
-      DTS:CreationName=""
-      DTS:DTSID="{EE9000AB-9042-46BC-90CC-0AB87CD776D9}"
-      DTS:From="Package\Dim Nomenclature"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 7"
-      DTS:To="Package\Dim Nomenclature Details" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -248,41 +198,33 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="132,41.6"
+          Size="132,42"
           Id="Package\Dim Article"
           TopLeft="72.5555634476517,31.3333333936004" />
         <NodeLayout
-          Size="155.2,41.6"
+          Size="155,42"
           Id="Package\Dim DocDetails"
           TopLeft="429.555563447651,30.3333333936004" />
         <NodeLayout
-          Size="152,41.6"
+          Size="152,42"
           Id="Package\Dim Document"
           TopLeft="241.555563447652,31.3333333936004" />
         <NodeLayout
-          Size="169.6,41.6"
-          Id="Package\Dim Nomenclature"
-          TopLeft="407.555563447652,332.3333333936" />
-        <NodeLayout
-          Size="207.2,41.6"
-          Id="Package\Dim Nomenclature Details"
-          TopLeft="141.555563447652,331.3333333936" />
-        <NodeLayout
-          Size="279.2,41.6"
+          Size="279,42"
           Id="Package\Dim Nomenclature Ordres de Fabrication"
           TopLeft="602.555563447652,230.3333333936" />
         <NodeLayout
-          Size="192.8,41.6"
+          Size="193,42"
           Id="Package\Dim Ordres Fabrication"
           TopLeft="647.555563447652,28.3333333936004" />
         <NodeLayout
-          Size="128.8,41.6"
+          Size="129,42"
           Id="Package\Dim Stock"
           TopLeft="670.555563447652,332.3333333936" />
         <NodeLayout
-          Size="235.2,41.6"
+          Size="235,42"
           Id="Package\Dim Suivi Ordres de Fabrication"
           TopLeft="623.555563447652,135.3333333936" />
         <EdgeLayout
@@ -409,50 +351,6 @@
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="670.555563447652,353.3333333936">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-93,0"
-              Start="0,0"
-              End="-85.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-85.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="407.555563447652,352.8333333936">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-59,0"
-              Start="0,0"
-              End="-51.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-51.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

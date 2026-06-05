@@ -1,53 +1,53 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="5/13/2026 7:29:47 AM"
+  DTS:CreationDate="6/4/2026 9:28:02 PM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="SOFIENLAPTOP"
   DTS:CreatorName="SOFIENLAPTOP\sofien"
-  DTS:DTSID="{99569702-0820-4CC8-A4B7-C248FBD0D10B}"
+  DTS:DTSID="{BABA9E5B-74DE-40D9-BEDB-05A04304BC97}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="17.0.1010.2"
   DTS:LocaleID="3072"
-  DTS:ObjectName="Package1"
+  DTS:ObjectName="charge all"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{54E538E6-918C-4AD9-9AD9-8F6761CE186C}">
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{D048FD34-56F5-4491-BF63-30D4462383BC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Fait Cout de Fabrication"
+      DTS:refId="Package\Dimensions"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
-      DTS:DTSID="{DA063D70-50DD-44E3-887F-8E2E21A8D3DB}"
+      DTS:DTSID="{37428E3F-5294-48AD-8419-F1FBF5C3C295}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Fait Cout de Fabrication"
+      DTS:ObjectName="Dimensions"
       DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
         <ExecutePackageTask>
           <UseProjectReference>True</UseProjectReference>
-          <PackageName>FaitFrais.dtsx</PackageName>
+          <PackageName>chargeDimension.dtsx</PackageName>
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Fait Ventes"
+      DTS:refId="Package\Faits"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
-      DTS:DTSID="{11DA2960-B70A-414E-9D25-16B1234D778D}"
+      DTS:DTSID="{1B548B59-1438-41F3-9128-7CC448A08CEA}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Fait Ventes"
+      DTS:ObjectName="Faits"
       DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
         <ExecutePackageTask>
           <UseProjectReference>True</UseProjectReference>
-          <PackageName>FaitVentes.dtsx</PackageName>
+          <PackageName>chargeFait.dtsx</PackageName>
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -56,11 +56,11 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{87236A3B-AC2A-4A11-B150-516930368D16}"
-      DTS:From="Package\Fait Ventes"
+      DTS:DTSID="{0F61FED7-47FF-4CF4-A238-0F9EB81D42EC}"
+      DTS:From="Package\Dimensions"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\Fait Cout de Fabrication" />
+      DTS:To="Package\Faits" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -75,27 +75,39 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="196,42"
-          Id="Package\Fait Cout de Fabrication"
-          TopLeft="352,282" />
+          Size="133,42"
+          Id="Package\Dimensions"
+          TopLeft="387,138" />
         <NodeLayout
-          Size="135,42"
-          Id="Package\Fait Ventes"
-          TopLeft="376,139" />
+          Size="101,42"
+          Id="Package\Faits"
+          TopLeft="542,270" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="446.75,181">
+          TopLeft="453.5,180">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,101"
+              EndConnector="139,90"
               Start="0,0"
-              End="0,93.5">
+              End="139,82.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,93.5" />
+                    End="0,41" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41"
+                    Point2="0,45"
+                    Point3="4,45" />
+                  <mssgle:LineSegment
+                    End="135,45" />
+                  <mssgle:CubicBezierSegment
+                    Point1="135,45"
+                    Point2="139,45"
+                    Point3="139,49" />
+                  <mssgle:LineSegment
+                    End="139,82.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
