@@ -11,12 +11,29 @@
   DTS:LocaleID="3072"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{6178CAEF-F569-4F4B-B26C-F53D8E97A3F2}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{06F75A14-0B3F-4D3A-8885-8109996CE617}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Correction Nomenclature"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{D1992979-78AF-4B35-8151-9182D1313174}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Correction Nomenclature"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
+          SQLTask:SqlStatementSource="UPDATE       dim_OFNomenclature&#xA;SET                unite = 'mg'&#xA;WHERE        (cmp_code = 'RM100240') AND (unite = 'g')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Dim Article"
       DTS:CreationName="Microsoft.ExecutePackageTask"
@@ -181,10 +198,18 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
       DTS:CreationName=""
-      DTS:DTSID="{DDE8E04F-9477-4E36-8FA0-B65BEF977501}"
+      DTS:DTSID="{84899D22-4400-4005-A476-98C752EFDCA6}"
       DTS:From="Package\Dim Nomenclature Ordres de Fabrication"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Correction Nomenclature" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{F7CBDA6C-DAE2-442A-BA61-BC23C5D14398}"
+      DTS:From="Package\Correction Nomenclature"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
       DTS:To="Package\Dim Stock" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
@@ -220,9 +245,9 @@
           Id="Package\Dim Ordres Fabrication"
           TopLeft="647.555563447652,28.3333333936004" />
         <NodeLayout
-          Size="129,42"
+          Size="127,42"
           Id="Package\Dim Stock"
-          TopLeft="670.555563447652,332.3333333936" />
+          TopLeft="678.555563447652,456.3333333936" />
         <NodeLayout
           Size="235,42"
           Id="Package\Dim Suivi Ordres de Fabrication"
@@ -337,20 +362,46 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="196,42"
+          Id="Package\Correction Nomenclature"
+          TopLeft="644,350" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="738.555563447652,272.3333333936">
+          TopLeft="742.027781723826,272.3333333936">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,77.6666666064"
               Start="0,0"
-              End="0,52.5">
+              End="0,70.1666666064">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,70.1666666064" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="742.027781723826,392">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64.3333333936"
+              Start="0,0"
+              End="0,56.8333333936">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.8333333936" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
