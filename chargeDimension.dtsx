@@ -11,8 +11,8 @@
   DTS:LocaleID="3072"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{B2E9E31B-9CCF-42CC-8CBB-6FE6079C4F3D}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{EB62CBA3-75BE-4666-AF75-A0FB28BC9641}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -31,7 +31,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
-          SQLTask:SqlStatementSource="UPDATE  dim_OFNomenclature&#xA;SET   unite = 'mg'&#xA;WHERE  (cmp_code = 'RM100240') AND (unite = 'g')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE dim_OFNomenclature&#xA;  SET  unite = 'mg'&#xA;WHERE        (cmp_code = 'RM100240') AND (unite = 'g')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
