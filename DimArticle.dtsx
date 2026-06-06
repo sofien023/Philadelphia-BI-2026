@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DimArticle"
   DTS:PackageType="5"
-  DTS:VersionBuild="40"
-  DTS:VersionGUID="{2733D866-6B55-4324-B202-7E8A0E2969C1}">
+  DTS:VersionBuild="43"
+  DTS:VersionGUID="{2197643F-C7BA-4531-8B08-29DF2ADB9FA8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -225,7 +225,8 @@
     [ArtCat_Code],
     [Art_Famille1],
     [Art_Calc_DP]
-FROM [TESTPH2].[dbo].[art]</property>
+FROM [TESTPH2].[dbo].[art]
+WHERE artcat_code IN ('fabvendu', 'fabriqué', 'matière','ARCHIVE','Sous-trait');</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
