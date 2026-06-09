@@ -11,11 +11,42 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DimStock"
   DTS:PackageType="5"
-  DTS:VersionBuild="22"
-  DTS:VersionGUID="{DEFAA39F-135E-4B36-9A2B-82904ECBFA22}">
+  DTS:VersionBuild="29"
+  DTS:VersionGUID="{B184F444-0ECF-429E-82ED-422243599794}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FC3575F3-AF28-4330-A406-8839A616D132}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LastRunDate">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/2020</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{14900416-23E0-465B-8747-9EB9A1E138B8}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT&#xA;    s.Art_Code,&#xA;    s.StoJ_Prix,&#xA;    s.StoJ_Date,&#xA;    s.StoJ_un&#xA;FROM TESTPH2.dbo.Stojou s&#xA;JOIN TESTPH2.dbo.Art a&#xA;    ON s.Art_Code = a.Art_Code&#xA;WHERE s.StoJ_Prix &lt;&gt; 0&#xA;  AND s.StoJ_Date &gt;= '&quot; +&#xA;(DT_STR, 10, 1252)(DT_DBDATE) @[User::LastRunDate]&#xA;+ &quot;'&#xA;  AND a.ArtCat_Code IN ('FabVendu', 'Fabriqué', 'Matière')&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceQuery">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT
+    s.Art_Code,
+    s.StoJ_Prix,
+    s.StoJ_Date,
+    s.StoJ_un
+FROM TESTPH2.dbo.Stojou s
+JOIN TESTPH2.dbo.Art a
+    ON s.Art_Code = a.Art_Code
+WHERE s.StoJ_Prix &lt;&gt; 0
+  AND s.StoJ_Date &gt;= '2020-01-01'
+  AND a.ArtCat_Code IN ('FabVendu', 'Fabriqué', 'Matière')</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Data Flow Task"
@@ -149,7 +180,7 @@
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">3</property>
                 <property
                   dataType="System.Boolean"
                   description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
@@ -161,7 +192,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions"></property>
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
@@ -291,21 +322,21 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
     s.Art_Code,
-    StoJ_Prix,
-    StoJ_Date,
-    StoJ_un
+    s.StoJ_Prix,
+    s.StoJ_Date,
+    s.StoJ_un
 FROM TESTPH2.dbo.Stojou s
-join dbo.art a 
-on s.Art_Code = a.Art_Code
-WHERE StoJ_Prix &lt;&gt; 0
-and year(StoJ_Date) &gt;=2020
-and artcat_code IN ('fabvendu', 'fabriqué', 'matière');</property>
+JOIN TESTPH2.dbo.Art a       
+    ON s.Art_Code = a.Art_Code
+WHERE s.StoJ_Prix &lt;&gt; 0
+  AND s.StoJ_Date &gt;= ?        
+  AND a.ArtCat_Code IN ('FabVendu', 'Fabriqué', 'Matière');</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
+                  name="SqlCommandVariable">User::SourceQuery</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -318,7 +349,7 @@ and artcat_code IN ('fabvendu', 'fabriqué', 'matière');</property>
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">2</property>
+                  typeConverter="AccessMode">3</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -464,7 +495,64 @@ and artcat_code IN ('fabvendu', 'fabriqué', 'matière');</property>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Read Watermark"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{5934758C-D402-4437-BE78-45C7E625721A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Read Watermark"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
+          SQLTask:SqlStatementSource="SELECT last_run_date FROM [dbo].[etl_Watermark] WHERE package_name = 'DimStock';"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::LastRunDate" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update Watermark"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{992bd5cc-8359-4f27-80cf-1bed853837b1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update Watermark"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
+          SQLTask:SqlStatementSource="UPDATE [dbo].[etl_Watermark]&#xA;SET last_run_date = GETDATE()&#xA;WHERE package_name = 'DimStock';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{74B4202D-EC78-4742-ABCD-00D657DF0F2E}"
+      DTS:From="Package\Read Watermark"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{B0327969-28B6-4052-8361-BFDFB6E9893E}"
+      DTS:From="Package\Data Flow Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Update Watermark" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -476,11 +564,87 @@ and artcat_code IN ('fabvendu', 'fabriqué', 'matière');</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="155,42"
+          Size="151,42"
           Id="Package\Data Flow Task"
-          TopLeft="392,232" />
+          TopLeft="441,217" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Read Watermark"
+          TopLeft="210,78" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Update Watermark"
+          TopLeft="563,349" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="289,120">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="227.5,97"
+              Start="0,0"
+              End="227.5,89.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,44.5"
+                    Point2="0,48.5"
+                    Point3="4,48.5" />
+                  <mssgle:LineSegment
+                    End="223.5,48.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="223.5,48.5"
+                    Point2="227.5,48.5"
+                    Point3="227.5,52.5" />
+                  <mssgle:LineSegment
+                    End="227.5,89.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="516.5,259">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="130.5,90"
+              Start="0,0"
+              End="130.5,82.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41"
+                    Point2="0,45"
+                    Point3="4,45" />
+                  <mssgle:LineSegment
+                    End="126.5,45" />
+                  <mssgle:CubicBezierSegment
+                    Point1="126.5,45"
+                    Point2="130.5,45"
+                    Point3="130.5,49" />
+                  <mssgle:LineSegment
+                    End="130.5,82.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -492,7 +656,7 @@ and artcat_code IN ('fabvendu', 'fabriqué', 'matière');</property>
         <NodeLayout
           Size="171,42"
           Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="637.499965168537,298.999997920791" />
+          TopLeft="572.499965168537,331.999997920791" />
         <NodeLayout
           Size="157,42"
           Id="Package\Data Flow Task\OLE DB Source"
@@ -537,30 +701,30 @@ and artcat_code IN ('fabvendu', 'fabriqué', 'matière');</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Derived Column Output]"
-          TopLeft="507.233309793639,230.333332182235">
+          TopLeft="507.333309793639,230.733332182235">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="215.866655374898,68.6666657385561"
+              EndConnector="150.666655374898,101.266665738556"
               Start="0,0"
-              End="215.866655374898,61.1666657385561">
+              End="150.666655374898,93.766665738556">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.3333328692781" />
+                    End="0,46.633332869278" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,30.3333328692781"
-                    Point2="0,34.3333328692781"
-                    Point3="4,34.3333328692781" />
+                    Point1="0,46.633332869278"
+                    Point2="0,50.633332869278"
+                    Point3="4,50.633332869278" />
                   <mssgle:LineSegment
-                    End="211.866655374898,34.3333328692781" />
+                    End="146.666655374898,50.633332869278" />
                   <mssgle:CubicBezierSegment
-                    Point1="211.866655374898,34.3333328692781"
-                    Point2="215.866655374898,34.3333328692781"
-                    Point3="215.866655374898,38.3333328692781" />
+                    Point1="146.666655374898,50.633332869278"
+                    Point2="150.666655374898,50.633332869278"
+                    Point3="150.666655374898,54.633332869278" />
                   <mssgle:LineSegment
-                    End="215.866655374898,61.1666657385561" />
+                    End="150.666655374898,93.766665738556" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -573,6 +737,14 @@ and artcat_code IN ('fabvendu', 'fabriqué', 'matière');</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\OLE DB Destination">
     <Properties>
       <Property>
@@ -582,14 +754,6 @@ and artcat_code IN ('fabvendu', 'fabriqué', 'matière');</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
