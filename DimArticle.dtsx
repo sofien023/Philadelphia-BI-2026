@@ -11,11 +11,21 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DimArticle"
   DTS:PackageType="5"
-  DTS:VersionBuild="66"
-  DTS:VersionGUID="{9B922C1B-AEA9-47E2-8AB5-FA310790149A}">
+  DTS:VersionBuild="68"
+  DTS:VersionGUID="{A7E0D821-CDE3-4581-8C63-1ACE0090316A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D727A447-0759-4414-B66E-9DCBAE6E0A48}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LastRunDate">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/2010</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Batch UPDATE from staging"
@@ -755,6 +765,28 @@ WHERE artcat_code IN ('fabvendu', 'fabriqué', 'matière','ARCHIVE','Sous-trait'
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\Read Watermark"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{feb99e89-e10d-43a5-9f0f-54ddeded3777}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Read Watermark"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
+          SQLTask:SqlStatementSource="SELECT last_run_date&#xA;FROM [dbo].[etl_Watermark]&#xA;WHERE package_name = 'DimArticle';"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::LastRunDate" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Truncate Staging"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
@@ -769,6 +801,23 @@ WHERE artcat_code IN ('fabvendu', 'fabriqué', 'matière','ARCHIVE','Sous-trait'
         <SQLTask:SqlTaskData
           SQLTask:Connection="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
           SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[stg_article];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update Watermark"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{56bf5009-f18e-4fa4-afe1-cb3daecb6788}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update Watermark"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
+          SQLTask:SqlStatementSource="UPDATE [dbo].[etl_Watermark]&#xA;SET last_run_date = GETDATE()&#xA;WHERE package_name = 'DimArticle';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -789,6 +838,22 @@ WHERE artcat_code IN ('fabvendu', 'fabriqué', 'matière','ARCHIVE','Sous-trait'
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\Batch UPDATE from staging" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{1A4560A0-DD83-4844-AF63-F58A945229ED}"
+      DTS:From="Package\Read Watermark"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Truncate Staging" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{7C56E4DC-968E-4EE3-ACE4-B940A37BD73D}"
+      DTS:From="Package\Batch UPDATE from staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Update Watermark" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -801,18 +866,22 @@ WHERE artcat_code IN ('fabvendu', 'fabriqué', 'matière','ARCHIVE','Sous-trait'
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="210,42"
+          Id="Package\Batch UPDATE from staging"
+          TopLeft="685,437" />
         <NodeLayout
           Size="155,42"
           Id="Package\Data Flow Task"
-          TopLeft="403,179" />
+          TopLeft="491,320" />
         <NodeLayout
           Size="159,42"
           Id="Package\Truncate Staging"
-          TopLeft="232,54" />
+          TopLeft="320,195" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="311.5,96">
+          TopLeft="399.5,237">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -844,13 +913,9 @@ WHERE artcat_code IN ('fabvendu', 'fabriqué', 'matière','ARCHIVE','Sous-trait'
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="210,42"
-          Id="Package\Batch UPDATE from staging"
-          TopLeft="597,296" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="480.5,221">
+          TopLeft="568.5,362">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -882,76 +947,36 @@ WHERE artcat_code IN ('fabvendu', 'fabriqué', 'matière','ARCHIVE','Sous-trait'
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </Package>
-  <TaskHost
-    design-time-name="Package\Data Flow Task">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="113,42"
-          Id="Package\Data Flow Task\Lookup"
-          TopLeft="620.75,121.416666666667" />
-        <NodeLayout
-          Size="157,42"
-          Id="Package\Data Flow Task\OLE DB Source"
-          TopLeft="593,30.5" />
-        <NodeLayout
-          Size="180,42"
-          Id="Package\Data Flow Task\OLE DB Destination 2"
-          TopLeft="862.166666666667,293.833333333333" />
+          Size="158,42"
+          Id="Package\Read Watermark"
+          TopLeft="209,82" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Lookup No Match Output]"
-          TopLeft="694.75,163.416666666667">
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="288,124">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="257.416666666667,130.416666666667"
+              EndConnector="111.5,71"
               Start="0,0"
-              End="257.416666666667,122.916666666667">
+              End="111.5,63.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,49.2591623036649" />
+                    End="0,31.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,49.2591623036649"
-                    Point2="0,53.2591623036649"
-                    Point3="4,53.2591623036649" />
+                    Point1="0,31.5"
+                    Point2="0,35.5"
+                    Point3="4,35.5" />
                   <mssgle:LineSegment
-                    End="253.416666666667,53.2591623036649" />
+                    End="107.5,35.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="253.416666666667,53.2591623036649"
-                    Point2="257.416666666667,53.2591623036649"
-                    Point3="257.416666666667,57.2591623036649" />
+                    Point1="107.5,35.5"
+                    Point2="111.5,35.5"
+                    Point3="111.5,39.5" />
                   <mssgle:LineSegment
-                    End="257.416666666667,122.916666666667" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="72.9019466145834,58.2591623036649,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="674.375,72.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,48.9166666666667"
-              Start="0,0"
-              End="0,41.4166666666667">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,41.4166666666667" />
+                    End="111.5,63.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -961,9 +986,67 @@ WHERE artcat_code IN ('fabvendu', 'fabriqué', 'matière','ARCHIVE','Sous-trait'
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
+          Size="168,42"
+          Id="Package\Update Watermark"
+          TopLeft="795,535" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="790,479">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="89,56"
+              Start="0,0"
+              End="89,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24"
+                    Point2="0,28"
+                    Point3="4,28" />
+                  <mssgle:LineSegment
+                    End="85,28" />
+                  <mssgle:CubicBezierSegment
+                    Point1="85,28"
+                    Point2="89,28"
+                    Point3="89,32" />
+                  <mssgle:LineSegment
+                    End="89,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
           Size="171,42"
           Id="Package\Data Flow Task\OLE DB Destination"
           TopLeft="398.333333333333,296.333333333333" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Data Flow Task\OLE DB Destination 2"
+          TopLeft="862.166666666667,293.833333333333" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Data Flow Task\OLE DB Source"
+          TopLeft="593,30.5" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Data Flow Task\Lookup"
+          TopLeft="620.75,121.416666666667" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Lookup Match Output]"
           TopLeft="659.75,163.416666666667">
@@ -1000,17 +1083,69 @@ WHERE artcat_code IN ('fabvendu', 'fabriqué', 'matière','ARCHIVE','Sous-trait'
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="674.375,72.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.9166666666667"
+              Start="0,0"
+              End="0,41.4166666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.4166666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup No Match Output]"
+          TopLeft="694.75,163.416666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="257.416666666667,130.416666666667"
+              Start="0,0"
+              End="257.416666666667,122.916666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.2591623036649" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,49.2591623036649"
+                    Point2="0,53.2591623036649"
+                    Point3="4,53.2591623036649" />
+                  <mssgle:LineSegment
+                    End="253.416666666667,53.2591623036649" />
+                  <mssgle:CubicBezierSegment
+                    Point1="253.416666666667,53.2591623036649"
+                    Point2="257.416666666667,53.2591623036649"
+                    Point3="257.416666666667,57.2591623036649" />
+                  <mssgle:LineSegment
+                    End="257.416666666667,122.916666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="72.9019466145834,58.2591623036649,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\OLE DB Destination">
     <Properties>
@@ -1021,6 +1156,14 @@ WHERE artcat_code IN ('fabvendu', 'fabriqué', 'matière','ARCHIVE','Sous-trait'
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
