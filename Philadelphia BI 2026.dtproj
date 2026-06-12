@@ -26,11 +26,10 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">SOFIENLAPTOP</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAoiu8+7v+ik6gZ9ydOAkpTQAAAAACAAAAAAAQZgAAAAEAACAAAACu/lcLKlZjaZxNp63zuUBenruBOmC5Rq2j2/4GgO7e0AAAAAAOgAAAAAIAACAAAACc1kNsUX2KOMDkgQZE/R7v9IJqCVJKxCD3ptQSlmjGJpAAAADiu+AGbFfljrFtoURnA24qZqYZb+CB7vCRyGv0IivgHw2BNM+5UxKLcDNPcUAC76B6EeJxY0UTbUeWEsTSvLtU8q9+q/ILQQiNzU/LtWtbWdj/VpEittfae+wONKOtGjjdAjdE2PpBy7Aeg66Zm0qEppJOiAOUC4O4WX0lDLkdHvX4/ugOpWytcs4qwgxi9W9AAAAATknJuZYlppREbJTuBflpXXqHk+jYZiz3rTLT05lfuit6175Z9yRjvJVUnKIadjAClwIT3RXcuA0jgv7oQAlyoA==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAoiu8+7v+ik6gZ9ydOAkpTQAAAAACAAAAAAAQZgAAAAEAACAAAABEF9BPxB+eaKM3OGVBwG67jfY5HtGTkBnEfqgXdxQ9/QAAAAAOgAAAAAIAACAAAAAOW2Rju9dYkP3dNqVC/iYf+FtOD64ELe0i0Kcir83tvJAAAADtAh+v5J4jXlQEkZ4YVlt4B81WPhskQShfCI8chSf5naY/aQPqdhfyZer6ZL8XxNrA8+jAHL9Kd7x7iSI39twI8DCPV69XpVwi7YPcXszsd0irz4B2WNMcBUGXh2V893XRofssXUFxsrhwKT7sv5FnfvsftZymEVwsUc0jJEnQz4l40yDHd8c2cy04BgKCIilAAAAAp9f0Z9AxYXZCa1CzM16G6FXCg96sWWDlxNd/VByUCUItnNPmfaAdbqPa6V8UitpSKIgGvSlMQxOJR39ekHVO1Q==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
-          <SSIS:Package SSIS:Name="FaitFrais.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="FaitVentes.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="chargeDimension.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="chargeFait.dtsx" SSIS:EntryPoint="1" />
@@ -44,6 +43,7 @@
           <SSIS:Package SSIS:Name="DeleteDataFromTables.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="chargeall.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="ChargeAllFirstTime.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="FaitFraisFab.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="SOFIENLAPTOP.ENPH.conmgr" />
@@ -349,23 +349,6 @@
             </SSIS:Parameter>
           </SSIS:ProjectConnectionParameters>
           <SSIS:PackageInfo>
-            <SSIS:PackageMetaData SSIS:Name="FaitFrais.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{CD6ADAE3-64CC-48F9-AFEA-2C3FAB235BEF}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">30</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{A313AE4C-F5EF-49B2-B22E-D6554561EECA}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="FaitVentes.dtsx">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">{ACA2D01F-E1D9-40B9-8E91-0D812C34E949}</SSIS:Property>
@@ -423,10 +406,10 @@
                 <SSIS:Property SSIS:Name="Name">DimStock</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">27</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">29</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{B2CDC5D8-68C4-493B-A35E-EDE827BEDBFF}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{B184F444-0ECF-429E-82ED-422243599794}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -657,10 +640,10 @@
                 <SSIS:Property SSIS:Name="Name">DimDocumentDetails</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">17</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">19</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{DEF125A0-DEF9-45CA-9F6D-49176622AA26}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{F33DB748-15BA-4484-B39B-1DC21E910155}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -729,6 +712,23 @@
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionGUID">{7323A7C9-AF9B-4F63-9C65-47D3F23B63BB}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="FaitFraisFab.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{3B03FF20-2156-4779-B63B-417B768A9FCA}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">FaitFraisFab</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">36</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{79076FE1-A943-46C7-A932-B41154DAF41C}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

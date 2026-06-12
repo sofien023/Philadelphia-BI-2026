@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DimNomenclatureOrdre"
   DTS:PackageType="5"
-  DTS:VersionBuild="44"
-  DTS:VersionGUID="{C1DEF0E0-8697-4C34-BB47-28B7C099182D}">
+  DTS:VersionBuild="46"
+  DTS:VersionGUID="{BD354F61-516C-44A1-BE5E-2C4FAC8C5061}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1186,7 +1186,7 @@ and ofdn.OFDN_Composant not like 'fp%';</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
