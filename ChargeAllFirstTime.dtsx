@@ -11,8 +11,8 @@
   DTS:LocaleID="3072"
   DTS:ObjectName="ChargeAllFirstTime"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{731E0A93-F575-48FD-9172-7F3B6A8DCA29}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{8B89B286-C915-4BC9-9DAD-69367B506A6F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -48,11 +48,36 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
-          SQLTask:SqlStatementSource="INSERT INTO [dbo].[etl_Watermark] (package_name, last_run_date)&#xA;SELECT 'DimOrdres', '2021-01-01'&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1 FROM [dbo].[etl_Watermark] &#xA;    WHERE package_name = 'DimOrdres'&#xA;);&#xA;&#xA;INSERT INTO [dbo].[etl_Watermark] (package_name, last_run_date)&#xA;SELECT 'DimNomenclatureOrdre', '2021-01-01'&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1 FROM [dbo].[etl_Watermark]&#xA;    WHERE package_name = 'DimNomenclatureOrdre'&#xA;);&#xA;&#xA;INSERT INTO [dbo].[etl_Watermark] (package_name, last_run_date)&#xA;SELECT 'DimArticle', '2000-01-01'&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1 FROM [dbo].[etl_Watermark] &#xA;    WHERE package_name = 'DimArticle'&#xA;);&#xA;&#xA;INSERT INTO [dbo].[etl_Watermark] (package_name, last_run_date)&#xA;SELECT 'DimStock', '2020-01-01'&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1 FROM [dbo].[etl_Watermark]&#xA;    WHERE package_name = 'DimStock'&#xA;);&#xA;&#xA;INSERT INTO [dbo].[etl_Watermark] (package_name, last_run_date)&#xA;SELECT 'DimDocument', '2000-01-01'&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1 FROM [dbo].[etl_Watermark]&#xA;    WHERE package_name = 'DimDocument'&#xA;);&#xA;&#xA;INSERT INTO [dbo].[etl_Watermark] (package_name, last_run_date)&#xA;SELECT 'DimDocumentDetails', '2000-01-01'&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1 FROM [dbo].[etl_Watermark]&#xA;    WHERE package_name = 'DimDocumentDetails'&#xA;);&#xA;&#xA;INSERT INTO [dbo].[etl_Watermark] (package_name, last_run_date)&#xA;SELECT 'DimSuiviOrdres', '2021-01-01'&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1 FROM [dbo].[etl_Watermark]&#xA;    WHERE package_name = 'DimSuiviOrdres'&#xA;);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="INSERT INTO [dbo].[etl_Watermark] (package_name, last_run_date)&#xA;SELECT 'DimOrdres', '2021-01-01'&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1 FROM [dbo].[etl_Watermark] &#xA;    WHERE package_name = 'DimOrdres'&#xA;);&#xA;&#xA;INSERT INTO [dbo].[etl_Watermark] (package_name, last_run_date)&#xA;SELECT 'DimNomenclatureOrdre', '2021-01-01'&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1 FROM [dbo].[etl_Watermark]&#xA;    WHERE package_name = 'DimNomenclatureOrdre'&#xA;);&#xA;&#xA;INSERT INTO [dbo].[etl_Watermark] (package_name, last_run_date)&#xA;SELECT 'DimArticle', '2000-01-01'&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1 FROM [dbo].[etl_Watermark] &#xA;    WHERE package_name = 'DimArticle'&#xA;);&#xA;&#xA;INSERT INTO [dbo].[etl_Watermark] (package_name, last_run_date)&#xA;SELECT 'DimStock', '2020-01-01'&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1 FROM [dbo].[etl_Watermark]&#xA;    WHERE package_name = 'DimStock'&#xA;);&#xA;&#xA;INSERT INTO [dbo].[etl_Watermark] (package_name, last_run_date)&#xA;SELECT 'DimDocument', '2000-01-01'&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1 FROM [dbo].[etl_Watermark]&#xA;    WHERE package_name = 'DimDocument'&#xA;);&#xA;&#xA;INSERT INTO [dbo].[etl_Watermark] (package_name, last_run_date)&#xA;SELECT 'DimDocumentDetails', '2000-01-01'&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1 FROM [dbo].[etl_Watermark]&#xA;    WHERE package_name = 'DimDocumentDetails'&#xA;);&#xA;&#xA;INSERT INTO [dbo].[etl_Watermark] (package_name, last_run_date)&#xA;SELECT 'DimSuiviOrdres', '2021-01-01'&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1 FROM [dbo].[etl_Watermark]&#xA;    WHERE package_name = 'DimSuiviOrdres'&#xA;);&#xA;&#xA;INSERT INTO [dbo].[etl_Watermark] (package_name, last_run_date)&#xA;SELECT 'FaitVentes', '2010-01-01'&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1 FROM [dbo].[etl_Watermark]&#xA;    WHERE package_name = 'FaitVentes'&#xA;);&#xA;&#xA;INSERT INTO [dbo].[etl_Watermark] (package_name, last_run_date)&#xA;SELECT 'FaitFraisFab', '2021-01-01'&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1 FROM [dbo].[etl_Watermark]&#xA;    WHERE package_name = 'FaitFraisFab'&#xA;);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Faits"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{c8b2dae5-4e1b-468e-a6b6-d1de5284ceec}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Faits"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>chargeFait.dtsx</PackageName>
+        </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{AC85E495-A212-4BB9-BF98-A28B822A812E}"
+      DTS:From="Package\Dimensions"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Faits" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
@@ -73,7 +98,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="133,42"
           Id="Package\Dimensions"
@@ -96,6 +121,32 @@
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,70.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="101,42"
+          Id="Package\Faits"
+          TopLeft="433,279" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="483.5,204">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,75"
+              Start="0,0"
+              End="0,67.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

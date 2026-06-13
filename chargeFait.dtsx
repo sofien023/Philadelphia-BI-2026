@@ -11,8 +11,8 @@
   DTS:LocaleID="3072"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{54E538E6-918C-4AD9-9AD9-8F6761CE186C}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{7483A99C-30A3-4F58-B668-DAF4A6DE1A5D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -30,7 +30,7 @@
       <DTS:ObjectData>
         <ExecutePackageTask>
           <UseProjectReference>True</UseProjectReference>
-          <PackageName>FaitFrais.dtsx</PackageName>
+          <PackageName>FaitFraisFab.dtsx</PackageName>
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
