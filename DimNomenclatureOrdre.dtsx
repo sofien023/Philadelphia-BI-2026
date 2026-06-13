@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DimNomenclatureOrdre"
   DTS:PackageType="5"
-  DTS:VersionBuild="47"
-  DTS:VersionGUID="{26DB5ED8-4AB7-47A1-938D-51C96F5C67BC}">
+  DTS:VersionBuild="48"
+  DTS:VersionGUID="{41C5CDD9-F34B-4186-B9F1-C39E8E27752B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -38,6 +38,30 @@
       DTS:ObjectName="LastRunDate">
       <DTS:VariableValue
         DTS:DataType="7">1/1/2021</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{75ED43B7-352D-41A0-BA58-8DE3E214BC1B}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT &#xA;    o.OF_Num,&#xA;    ofdn.OFDN_Composant,&#xA;    ofdn.OFDN_Q,&#xA;    ofdn.OFDN_Unite&#xA;FROM TESTPH2.dbo.OFD o&#xA;JOIN TESTPH2.dbo.Art a&#xA;    ON o.Art_Code = a.Art_Code&#xA;JOIN TESTPH2.dbo.OFDN ofdn&#xA;    ON o.OF_Num = ofdn.OF_Num&#xA;WHERE o.Date_Create &gt;= '&quot; +&#xA;(DT_STR, 10, 1252)(DT_DBDATE) @[User::LastRunDate]&#xA;+ &quot;'&#xA;  AND o.ofd_QR &lt;&gt; 0&#xA;  AND a.ArtCat_Code IN ('FabVendu', 'Fabriqué')&#xA;  AND ofdn.OFDN_Composant NOT LIKE 'fp%'&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceQuery">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT 
+    o.OF_Num,
+    ofdn.OFDN_Composant,
+    ofdn.OFDN_Q,
+    ofdn.OFDN_Unite
+FROM TESTPH2.dbo.OFD o
+JOIN TESTPH2.dbo.Art a
+    ON o.Art_Code = a.Art_Code
+JOIN TESTPH2.dbo.OFDN ofdn
+    ON o.OF_Num = ofdn.OF_Num
+WHERE o.Date_Create &gt;= '2021-01-01'
+  AND o.ofd_QR &lt;&gt; 0
+  AND a.ArtCat_Code IN ('FabVendu', 'Fabriqué')
+  AND ofdn.OFDN_Composant NOT LIKE 'fp%'</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -254,7 +278,7 @@ and ofdn.OFDN_Composant not like 'fp%';</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
+                  name="SqlCommandVariable">User::SourceQuery</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -267,7 +291,7 @@ and ofdn.OFDN_Composant not like 'fp%';</property>
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">2</property>
+                  typeConverter="AccessMode">3</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -482,15 +506,15 @@ and ofdn.OFDN_Composant not like 'fp%';</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150.4,41.6"
+          Size="150,42"
           Id="Package\Data Flow Task"
           TopLeft="201.999999552965,193.352941217359" />
         <NodeLayout
-          Size="158.4,41.6"
+          Size="158,42"
           Id="Package\Read Watermark"
           TopLeft="156.000000234161,72.1764705915868" />
         <NodeLayout
-          Size="168,41.6"
+          Size="168,42"
           Id="Package\Update Watermark"
           TopLeft="243.571427312432,333.647058851011" />
         <EdgeLayout
@@ -570,11 +594,11 @@ and ofdn.OFDN_Composant not like 'fp%';</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="170.4,41.6"
+          Size="170,42"
           Id="Package\Data Flow Task\OLE DB Destination"
           TopLeft="302.999999052712,259.235294209477" />
         <NodeLayout
-          Size="156.8,41.6"
+          Size="157,42"
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="263,73" />
         <EdgeLayout

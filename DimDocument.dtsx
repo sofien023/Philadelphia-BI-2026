@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DimDocument"
   DTS:PackageType="5"
-  DTS:VersionBuild="30"
-  DTS:VersionGUID="{C0362DAD-4FE8-4533-B1A6-995D72F15CBC}">
+  DTS:VersionBuild="33"
+  DTS:VersionGUID="{9D74786A-7037-4517-BF9B-D5BAFA5C5F2D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -518,15 +518,15 @@ WHERE
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150.4,41.6"
+          Size="150,42"
           Id="Package\Data Flow Task"
           TopLeft="225.142856530085,163.352941114804" />
         <NodeLayout
-          Size="158.4,41.6"
+          Size="158,42"
           Id="Package\Read Watermark"
           TopLeft="102,44" />
         <NodeLayout
-          Size="167.2,41.6"
+          Size="167,42"
           Id="Package\Update Watermark"
           TopLeft="295.285713336906,277.05882354952" />
         <EdgeLayout
@@ -606,17 +606,17 @@ WHERE
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="156.8,41.6"
-          Id="Package\Data Flow Task\OLE DB Source"
-          TopLeft="361,59" />
-        <NodeLayout
-          Size="170.4,41.6"
+          Size="170,42"
           Id="Package\Data Flow Task\OLE DB Destination"
           TopLeft="339.714284532837,281.882352980724" />
         <NodeLayout
-          Size="158.4,41.6"
+          Size="158,42"
           Id="Package\Data Flow Task\Derived Column"
           TopLeft="328.857142235247,158.411764618744" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Data Flow Task\OLE DB Source"
+          TopLeft="361,59" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
           TopLeft="439.4,100.6">
@@ -689,14 +689,6 @@ WHERE
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\OLE DB Destination">
     <Properties>
       <Property>
@@ -706,6 +698,14 @@ WHERE
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

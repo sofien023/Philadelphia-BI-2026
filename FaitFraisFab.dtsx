@@ -11,19 +11,30 @@
   DTS:LocaleID="3072"
   DTS:ObjectName="FaitFraisFab"
   DTS:PackageType="5"
-  DTS:VersionBuild="36"
-  DTS:VersionGUID="{79076FE1-A943-46C7-A932-B41154DAF41C}">
+  DTS:VersionBuild="40"
+  DTS:VersionGUID="{3CFE8DEF-B30B-4E20-BFBF-E7DFA28621F3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{EC426FC2-76A3-4485-98B0-34BED46A9640}"
-      DTS:IncludeInDebugDump="6789"
+      DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="LastRunDate">
       <DTS:VariableValue
-        DTS:DataType="7">1/1/2021</DTS:VariableValue>
+        DTS:DataType="7">6/13/2026 9:56:43 AM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A6534B05-BA4A-483E-978A-84043A2515A6}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="(DT_I4)(&#xA;  (DATEPART(&quot;yyyy&quot;, @[User::LastRunDate]) * 10000) +&#xA;  (DATEPART(&quot;mm&quot;, @[User::LastRunDate]) * 100) +&#xA;  DATEPART(&quot;dd&quot;, @[User::LastRunDate])&#xA;)"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LastRunDateInt">
+      <DTS:VariableValue
+        DTS:DataType="3">20260613</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -2342,41 +2353,29 @@ ORDER BY of_num</property>
         <NodeLayout
           Size="155,42"
           Id="Package\Data Flow Task"
-          TopLeft="482,246" />
+          TopLeft="348.428571144233,239.882352946539" />
         <NodeLayout
           Size="158,42"
           Id="Package\Read Watermark"
-          TopLeft="426,117" />
+          TopLeft="343.857142682282,100.176470602982" />
         <NodeLayout
           Size="168,42"
           Id="Package\Update Watermark"
-          TopLeft="681,380" />
+          TopLeft="341.714284992036,365.47058824803" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="505,159">
+          TopLeft="424.542856913258,141.776470602982">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="54.5,87"
+              EndConnector="0,98.1058823435571"
               Start="0,0"
-              End="54.5,79.5">
+              End="0,90.6058823435571">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,39.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,39.5"
-                    Point2="0,43.5"
-                    Point3="4,43.5" />
-                  <mssgle:LineSegment
-                    End="50.5,43.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="50.5,43.5"
-                    Point2="54.5,43.5"
-                    Point3="54.5,47.5" />
-                  <mssgle:LineSegment
-                    End="54.5,79.5" />
+                    End="0,90.6058823435571" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2387,30 +2386,18 @@ ORDER BY of_num</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="559.5,288">
+          TopLeft="425.871428068134,281.482352946539">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="205.5,92"
+              EndConnector="0,83.9882353014908"
               Start="0,0"
-              End="205.5,84.5">
+              End="0,76.4882353014908">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,42" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,42"
-                    Point2="0,46"
-                    Point3="4,46" />
-                  <mssgle:LineSegment
-                    End="201.5,46" />
-                  <mssgle:CubicBezierSegment
-                    Point1="201.5,46"
-                    Point2="205.5,46"
-                    Point3="205.5,50" />
-                  <mssgle:LineSegment
-                    End="205.5,84.5" />
+                    End="0,76.4882353014908" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

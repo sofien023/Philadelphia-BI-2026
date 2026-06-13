@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DimDocumentDetails"
   DTS:PackageType="5"
-  DTS:VersionBuild="23"
-  DTS:VersionGUID="{A0F7026A-9F63-483D-898A-B53B952C98E5}">
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{4041C236-321C-4FA6-B643-1B3C1539550A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -29,7 +29,7 @@
       DTS:CreationName=""
       DTS:DTSID="{B6964290-E457-4271-A40B-8CD004C6A7F3}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT&#xA;    dd.DocD_Id,&#xA;    dd.Doc_Num,&#xA;    dd.Art_Code,&#xA;    dd.DocD_Q,&#xA;    dd.DocD_PUHTB&#xA;FROM TESTPH2.dbo.DocumentD dd&#xA;JOIN TESTPH2.dbo.Document d&#xA;    ON d.Doc_Num = dd.Doc_Num&#xA;WHERE d.Doc_Type IN ('Fact', 'AVOI')&#xA;  AND d.Doc_Valide = 2&#xA;  AND dd.Art_Code &lt;&gt; 'ANNULER'&#xA;  AND d.Doc_Date &gt;= '&quot; +&#xA;(DT_STR, 10, 1252)(DT_DBDATE) @[User::LastRunDate]&#xA;+ &quot;'&quot;"
+      DTS:Expression="&quot;SELECT&#xA;    dd.DocD_Id,&#xA;    dd.Doc_Num,&#xA;    dd.Art_Code,&#xA;    dd.DocD_Q,&#xA;    dd.DocD_PUHTB&#xA;FROM TESTPH2.dbo.DocumentD dd&#xA;JOIN TESTPH2.dbo.Document d&#xA;    ON d.Doc_Num = dd.Doc_Num&#xA; WHERE d.Doc_Type IN ('Fact', 'AVOI')&#xA;  AND d.Doc_Valide = 2&#xA;  AND dd.Art_Code &lt;&gt; 'ANNULER'&#xA;  AND d.Doc_Date &gt;= '&quot; +&#xA;(DT_STR, 10, 1252)(DT_DBDATE) @[User::LastRunDate]&#xA;+ &quot;'&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="SourceQuery">
@@ -43,7 +43,7 @@
 FROM TESTPH2.dbo.DocumentD dd
 JOIN TESTPH2.dbo.Document d
     ON d.Doc_Num = dd.Doc_Num
-WHERE d.Doc_Type IN ('Fact', 'AVOI')
+ WHERE d.Doc_Type IN ('Fact', 'AVOI')
   AND d.Doc_Valide = 2
   AND dd.Art_Code &lt;&gt; 'ANNULER'
   AND d.Doc_Date &gt;= '2000-01-01'</DTS:VariableValue>
@@ -888,55 +888,21 @@ WHERE
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="112.8,41.6"
-          Id="Package\Data Flow Task\Lookup"
-          TopLeft="730.142857142857,310" />
+          Size="171.2,41.6"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="897,193" />
         <NodeLayout
           Size="156.8,41.6"
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="302,71" />
         <NodeLayout
-          Size="171.2,41.6"
-          Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="897,193" />
+          Size="112.8,41.6"
+          Id="Package\Data Flow Task\Lookup"
+          TopLeft="730.142857142857,310" />
         <NodeLayout
           Size="153.6,41.6"
           Id="Package\Data Flow Task\Derived Column"
           TopLeft="493,198" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output]"
-          TopLeft="570,240">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="216.642857142857,70.0000000000003"
-              Start="0,0"
-              End="216.642857142857,62.5000000000003">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.0000000000001" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.0000000000001"
-                    Point2="0,35.0000000000001"
-                    Point3="4,35.0000000000001" />
-                  <mssgle:LineSegment
-                    End="212.642857142857,35.0000000000001" />
-                  <mssgle:CubicBezierSegment
-                    Point1="212.642857142857,35.0000000000001"
-                    Point2="216.642857142857,35.0000000000001"
-                    Point3="216.642857142857,39.0000000000001" />
-                  <mssgle:LineSegment
-                    End="216.642857142857,62.5000000000003" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
           TopLeft="380.5,113">
@@ -1007,6 +973,40 @@ WHERE
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="570,240">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="216.642857142857,70.0000000000003"
+              Start="0,0"
+              End="216.642857142857,62.5000000000003">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.0000000000001" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.0000000000001"
+                    Point2="0,35.0000000000001"
+                    Point3="4,35.0000000000001" />
+                  <mssgle:LineSegment
+                    End="212.642857142857,35.0000000000001" />
+                  <mssgle:CubicBezierSegment
+                    Point1="212.642857142857,35.0000000000001"
+                    Point2="216.642857142857,35.0000000000001"
+                    Point3="216.642857142857,39.0000000000001" />
+                  <mssgle:LineSegment
+                    End="216.642857142857,62.5000000000003" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -1020,6 +1020,14 @@ WHERE
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -1041,14 +1049,6 @@ WHERE
         <Value
           type="q4:string">0</Value>
       </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\OLE DB Source">
-    <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>

@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DimStock"
   DTS:PackageType="5"
-  DTS:VersionBuild="32"
-  DTS:VersionGUID="{F3642EB4-2477-4509-B374-9AF744D5ECFB}">
+  DTS:VersionBuild="34"
+  DTS:VersionGUID="{CD2588C2-BF6F-418B-9AF3-810A3F1C1D61}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -29,7 +29,7 @@
       DTS:CreationName=""
       DTS:DTSID="{14900416-23E0-465B-8747-9EB9A1E138B8}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT&#xA;    s.Art_Code,&#xA;    s.StoJ_Prix,&#xA;    s.StoJ_Date,&#xA;    s.StoJ_un&#xA;FROM TESTPH2.dbo.Stojou s&#xA;JOIN TESTPH2.dbo.Art a&#xA;    ON s.Art_Code = a.Art_Code&#xA;WHERE s.StoJ_Prix &lt;&gt; 0&#xA;  AND s.StoJ_Date &gt;= '&quot; +&#xA;(DT_STR, 10, 1252)(DT_DBDATE) @[User::LastRunDate]&#xA;+ &quot;'&#xA;  AND a.ArtCat_Code IN ('FabVendu', 'Fabriqué', 'Matière')&quot;"
+      DTS:Expression="&quot;SELECT&#xA;    s.Art_Code,&#xA;    s.StoJ_Prix,&#xA;    s.StoJ_Date,&#xA;    s.StoJ_un&#xA;&#xA;FROM TESTPH2.dbo.Stojou s&#xA;&#xA;JOIN TESTPH2.dbo.Art a&#xA;    ON s.Art_Code = a.Art_Code&#xA;&#xA;WHERE s.StoJ_Prix &lt;&gt; 0&#xA;  AND s.StoJ_Date &gt;= '&quot; +&#xA;(DT_STR, 10, 1252)(DT_DBDATE) @[User::LastRunDate]&#xA;+ &quot;'&#xA;  &#xA;AND a.ArtCat_Code IN ('FabVendu', 'Fabriqué', 'Matière')&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="SourceQuery">
@@ -39,12 +39,16 @@
     s.StoJ_Prix,
     s.StoJ_Date,
     s.StoJ_un
+
 FROM TESTPH2.dbo.Stojou s
+
 JOIN TESTPH2.dbo.Art a
     ON s.Art_Code = a.Art_Code
+
 WHERE s.StoJ_Prix &lt;&gt; 0
   AND s.StoJ_Date &gt;= '2020-01-01'
-  AND a.ArtCat_Code IN ('FabVendu', 'Fabriqué', 'Matière')</DTS:VariableValue>
+  
+AND a.ArtCat_Code IN ('FabVendu', 'Fabriqué', 'Matière')</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -566,15 +570,15 @@ WHERE s.StoJ_Prix &lt;&gt; 0
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="151.2,41.6"
+          Size="151,42"
           Id="Package\Data Flow Task"
           TopLeft="315.999999733908,207.058823538126" />
         <NodeLayout
-          Size="158.4,41.6"
+          Size="158,42"
           Id="Package\Read Watermark"
           TopLeft="210,78" />
         <NodeLayout
-          Size="168,41.6"
+          Size="168,42"
           Id="Package\Update Watermark"
           TopLeft="401.571428227789,333.705882366347" />
         <EdgeLayout
@@ -654,15 +658,15 @@ WHERE s.StoJ_Prix &lt;&gt; 0
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="171.2,41.6"
+          Size="171,42"
           Id="Package\Data Flow Task\OLE DB Destination"
           TopLeft="442.499964891801,333.529409684156" />
         <NodeLayout
-          Size="156.8,41.6"
+          Size="157,42"
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="124.428571186808,39.3529412059636" />
         <NodeLayout
-          Size="152.8,41.6"
+          Size="153,42"
           Id="Package\Data Flow Task\Derived Column"
           TopLeft="302.976166664322,165.027449850073" />
         <EdgeLayout
