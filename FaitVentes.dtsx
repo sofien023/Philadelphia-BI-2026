@@ -11,8 +11,8 @@
   DTS:LocaleID="3072"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{958F3A1E-CCD9-4549-83AE-DD4FE95C3E20}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{7F6702C2-2AB9-4D87-A5DB-4DF4C4DE9EC1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -35,6 +35,33 @@
       DTS:ObjectName="LastRunDateInt">
       <DTS:VariableValue
         DTS:DataType="3">20000101</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EE1AFC53-129C-4DAA-A05A-8449AE8A9361}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT dd.Doc_Num, dd.Art_Code, dd.quantite, dd.prix_unitaire_HT&#xA;FROM dim_docDetails dd&#xA;INNER JOIN dim_document d ON dd.Doc_Num = d.Doc_Num&#xA;WHERE d.Date &gt;= &quot; + (DT_WSTR, 10) @[User::LastRunDateInt] +&#xA;&quot; ORDER BY dd.Doc_Num&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceQueryDetails">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT dd.Doc_Num, dd.Art_Code, dd.quantite, dd.prix_unitaire_HT
+FROM dim_docDetails dd
+INNER JOIN dim_document d ON dd.Doc_Num = d.Doc_Num
+WHERE d.Date &gt;= 20000101 ORDER BY dd.Doc_Num</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CAE3CBBF-73BF-4485-93A6-1780A0C5CA20}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT Doc_Num, Date&#xA;FROM dim_document&#xA;WHERE Date &gt;= &quot; + (DT_WSTR, 10) @[User::LastRunDateInt] +&#xA;&quot; ORDER BY Doc_Num&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceQueryDocument">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT Doc_Num, Date
+FROM dim_document
+WHERE Date &gt;= 20000101 ORDER BY Doc_Num</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -527,7 +554,7 @@ ORDER BY Doc_Num</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
+                  name="SqlCommandVariable">User::SourceQueryDocument</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -540,7 +567,7 @@ ORDER BY Doc_Num</property>
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">2</property>
+                  typeConverter="AccessMode">3</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -658,7 +685,7 @@ ORDER BY Doc_Num</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
+                  name="SqlCommandVariable">User::SourceQueryDetails</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -671,7 +698,7 @@ ORDER BY Doc_Num</property>
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">2</property>
+                  typeConverter="AccessMode">3</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -836,6 +863,30 @@ ORDER BY Doc_Num</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{3665FC7D-296B-46C0-955F-E2BB65687768}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
+          SQLTask:SqlStatementSource="DELETE FROM [dbo].[fait_ventes]&#xA;WHERE date &gt;= ?;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::LastRunDateInt"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Read Watermark"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
@@ -879,11 +930,11 @@ ORDER BY Doc_Num</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{CBED8DBC-AA75-4492-BF1A-DDDD498EA23E}"
+      DTS:DTSID="{B849DDF7-DA00-48FF-99B1-4F76EDFFD641}"
       DTS:From="Package\Read Watermark"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\Data Flow Task" />
+      DTS:To="Package\Execute SQL Task" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
@@ -892,6 +943,14 @@ ORDER BY Doc_Num</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\Update Watermark" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{C9ECB866-51C4-42F8-A06B-BE396C4DCA42}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Data Flow Task" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -906,31 +965,81 @@ ORDER BY Doc_Num</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="214,42"
+          Size="151,42"
           Id="Package\Data Flow Task"
-          TopLeft="312.714285662588,176.588235267306" />
+          TopLeft="430.714285662588,224.588235267306" />
         <NodeLayout
           Size="158,42"
           Id="Package\Read Watermark"
-          TopLeft="346.571428376801,41.894117815973" />
+          TopLeft="334.571428376801,29.894117815973" />
         <NodeLayout
           Size="167,42"
           Id="Package\Update Watermark"
-          TopLeft="335.999999978713,290.247058782641" />
+          TopLeft="476.999999978713,360.247058782641" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="422.642857019694,83.894117815973">
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="506.214285662588,266.588235267306">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,92.694117451333"
+              EndConnector="54.2857143161251,93.658823515335"
               Start="0,0"
-              End="0,85.194117451333">
+              End="54.2857143161251,86.158823515335">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,85.194117451333" />
+                    End="0,42.8294117576675" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,42.8294117576675"
+                    Point2="0,46.8294117576675"
+                    Point3="4,46.8294117576675" />
+                  <mssgle:LineSegment
+                    End="50.2857143161251,46.8294117576675" />
+                  <mssgle:CubicBezierSegment
+                    Point1="50.2857143161251,46.8294117576675"
+                    Point2="54.2857143161251,46.8294117576675"
+                    Point3="54.2857143161251,50.8294117576675" />
+                  <mssgle:LineSegment
+                    End="54.2857143161251,86.158823515335" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="354,122" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="413.571428376801,71.894117815973">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="21.928571623199,50.105882184027"
+              Start="0,0"
+              End="21.928571623199,42.605882184027">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.0529410920135" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.0529410920135"
+                    Point2="0,25.0529410920135"
+                    Point3="4,25.0529410920135" />
+                  <mssgle:LineSegment
+                    End="17.928571623199,25.0529410920135" />
+                  <mssgle:CubicBezierSegment
+                    Point1="17.928571623199,25.0529410920135"
+                    Point2="21.928571623199,25.0529410920135"
+                    Point3="21.928571623199,29.0529410920135" />
+                  <mssgle:LineSegment
+                    End="21.928571623199,42.605882184027" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -940,19 +1049,31 @@ ORDER BY Doc_Num</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="419.60714282065,218.588235267306">
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="435.5,164">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,71.658823515335"
+              EndConnector="70.714285662588,60.588235267306"
               Start="0,0"
-              End="0,64.158823515335">
+              End="70.714285662588,53.088235267306">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,64.158823515335" />
+                    End="0,26.294117633653" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.294117633653"
+                    Point2="0,30.294117633653"
+                    Point3="4,30.294117633653" />
+                  <mssgle:LineSegment
+                    End="66.714285662588,30.294117633653" />
+                  <mssgle:CubicBezierSegment
+                    Point1="66.714285662588,30.294117633653"
+                    Point2="70.714285662588,30.294117633653"
+                    Point3="70.714285662588,34.294117633653" />
+                  <mssgle:LineSegment
+                    End="70.714285662588,53.088235267306" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -968,11 +1089,11 @@ ORDER BY Doc_Num</property>
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="133,42"
           Id="Package\Data Flow Task\Merge Join"
-          TopLeft="471,158" />
+          TopLeft="476,177" />
         <NodeLayout
           Size="177,42"
           Id="Package\Data Flow Task\OLE DB Destination"
@@ -988,65 +1109,61 @@ ORDER BY Doc_Num</property>
         <NodeLayout
           Size="157,42"
           Id="Package\Data Flow Task\OLE DB Source"
-          TopLeft="362,61" />
+          TopLeft="361,60" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
           TopLeft="641.708335097672,100.6666666064">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-83.3750017643387,57.3333333936003"
+              EndConnector="-78.3750017643387,76.3333333936003"
               Start="0,0"
-              End="-83.3750017643387,49.8333333936003">
+              End="-78.3750017643387,68.8333333936003">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.9910847311241" />
+                    End="0,41.2555721011093" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,29.9910847311241"
-                    Point2="0,33.9910847311241"
-                    Point3="-4,33.9910847311241" />
+                    Point1="0,41.2555721011093"
+                    Point2="0,45.2555721011093"
+                    Point3="-4,45.2555721011093" />
                   <mssgle:LineSegment
-                    End="-79.3750017643387,33.9910847311241" />
+                    End="-74.3750017643387,45.2555721011093" />
                   <mssgle:CubicBezierSegment
-                    Point1="-79.3750017643387,33.9910847311241"
-                    Point2="-83.3750017643387,33.9910847311241"
-                    Point3="-83.3750017643387,37.9910847311241" />
+                    Point1="-74.3750017643387,45.2555721011093"
+                    Point2="-78.3750017643387,45.2555721011093"
+                    Point3="-78.3750017643387,49.2555721011093" />
                   <mssgle:LineSegment
-                    End="-83.3750017643387,49.8333333936003" />
+                    End="-78.3750017643387,68.8333333936003" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Merge Join Output]"
-          TopLeft="537.25,200">
+          TopLeft="539.75,219">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,57"
+              EndConnector="0,38"
               Start="0,0"
-              End="0,49.5">
+              End="0,30.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,49.5" />
+                    End="0,30.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1068,50 +1185,54 @@ ORDER BY Doc_Num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output1]"
-          TopLeft="440.5,103">
+          TopLeft="439.5,102">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="76.1666666666666,55"
+              EndConnector="82.1666666666666,75"
               Start="0,0"
-              End="76.1666666666666,47.5">
+              End="82.1666666666666,67.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,28.6077265973254" />
+                    End="0,40.4650817236256" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,28.6077265973254"
-                    Point2="0,32.6077265973254"
-                    Point3="4,32.6077265973254" />
+                    Point1="0,40.4650817236256"
+                    Point2="0,44.4650817236256"
+                    Point3="4,44.4650817236256" />
                   <mssgle:LineSegment
-                    End="72.1666666666666,32.6077265973254" />
+                    End="78.1666666666666,44.4650817236256" />
                   <mssgle:CubicBezierSegment
-                    Point1="72.1666666666666,32.6077265973254"
-                    Point2="76.1666666666666,32.6077265973254"
-                    Point3="76.1666666666666,36.6077265973254" />
+                    Point1="78.1666666666666,44.4650817236256"
+                    Point2="82.1666666666666,44.4650817236256"
+                    Point3="82.1666666666666,48.4650817236256" />
                   <mssgle:LineSegment
-                    End="76.1666666666666,47.5" />
+                    End="82.1666666666666,67.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\OLE DB Source 1">
     <Properties>
