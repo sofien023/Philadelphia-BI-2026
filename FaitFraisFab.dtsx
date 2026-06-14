@@ -11,8 +11,8 @@
   DTS:LocaleID="3072"
   DTS:ObjectName="FaitFraisFab"
   DTS:PackageType="5"
-  DTS:VersionBuild="40"
-  DTS:VersionGUID="{3CFE8DEF-B30B-4E20-BFBF-E7DFA28621F3}">
+  DTS:VersionBuild="41"
+  DTS:VersionGUID="{D93CB302-DBFA-4E38-9D3D-D1456108854B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -2353,29 +2353,41 @@ ORDER BY of_num</property>
         <NodeLayout
           Size="155,42"
           Id="Package\Data Flow Task"
-          TopLeft="348.428571144233,239.882352946539" />
+          TopLeft="439.428571144233,238.882352946539" />
         <NodeLayout
           Size="158,42"
           Id="Package\Read Watermark"
-          TopLeft="343.857142682282,100.176470602982" />
+          TopLeft="342.857142682282,99.176470602982" />
         <NodeLayout
           Size="168,42"
           Id="Package\Update Watermark"
-          TopLeft="341.714284992036,365.47058824803" />
+          TopLeft="584.714284992036,400.47058824803" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="424.542856913258,141.776470602982">
+          TopLeft="421.857142682282,141.176470602982">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,98.1058823435571"
+              EndConnector="95.071428461951,97.705882343557"
               Start="0,0"
-              End="0,90.6058823435571">
+              End="95.071428461951,90.205882343557">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,90.6058823435571" />
+                    End="0,44.8529411717785" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,44.8529411717785"
+                    Point2="0,48.8529411717785"
+                    Point3="4,48.8529411717785" />
+                  <mssgle:LineSegment
+                    End="91.071428461951,48.8529411717785" />
+                  <mssgle:CubicBezierSegment
+                    Point1="91.071428461951,48.8529411717785"
+                    Point2="95.071428461951,48.8529411717785"
+                    Point3="95.071428461951,52.8529411717785" />
+                  <mssgle:LineSegment
+                    End="95.071428461951,90.205882343557" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2386,18 +2398,30 @@ ORDER BY of_num</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="425.871428068134,281.482352946539">
+          TopLeft="516.928571144233,280.882352946539">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,83.9882353014908"
+              EndConnector="151.785713847803,119.588235301491"
               Start="0,0"
-              End="0,76.4882353014908">
+              End="151.785713847803,112.088235301491">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,76.4882353014908" />
+                    End="0,55.7941176507455" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,55.7941176507455"
+                    Point2="0,59.7941176507455"
+                    Point3="4,59.7941176507455" />
+                  <mssgle:LineSegment
+                    End="147.785713847803,59.7941176507455" />
+                  <mssgle:CubicBezierSegment
+                    Point1="147.785713847803,59.7941176507455"
+                    Point2="151.785713847803,59.7941176507455"
+                    Point3="151.785713847803,63.7941176507455" />
+                  <mssgle:LineSegment
+                    End="151.785713847803,112.088235301491" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2413,7 +2437,7 @@ ORDER BY of_num</property>
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="119,42"
           Id="Package\Data Flow Task\Merge 1"
@@ -2497,7 +2521,9 @@ ORDER BY of_num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2519,7 +2545,9 @@ ORDER BY of_num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2541,7 +2569,9 @@ ORDER BY of_num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2563,7 +2593,9 @@ ORDER BY of_num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2585,7 +2617,9 @@ ORDER BY of_num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2607,7 +2641,9 @@ ORDER BY of_num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2629,7 +2665,9 @@ ORDER BY of_num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2651,7 +2689,9 @@ ORDER BY of_num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2673,7 +2713,9 @@ ORDER BY of_num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2695,7 +2737,9 @@ ORDER BY of_num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2717,7 +2761,9 @@ ORDER BY of_num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2739,7 +2785,9 @@ ORDER BY of_num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
