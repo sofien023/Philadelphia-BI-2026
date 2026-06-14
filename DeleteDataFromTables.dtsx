@@ -11,8 +11,8 @@
   DTS:LocaleID="3072"
   DTS:ObjectName="DeleteDataFromTables"
   DTS:PackageType="5"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{9FDE94DD-1069-4DF2-AB74-5553BB565315}">
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{0F7F2BFC-52AA-4841-ABF5-E01B5074707C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -116,7 +116,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
-          SQLTask:SqlStatementSource="-- ============================================&#xA;-- Reset IDENTITY seeds (run only when tables are empty)&#xA;-- ============================================&#xA;&#xA;-- 1. fait_ventes&#xA;IF (SELECT COUNT(*) FROM [dbo].[fait_ventes]) = 0&#xA;    DBCC CHECKIDENT ('[dbo].[fait_ventes]', RESEED, 1);&#xA;&#xA;-- 2. fait_fraisfab&#xA;IF (SELECT COUNT(*) FROM [dbo].[fait_fraisfab]) = 0&#xA;    DBCC CHECKIDENT ('[dbo].[fait_fraisfab]', RESEED, 1);&#xA;&#xA;-- 3. dim_stock&#xA;IF (SELECT COUNT(*) FROM [dbo].[dim_stock]) = 0&#xA;    DBCC CHECKIDENT ('[dbo].[dim_stock]', RESEED, 1);&#xA;&#xA;-- 4. dim_ofnomenclature&#xA;IF (SELECT COUNT(*) FROM [dbo].[dim_ofnomenclature]) = 0&#xA;    DBCC CHECKIDENT ('[dbo].[dim_ofnomenclature]', RESEED, 1);&#xA;&#xA;-- Verify all current identity values&#xA;SELECT &#xA;    OBJECT_NAME(OBJECT_ID)  AS table_name,&#xA;    last_value              AS current_identity,&#xA;    seed_value              AS seed,&#xA;    increment_value         AS increment&#xA;FROM sys.identity_columns&#xA;WHERE OBJECT_NAME(OBJECT_ID) IN (&#xA;    'fait_ventes',&#xA;    'fait_fraisfab',&#xA;    'dim_stock',&#xA;    'dim_ofnomenclature'&#xA;)&#xA;ORDER BY table_name;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="-- ============================================&#xA;-- Reset IDENTITY seeds (run only when tables are empty)&#xA;-- ============================================&#xA;&#xA;-- 1. fait_ventes&#xA;IF (SELECT COUNT(*) FROM [dbo].[fait_ventes]) = 0&#xA;    DBCC CHECKIDENT ('[dbo].[fait_ventes]', RESEED, 0);&#xA;&#xA;-- 2. fait_fraisfab&#xA;IF (SELECT COUNT(*) FROM [dbo].[fait_fraisfab]) = 0&#xA;    DBCC CHECKIDENT ('[dbo].[fait_fraisfab]', RESEED, 0);&#xA;&#xA;-- 3. dim_stock&#xA;IF (SELECT COUNT(*) FROM [dbo].[dim_stock]) = 0&#xA;    DBCC CHECKIDENT ('[dbo].[dim_stock]', RESEED, 0);&#xA;&#xA;-- 4. dim_ofnomenclature&#xA;IF (SELECT COUNT(*) FROM [dbo].[dim_ofnomenclature]) = 0&#xA;    DBCC CHECKIDENT ('[dbo].[dim_ofnomenclature]', RESEED, 0);&#xA;&#xA;-- Verify all current identity values&#xA;SELECT &#xA;    OBJECT_NAME(OBJECT_ID)  AS table_name,&#xA;    last_value              AS current_identity,&#xA;    seed_value              AS seed,&#xA;    increment_value         AS increment&#xA;FROM sys.identity_columns&#xA;WHERE OBJECT_NAME(OBJECT_ID) IN (&#xA;    'fait_ventes',&#xA;    'fait_fraisfab',&#xA;    'dim_stock',&#xA;    'dim_ofnomenclature'&#xA;)&#xA;ORDER BY table_name;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -319,6 +319,10 @@
           Size="162,42"
           Id="Package\Document Details"
           TopLeft="641,233" />
+        <NodeLayout
+          Size="116,42"
+          Id="Package\initial id"
+          TopLeft="429.5,357" />
         <NodeLayout
           Size="174,42"
           Id="Package\Ordre Nomenclature"
@@ -537,10 +541,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="116,42"
-          Id="Package\initial id"
-          TopLeft="429.5,357" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 9]"
           TopLeft="327,380.5">
