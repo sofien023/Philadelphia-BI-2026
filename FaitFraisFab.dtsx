@@ -11,8 +11,8 @@
   DTS:LocaleID="3072"
   DTS:ObjectName="FaitFraisFab"
   DTS:PackageType="5"
-  DTS:VersionBuild="41"
-  DTS:VersionGUID="{D93CB302-DBFA-4E38-9D3D-D1456108854B}">
+  DTS:VersionBuild="44"
+  DTS:VersionGUID="{E1BE555F-D973-4CD9-86AF-71F36748589E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -35,6 +35,19 @@
       DTS:ObjectName="LastRunDateInt">
       <DTS:VariableValue
         DTS:DataType="3">20260613</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8648700F-6379-4C4D-988E-18B69D1F505D}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT ofs_num, of_num, date_operation, quantite&#xA;FROM dim_ofsuivi&#xA;WHERE date_operation &gt;= &quot; +&#xA;(DT_WSTR, 10) @[User::LastRunDateInt] +&#xA;&quot; ORDER BY of_num&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceQuerySuivi">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT ofs_num, of_num, date_operation, quantite
+FROM dim_ofsuivi
+WHERE date_operation &gt;= 20260613 ORDER BY of_num</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -2069,7 +2082,7 @@ ORDER BY of_num</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
+                  name="SqlCommandVariable">User::SourceQuerySuivi</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2082,7 +2095,7 @@ ORDER BY of_num</property>
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">2</property>
+                  typeConverter="AccessMode">3</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -2281,6 +2294,30 @@ ORDER BY of_num</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{2489e644-9f3f-418d-aa35-6a07bd110fd5}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
+          SQLTask:SqlStatementSource="DELETE FROM [dbo].[fait_fraisfab]&#xA;WHERE date_operation &gt;= ?;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::LastRunDateInt"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Read Watermark"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
@@ -2324,11 +2361,11 @@ ORDER BY of_num</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{66D77311-3FE7-4730-A30D-1F2FF077C694}"
+      DTS:DTSID="{F71AFE7C-B200-4377-9111-7478A9C26F1D}"
       DTS:From="Package\Read Watermark"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\Data Flow Task" />
+      DTS:To="Package\Execute SQL Task" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
@@ -2337,6 +2374,14 @@ ORDER BY of_num</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\Update Watermark" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{2EB32ED4-509E-4F58-9A66-3FA898DC439A}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Data Flow Task" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -2353,41 +2398,79 @@ ORDER BY of_num</property>
         <NodeLayout
           Size="155,42"
           Id="Package\Data Flow Task"
-          TopLeft="439.428571144233,238.882352946539" />
+          TopLeft="456.428571144233,283.882352946539" />
         <NodeLayout
           Size="158,42"
           Id="Package\Read Watermark"
-          TopLeft="342.857142682282,99.176470602982" />
+          TopLeft="293.857142682282,90.176470602982" />
         <NodeLayout
           Size="168,42"
           Id="Package\Update Watermark"
-          TopLeft="584.714284992036,400.47058824803" />
+          TopLeft="630.714284992036,491.47058824803" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="421.857142682282,141.176470602982">
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="533.928571144233,325.882352946539">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="95.071428461951,97.705882343557"
+              EndConnector="180.785713847803,165.588235301491"
               Start="0,0"
-              End="95.071428461951,90.205882343557">
+              End="180.785713847803,158.088235301491">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,44.8529411717785" />
+                    End="0,78.7941176507455" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,44.8529411717785"
-                    Point2="0,48.8529411717785"
-                    Point3="4,48.8529411717785" />
+                    Point1="0,78.7941176507455"
+                    Point2="0,82.7941176507455"
+                    Point3="4,82.7941176507455" />
                   <mssgle:LineSegment
-                    End="91.071428461951,48.8529411717785" />
+                    End="176.785713847803,82.7941176507455" />
                   <mssgle:CubicBezierSegment
-                    Point1="91.071428461951,48.8529411717785"
-                    Point2="95.071428461951,48.8529411717785"
-                    Point3="95.071428461951,52.8529411717785" />
+                    Point1="176.785713847803,82.7941176507455"
+                    Point2="180.785713847803,82.7941176507455"
+                    Point3="180.785713847803,86.7941176507455" />
                   <mssgle:LineSegment
-                    End="95.071428461951,90.205882343557" />
+                    End="180.785713847803,158.088235301491" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="594.857142682282,164.47058824803" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="372.857142682282,132.176470602982">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="303.5,32.294117645048"
+              Start="0,0"
+              End="303.5,24.794117645048">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.147058822524" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.147058822524"
+                    Point2="0,16.147058822524"
+                    Point3="4,16.147058822524" />
+                  <mssgle:LineSegment
+                    End="299.5,16.147058822524" />
+                  <mssgle:CubicBezierSegment
+                    Point1="299.5,16.147058822524"
+                    Point2="303.5,16.147058822524"
+                    Point3="303.5,20.147058822524" />
+                  <mssgle:LineSegment
+                    End="303.5,24.794117645048" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2397,31 +2480,31 @@ ORDER BY of_num</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="516.928571144233,280.882352946539">
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="676.357142682282,206.47058824803">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="151.785713847803,119.588235301491"
+              EndConnector="-142.428571538049,77.4117646985089"
               Start="0,0"
-              End="151.785713847803,112.088235301491">
+              End="-142.428571538049,69.9117646985089">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,55.7941176507455" />
+                    End="0,34.7058823492545" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,55.7941176507455"
-                    Point2="0,59.7941176507455"
-                    Point3="4,59.7941176507455" />
+                    Point1="0,34.7058823492545"
+                    Point2="0,38.7058823492545"
+                    Point3="-4,38.7058823492545" />
                   <mssgle:LineSegment
-                    End="147.785713847803,59.7941176507455" />
+                    End="-138.428571538049,38.7058823492545" />
                   <mssgle:CubicBezierSegment
-                    Point1="147.785713847803,59.7941176507455"
-                    Point2="151.785713847803,59.7941176507455"
-                    Point3="151.785713847803,63.7941176507455" />
+                    Point1="-138.428571538049,38.7058823492545"
+                    Point2="-142.428571538049,38.7058823492545"
+                    Point3="-142.428571538049,42.7058823492545" />
                   <mssgle:LineSegment
-                    End="151.785713847803,112.088235301491" />
+                    End="-142.428571538049,69.9117646985089" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2437,7 +2520,7 @@ ORDER BY of_num</property>
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="119,42"
           Id="Package\Data Flow Task\Merge 1"
@@ -2521,9 +2604,7 @@ ORDER BY of_num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2545,9 +2626,7 @@ ORDER BY of_num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2569,9 +2648,7 @@ ORDER BY of_num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2593,9 +2670,7 @@ ORDER BY of_num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2617,9 +2692,7 @@ ORDER BY of_num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2641,9 +2714,7 @@ ORDER BY of_num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2665,9 +2736,7 @@ ORDER BY of_num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2689,9 +2758,7 @@ ORDER BY of_num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2713,9 +2780,7 @@ ORDER BY of_num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2737,9 +2802,7 @@ ORDER BY of_num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2761,9 +2824,7 @@ ORDER BY of_num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2785,9 +2846,7 @@ ORDER BY of_num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
