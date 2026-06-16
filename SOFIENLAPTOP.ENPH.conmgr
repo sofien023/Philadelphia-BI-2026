@@ -7,6 +7,6 @@
     <DTS:ConnectionManager
       DTS:ConnectRetryCount="1"
       DTS:ConnectRetryInterval="5"
-      DTS:ConnectionString="Data Source=SOFIENLAPTOP;Initial Catalog=ENPH;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Philadelphia BI 2026-{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}SOFIENLAPTOP.ENPH;Auto Translate=False;" />
+      DTS:ConnectionString="Data Source=SOFIENLAPTOP\MSSQLSERVER1;Initial Catalog=ENPH;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Philadelphia BI 2026-{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}SOFIENLAPTOP.ENPH;" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>
