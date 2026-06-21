@@ -7,14 +7,50 @@
   DTS:CreatorName="SOFIENLAPTOP\sofien"
   DTS:DTSID="{CD17A171-ADAF-4A51-8419-1C09BF66DE0C}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LastModifiedProductVersion="17.0.1008.3"
   DTS:LocaleID="1033"
   DTS:ObjectName="DimDocument"
   DTS:PackageType="5"
-  DTS:VersionBuild="33"
-  DTS:VersionGUID="{9D74786A-7037-4517-BF9B-D5BAFA5C5F2D}">
+  DTS:VersionBuild="35"
+  DTS:VersionGUID="{F121A77C-1C6F-404F-9490-9F66F4E482B6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SOFIENLAPTOP\MSSQLSERVER1.ENPH.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{582210B3-0D61-4487-B7C0-322D49EEEA23}"
+      DTS:ObjectName="SOFIENLAPTOP\MSSQLSERVER1.ENPH.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=SOFIENLAPTOP\MSSQLSERVER1;User ID=sa;Initial Catalog=ENPH;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-DimDocument-{582210B3-0D61-4487-B7C0-322D49EEEA23}SOFIENLAPTOP\MSSQLSERVER1.ENPH.sa;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACGkkGC4+1pUnV4QcIN2kT+FQeGYj8A//mmKlBKX4S1VQAAAAAOgAAAAAIAACAAAABxiuKNKHOCVZ2UE3O4SU+FUJSXlUaTnMw1Z6o8oel3fBAAAACFqWXAx5QSU1fodPal4UvvQAAAACoDUGD6PsIISEYfZ/IIrDyHtMgVleAvzPc6sebGZms7I/vQRrZnqJsEkrWGxw+y4r6yhJr1GOnxpdrKGXAB7uM</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SOFIENLAPTOP\MSSQLSERVER1.TESTPH2.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B2C631AC-8A4E-4B4F-A0F6-F7054BF04CDE}"
+      DTS:ObjectName="SOFIENLAPTOP\MSSQLSERVER1.TESTPH2.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=SOFIENLAPTOP\MSSQLSERVER1;User ID=sa;Initial Catalog=TESTPH2;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-DimDocument-{B2C631AC-8A4E-4B4F-A0F6-F7054BF04CDE}SOFIENLAPTOP\MSSQLSERVER1.TESTPH2.sa;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAA8997ePRwA44GM/7NX7sobuitpOiX5AKz2f57XosIRqgAAAAAOgAAAAAIAACAAAABx07EX06CAExfKAUO0fvX0bzYEwWDjQKSnu8qmmqdKlxAAAAAijyDUg1QvKg1YP4WzTn1RQAAAAJP5VMC8O3109KDai2NVS46r8lj3DRbW8CrELcOPSY/y1UAT7jVe3Kid1CWhnQ9MSn/UHR02gjrUOaMD3Nz7qDc</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
@@ -198,8 +234,8 @@ WHERE Doc_Type IN ('Fact', 'AVOI')
               <connections>
                 <connection
                   refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[SOFIENLAPTOP.ENPH]"
+                  connectionManagerID="Package.ConnectionManagers[SOFIENLAPTOP\MSSQLSERVER1.ENPH.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[SOFIENLAPTOP\MSSQLSERVER1.ENPH.sa]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -334,8 +370,8 @@ WHERE
               <connections>
                 <connection
                   refId="Package\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="{BB649CE1-4286-4096-B1A1-546243586420}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[SOFIENLAPTOP.TESTPH2]"
+                  connectionManagerID="Package.ConnectionManagers[SOFIENLAPTOP\MSSQLSERVER1.TESTPH2.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[SOFIENLAPTOP\MSSQLSERVER1.TESTPH2.sa]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -460,7 +496,7 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
+          SQLTask:Connection="{582210B3-0D61-4487-B7C0-322D49EEEA23}"
           SQLTask:SqlStatementSource="SELECT last_run_date&#xA;FROM [dbo].[etl_Watermark]&#xA;WHERE package_name = 'DimDocument';"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -482,7 +518,7 @@ WHERE
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
+          SQLTask:Connection="{582210B3-0D61-4487-B7C0-322D49EEEA23}"
           SQLTask:SqlStatementSource="UPDATE [dbo].[etl_Watermark]&#xA;SET last_run_date = GETDATE()&#xA;WHERE package_name = 'DimDocument';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>

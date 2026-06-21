@@ -7,14 +7,33 @@
   DTS:CreatorName="SOFIENLAPTOP\sofien"
   DTS:DTSID="{CD15DB09-2090-40E0-8428-8405AE364545}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LastModifiedProductVersion="17.0.1008.3"
   DTS:LocaleID="3072"
   DTS:ObjectName="DeleteDataFromTables"
   DTS:PackageType="5"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{0F7F2BFC-52AA-4841-ABF5-E01B5074707C}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{CB1892D5-C020-4F4A-B2E3-07CF4193FF67}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SOFIENLAPTOP\MSSQLSERVER1.ENPH.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F8837FC6-750C-4FEB-B6F6-BBFF1A9E184A}"
+      DTS:ObjectName="SOFIENLAPTOP\MSSQLSERVER1.ENPH.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=SOFIENLAPTOP\MSSQLSERVER1;User ID=sa;Initial Catalog=ENPH;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-DeleteDataFromTables-{F8837FC6-750C-4FEB-B6F6-BBFF1A9E184A}SOFIENLAPTOP\MSSQLSERVER1.ENPH.sa;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABTT5fLGpfbeIO8Yno6rxEllL7IoxIQMtX8D68CIizV6wAAAAAOgAAAAAIAACAAAAAnVctl46UQTu4sTt2jny8HzjofAsx5Zgk8xKeXV4FDOhAAAACnJnSYEBt4f0Qsx97cPjeiQAAAAPR7lEthSVis7Iacjioda30rk7Vt63exdSHK/0PTbnuPX/8811Z+HEGqr6DqwOIaBsEikBrIBlhe1mQTTHCgtqg</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -30,7 +49,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
+          SQLTask:Connection="{F8837FC6-750C-4FEB-B6F6-BBFF1A9E184A}"
           SQLTask:SqlStatementSource="DELETE FROM [dbo].[dim_article]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -47,7 +66,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
+          SQLTask:Connection="{F8837FC6-750C-4FEB-B6F6-BBFF1A9E184A}"
           SQLTask:SqlStatementSource="DELETE FROM [dbo].[etl_Watermark]&#xA;    " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -64,7 +83,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
+          SQLTask:Connection="{F8837FC6-750C-4FEB-B6F6-BBFF1A9E184A}"
           SQLTask:SqlStatementSource="DELETE FROM [dbo].[fait_fraisfab]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -81,7 +100,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
+          SQLTask:Connection="{F8837FC6-750C-4FEB-B6F6-BBFF1A9E184A}"
           SQLTask:SqlStatementSource="DELETE FROM [dbo].[dim_document]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -98,7 +117,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
+          SQLTask:Connection="{F8837FC6-750C-4FEB-B6F6-BBFF1A9E184A}"
           SQLTask:SqlStatementSource="DELETE FROM [dbo].[dim_docDetails]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -115,7 +134,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
+          SQLTask:Connection="{F8837FC6-750C-4FEB-B6F6-BBFF1A9E184A}"
           SQLTask:SqlStatementSource="-- ============================================&#xA;-- Reset IDENTITY seeds (run only when tables are empty)&#xA;-- ============================================&#xA;&#xA;-- 1. fait_ventes&#xA;IF (SELECT COUNT(*) FROM [dbo].[fait_ventes]) = 0&#xA;    DBCC CHECKIDENT ('[dbo].[fait_ventes]', RESEED, 0);&#xA;&#xA;-- 2. fait_fraisfab&#xA;IF (SELECT COUNT(*) FROM [dbo].[fait_fraisfab]) = 0&#xA;    DBCC CHECKIDENT ('[dbo].[fait_fraisfab]', RESEED, 0);&#xA;&#xA;-- 3. dim_stock&#xA;IF (SELECT COUNT(*) FROM [dbo].[dim_stock]) = 0&#xA;    DBCC CHECKIDENT ('[dbo].[dim_stock]', RESEED, 0);&#xA;&#xA;-- 4. dim_ofnomenclature&#xA;IF (SELECT COUNT(*) FROM [dbo].[dim_ofnomenclature]) = 0&#xA;    DBCC CHECKIDENT ('[dbo].[dim_ofnomenclature]', RESEED, 0);&#xA;&#xA;-- Verify all current identity values&#xA;SELECT &#xA;    OBJECT_NAME(OBJECT_ID)  AS table_name,&#xA;    last_value              AS current_identity,&#xA;    seed_value              AS seed,&#xA;    increment_value         AS increment&#xA;FROM sys.identity_columns&#xA;WHERE OBJECT_NAME(OBJECT_ID) IN (&#xA;    'fait_ventes',&#xA;    'fait_fraisfab',&#xA;    'dim_stock',&#xA;    'dim_ofnomenclature'&#xA;)&#xA;ORDER BY table_name;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -132,7 +151,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
+          SQLTask:Connection="{F8837FC6-750C-4FEB-B6F6-BBFF1A9E184A}"
           SQLTask:SqlStatementSource="DELETE FROM [dbo].[dim_OFNomenclature]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -149,7 +168,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
+          SQLTask:Connection="{F8837FC6-750C-4FEB-B6F6-BBFF1A9E184A}"
           SQLTask:SqlStatementSource="DELETE FROM [dbo].[dim_OFSuivi]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -166,7 +185,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
+          SQLTask:Connection="{F8837FC6-750C-4FEB-B6F6-BBFF1A9E184A}"
           SQLTask:SqlStatementSource="DELETE FROM [dbo].[dim_ordrefab]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -183,7 +202,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
+          SQLTask:Connection="{F8837FC6-750C-4FEB-B6F6-BBFF1A9E184A}"
           SQLTask:SqlStatementSource="DELETE FROM [dbo].[dim_stock]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -200,7 +219,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
+          SQLTask:Connection="{F8837FC6-750C-4FEB-B6F6-BBFF1A9E184A}"
           SQLTask:SqlStatementSource="DELETE FROM [dbo].[fait_ventes]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>

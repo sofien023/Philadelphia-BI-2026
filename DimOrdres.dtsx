@@ -7,14 +7,50 @@
   DTS:CreatorName="SOFIENLAPTOP\sofien"
   DTS:DTSID="{75C9B158-6263-4AE4-8203-E920E3CAD0BD}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LastModifiedProductVersion="17.0.1008.3"
   DTS:LocaleID="1033"
   DTS:ObjectName="DimOrdres"
   DTS:PackageType="5"
-  DTS:VersionBuild="39"
-  DTS:VersionGUID="{BA21A367-4C43-46D5-85F4-B51539C1340F}">
+  DTS:VersionBuild="41"
+  DTS:VersionGUID="{6F82FD9E-D45A-48AF-A673-62F38463EE70}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SOFIENLAPTOP\MSSQLSERVER1.ENPH.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{8D2015B1-638B-4675-ADB6-F11047095097}"
+      DTS:ObjectName="SOFIENLAPTOP\MSSQLSERVER1.ENPH.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=SOFIENLAPTOP\MSSQLSERVER1;User ID=sa;Initial Catalog=ENPH;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-DimOrdres-{8D2015B1-638B-4675-ADB6-F11047095097}SOFIENLAPTOP\MSSQLSERVER1.ENPH.sa;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACaDibZEapjWpC9l6qSD4pgvDs5VpjJvUDmZ3E0v/jMuwAAAAAOgAAAAAIAACAAAACqwVnfMBXERrDcY7THB9kwIT49XoHvhsm13ktmVEx8ZRAAAACLVai9w+hmzpzLdRZm3089QAAAAHbUXtW7qQQUZHZaz6q3HCQHmYBOLI68eSXOEDxUjdz3mAdAe/kbooPKheJQ/8rZ2IIxZgytbDCMgjrNWhFQyXs</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SOFIENLAPTOP\MSSQLSERVER1.TESTPH2.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{70FCD4D2-B40B-4573-92AF-BEF2C817A5DA}"
+      DTS:ObjectName="SOFIENLAPTOP\MSSQLSERVER1.TESTPH2.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=SOFIENLAPTOP\MSSQLSERVER1;User ID=sa;Initial Catalog=TESTPH2;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-DimOrdres-{70FCD4D2-B40B-4573-92AF-BEF2C817A5DA}SOFIENLAPTOP\MSSQLSERVER1.TESTPH2.sa;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAA7PuFgry5KwG3Knqc99Zn8QY5hmF2OSWnn1m0OdzQiHQAAAAAOgAAAAAIAACAAAABe0O+1G6kWpx+yAQkky5ALm+hrQF8Krm+PgGlxt54nIxAAAACLDinIZa4onXXkijVxxVZXQAAAAP/JitNnpdLid/017P2DUcYOQy9f3wQvn4V3CynLZfDrWuvmCb02gJqUV54E035WIV9IQw/S6tH5dRWIeVxFMYc</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
@@ -203,8 +239,8 @@ WHERE o.Date_Create &gt;= '2021-01-01'
               <connections>
                 <connection
                   refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[SOFIENLAPTOP.ENPH]"
+                  connectionManagerID="Package.ConnectionManagers[SOFIENLAPTOP\MSSQLSERVER1.ENPH.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[SOFIENLAPTOP\MSSQLSERVER1.ENPH.sa]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -384,8 +420,8 @@ WHERE o.Date_Create &gt;= '2021-01-01'
               <connections>
                 <connection
                   refId="Package\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="{BB649CE1-4286-4096-B1A1-546243586420}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[SOFIENLAPTOP.TESTPH2]"
+                  connectionManagerID="Package.ConnectionManagers[SOFIENLAPTOP\MSSQLSERVER1.TESTPH2.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[SOFIENLAPTOP\MSSQLSERVER1.TESTPH2.sa]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -579,7 +615,7 @@ WHERE o.Date_Create &gt;= '2021-01-01'
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
+          SQLTask:Connection="{8D2015B1-638B-4675-ADB6-F11047095097}"
           SQLTask:SqlStatementSource="SELECT last_run_date&#xA;FROM [dbo].[etl_Watermark]&#xA;WHERE package_name = 'DimOrdres';"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
@@ -601,7 +637,7 @@ WHERE o.Date_Create &gt;= '2021-01-01'
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
+          SQLTask:Connection="{8D2015B1-638B-4675-ADB6-F11047095097}"
           SQLTask:SqlStatementSource="UPDATE [dbo].[etl_Watermark]&#xA;SET last_run_date = GETDATE()&#xA;WHERE package_name = 'DimOrdres';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -637,15 +673,15 @@ WHERE o.Date_Create &gt;= '2021-01-01'
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="155.2,41.6"
+          Size="155,42"
           Id="Package\Data Flow Task"
           TopLeft="384.301586848808,204.18300649722" />
         <NodeLayout
-          Size="158.4,41.6"
+          Size="158,42"
           Id="Package\Read Watermark"
           TopLeft="267.539682821825,58.1503267981304" />
         <NodeLayout
-          Size="168,41.6"
+          Size="168,42"
           Id="Package\Update Watermark"
           TopLeft="479.682538702645,389.15032668418" />
         <EdgeLayout
@@ -725,15 +761,15 @@ WHERE o.Date_Create &gt;= '2021-01-01'
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150.4,41.6"
+          Size="150,42"
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="504,2" />
         <NodeLayout
-          Size="171.2,41.6"
+          Size="171,42"
           Id="Package\Data Flow Task\OLE DB Destination"
           TopLeft="496.428571005865,297.823529488178" />
         <NodeLayout
-          Size="158.4,41.6"
+          Size="158,42"
           Id="Package\Data Flow Task\Derived Column"
           TopLeft="502,135" />
         <EdgeLayout

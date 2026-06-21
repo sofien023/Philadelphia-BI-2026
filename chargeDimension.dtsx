@@ -7,14 +7,33 @@
   DTS:CreatorName="SOFIENLAPTOP\sofien"
   DTS:DTSID="{404F9424-D9DF-41B4-980B-1EA4BDE77075}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LastModifiedProductVersion="17.0.1008.3"
   DTS:LocaleID="3072"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{4973FF0E-6E7F-4AC3-8D0E-3F9BF8606CD9}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{EDD517AF-8AF1-4AE3-AB24-36D060D580E0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SOFIENLAPTOP\MSSQLSERVER1.ENPH.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9C2EF6B1-FD15-4DA9-9AF0-68BD9C9CEDAD}"
+      DTS:ObjectName="SOFIENLAPTOP\MSSQLSERVER1.ENPH.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=SOFIENLAPTOP\MSSQLSERVER1;User ID=sa;Initial Catalog=ENPH;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-Package1-{9C2EF6B1-FD15-4DA9-9AF0-68BD9C9CEDAD}SOFIENLAPTOP\MSSQLSERVER1.ENPH.sa;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAX4yiWmdeaNTVB6AMYJ4NIx/rpmHv+UXaPnlUjOBb58wAAAAAOgAAAAAIAACAAAAC7vrov6gy1YF28MJeTjW6plry/q2rM8cz8+0yhmFR9bxAAAAC0I+yfwcMlbHIOFkLBdKIOQAAAAIDqNOALEcjLTde2vA4+2O9s/nANYrmbP2ZJDhB13WDBuKHHtVU/R/bxG62K642rkjjN0k1BJtuo2A7IAB3H4C4</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -30,8 +49,8 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{4BEAED95-F45E-4B35-BC7E-B2F8699C1B7D}"
-          SQLTask:SqlStatementSource="UPDATE dim_OFNomenclature&#xA;  SET  unite = 'MG'&#xA;WHERE        (cmp_code = 'RM100240') AND (unite = 'G')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:Connection="{9C2EF6B1-FD15-4DA9-9AF0-68BD9C9CEDAD}"
+          SQLTask:SqlStatementSource="UPDATE dim_OFNomenclature&#xA;SET unite = 'MG'&#xA;WHERE        (cmp_code = 'RM100240') AND (unite = 'G')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable

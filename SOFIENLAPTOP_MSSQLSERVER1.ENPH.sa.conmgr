@@ -1,0 +1,16 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="SOFIENLAPTOP_MSSQLSERVER1.ENPH.sa"
+  DTS:DTSID="{2115C4D9-9213-4070-95F5-17A5B704F1A9}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=SOFIENLAPTOP\MSSQLSERVER1;User ID=sa;Initial Catalog=ENPH;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-Philadelphia BI 2026-{2115C4D9-9213-4070-95F5-17A5B704F1A9}SOFIENLAPTOP\MSSQLSERVER1.ENPH.sa;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAACAAAAAAAQZgAAAAEAACAAAACEPv5eXRLLOwwZvWBbgUhmcnKzliv66XxDJt7uCGapiAAAAAAOgAAAAAIAACAAAABlRa2FjU0zHgiD3dUvEWc1kLZiuZEOwY0q5wCppnpaanAAAAD0SFZwc+oJUF/LmXdw1q7jl2nfJmxERjxRgAiVWp1c4a6T5DH/uQ69urkUoOMPWau4lHP8mmP7FvCJk/F+kPcRhowDOfGP15MT0ILNdWsu7SuF3xV95Okk0RIp9JIrGx5phn+FeSKg4tk+8mNopzuhQAAAACAD9Zf0Xh/Uw65+c/NtnEblLCMvbtbnMJlhtLml0TZB1cQyZPmrewP6yO9UxjaW1QYqbPwBTQMrNUhsCQhTm8s=</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
