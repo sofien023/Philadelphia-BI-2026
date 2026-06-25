@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{4C56617E-6372-4EA6-B279-82ACAA8CEA49}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{FAFFBA14-8FB4-4D20-BC8F-F80342B50BC4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -48,7 +48,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2115C4D9-9213-4070-95F5-17A5B704F1A9}"
-          SQLTask:SqlStatementSource="UPDATE dim_OFNomenclature&#xA;SET unite = 'MG'&#xA;WHERE        (cmp_code = 'RM100240') AND (unite = 'G')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE dim_OFNomenclature&#xA;SET unite = 'MG'&#xA;WHERE        (cmp_code = 'RM100240') AND (unite = 'G')&#xA;&#xA;UPDATE dim_OFNomenclature&#xA;SET unite = 'G'&#xA;WHERE        (cmp_code = 'PK100140') AND (unite = 'KG')" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -250,6 +250,10 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="160,42"
+          Id="Package\Correction Article"
+          TopLeft="294,118" />
+        <NodeLayout
           Size="196,42"
           Id="Package\Correction Nomenclature"
           TopLeft="292,318" />
@@ -295,6 +299,28 @@
                   Capacity="5">
                   <mssgle:LineSegment
                     End="198.499999999999,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="236.555563447652,141.6666666968">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="57.444436552348,0"
+              Start="0,0"
+              End="49.944436552348,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="49.944436552348,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -405,32 +431,6 @@
                   Capacity="5">
                   <mssgle:LineSegment
                     End="-75.944436552348,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="160,42"
-          Id="Package\Correction Article"
-          TopLeft="294,118" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="236.555563447652,141.6666666968">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="57.444436552348,0"
-              Start="0,0"
-              End="49.944436552348,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="49.944436552348,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
