@@ -11,29 +11,10 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="ChargeAllFirstTime"
   DTS:PackageType="5"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{DA9AC846-858C-4E80-ACA8-D1A69A39158E}">
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{4C9FFA92-1691-4B48-BBED-E8D541EF2EE8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[SOFIENLAPTOP\MSSQLSERVER1.ENPH.sa]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{360EB83E-5407-4F38-9D6E-CCDF0713EA2E}"
-      DTS:ObjectName="SOFIENLAPTOP\MSSQLSERVER1.ENPH.sa">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=SOFIENLAPTOP\MSSQLSERVER1;User ID=sa;Initial Catalog=ENPH;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-ChargeAllFirstTime-{360EB83E-5407-4F38-9D6E-CCDF0713EA2E}SOFIENLAPTOP\MSSQLSERVER1.ENPH.sa;Auto Translate=False;">
-          <DTS:Password
-            DTS:Name="Password"
-            Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADqoHKrUUp0UEnjtzCf9W6xIA2OG+5QOrRRhZqX+HxhawAAAAAOgAAAAAIAACAAAAAMu9dGCm8a8S6yCMfp8myQDm7Uxgzw3JKkz9bJwC7E6BAAAADbC+izguEXH4LVprKcVKYvQAAAAOGVsQh5QDfOReIL2JHjtdUsrUgt8uygWzNGfgXTGZ6fGPYOjQhMPl3xN+s5/woboyARLNd8fqaJAR/txSn7TSU</DTS:Password>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -66,7 +47,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{360EB83E-5407-4F38-9D6E-CCDF0713EA2E}"
+          SQLTask:Connection="{2115C4D9-9213-4070-95F5-17A5B704F1A9}"
           SQLTask:SqlStatementSource="INSERT INTO [dbo].[etl_Watermark] (package_name, last_run_date)&#xA;SELECT 'DimOrdres', '2021-01-01'&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1 FROM [dbo].[etl_Watermark] &#xA;    WHERE package_name = 'DimOrdres'&#xA;);&#xA;&#xA;INSERT INTO [dbo].[etl_Watermark] (package_name, last_run_date)&#xA;SELECT 'DimNomenclatureOrdre', '2021-01-01'&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1 FROM [dbo].[etl_Watermark]&#xA;    WHERE package_name = 'DimNomenclatureOrdre'&#xA;);&#xA;&#xA;INSERT INTO [dbo].[etl_Watermark] (package_name, last_run_date)&#xA;SELECT 'DimArticle', '2000-01-01'&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1 FROM [dbo].[etl_Watermark] &#xA;    WHERE package_name = 'DimArticle'&#xA;);&#xA;&#xA;INSERT INTO [dbo].[etl_Watermark] (package_name, last_run_date)&#xA;SELECT 'DimStock', '2020-01-01'&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1 FROM [dbo].[etl_Watermark]&#xA;    WHERE package_name = 'DimStock'&#xA;);&#xA;&#xA;INSERT INTO [dbo].[etl_Watermark] (package_name, last_run_date)&#xA;SELECT 'DimDocument', '2000-01-01'&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1 FROM [dbo].[etl_Watermark]&#xA;    WHERE package_name = 'DimDocument'&#xA;);&#xA;&#xA;INSERT INTO [dbo].[etl_Watermark] (package_name, last_run_date)&#xA;SELECT 'DimDocumentDetails', '2000-01-01'&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1 FROM [dbo].[etl_Watermark]&#xA;    WHERE package_name = 'DimDocumentDetails'&#xA;);&#xA;&#xA;INSERT INTO [dbo].[etl_Watermark] (package_name, last_run_date)&#xA;SELECT 'DimSuiviOrdres', '2021-01-01'&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1 FROM [dbo].[etl_Watermark]&#xA;    WHERE package_name = 'DimSuiviOrdres'&#xA;);&#xA;&#xA;INSERT INTO [dbo].[etl_Watermark] (package_name, last_run_date)&#xA;SELECT 'FaitVentes', '2010-01-01'&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1 FROM [dbo].[etl_Watermark]&#xA;    WHERE package_name = 'FaitVentes'&#xA;);&#xA;&#xA;INSERT INTO [dbo].[etl_Watermark] (package_name, last_run_date)&#xA;SELECT 'FaitFraisFab', '2021-01-01'&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1 FROM [dbo].[etl_Watermark]&#xA;    WHERE package_name = 'FaitFraisFab'&#xA;);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
