@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DimArticle"
   DTS:PackageType="5"
-  DTS:VersionBuild="81"
-  DTS:VersionGUID="{0F1AE828-5918-416B-9C63-B59ADA3ADE7F}">
+  DTS:VersionBuild="83"
+  DTS:VersionGUID="{9156B545-E6B2-4094-AB3A-E28F731F9DE8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -29,7 +29,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAD2+4V2oWKAAh20kqQQQjXAof8vsc7/sT5sjpg8fktHXQAAAAAOgAAAAAIAACAAAABzVEYMbRwIf2Wlkp/8dJ0tfcTIhL8ijCoqn1fyRwlJzhAAAAA7eIEaJYRLYdcbAQf8T4+DQAAAAGNlYYWNr1ciKcwFF/scOTt9J1P2Ubi9Qj/zD3rwqFaHTwzst19rJ5TYMq/WUOF8wqEflYfZzKJFSfeQG1dvdkk</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACB0MDoDQ72zfIhXr9QRJ1gUVOG8NKw+dba7pkTJ4HnsgAAAAAOgAAAAAIAACAAAABvOGgSVYJ51HUU/mgxsMfn0fYDNQ8ifvCt2ONJFpLrRRAAAAAdK6GvfR4drVWXVmgwW4niQAAAALIL7Tn0G5qM3vkib4rnCNVn9Ac8ZuOPpx2Y9+vd1WUvpdqdcCC0RUlNpGF7wdQ2kgtKLG/fPZZQUp9LjnBQs54</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -46,7 +46,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAYYs8ymIVlKXp+A3gfs2JbkX0Yj/3++8yua+W254xpNAAAAAAOgAAAAAIAACAAAAAjqmY4RtxitUbC1ne5ZQrdhBsOm/T9hXBRdN4UoHgDChAAAADhYbo/8RpknFKTNwXVTUcWQAAAAMrGnIhvUlwzTeSDkdQzPffcW/DhF6L5l4czLBQRSNR7CBuzRT1i7azn4n7blgFL3XOi3dKaif9WeaUUzJ9SV3w</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACuSNECfY4j+6SpZ17TAzsnJLtP0m9SylH/PlNPqzkvZQAAAAAOgAAAAAIAACAAAAACU8BoatjRa4kUSpYSt+JU66eM3XSHIZQctBJf6ty+txAAAABqW3NtUSR7iVusbJ4MFlSCQAAAAFFXlRs4udHjDCuoXgbmZkbYIx3lKpP/e0tDZC40r3I1rvAbeGEBLtrhK8R6X1D7EGae7qaMCNj5OGKvKXunn14</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -627,7 +627,7 @@ WHERE artcat_code IN ('fabvendu', 'fabriqué', 'matière','ARCHIVE','Sous-trait'
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="170,42"
           Id="Package\Data Flow Task\OLE DB Destination"
@@ -655,7 +655,9 @@ WHERE artcat_code IN ('fabvendu', 'fabriqué', 'matière','ARCHIVE','Sous-trait'
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

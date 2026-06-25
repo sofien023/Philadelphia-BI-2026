@@ -8,11 +8,11 @@
   DTS:DTSID="{3B03FF20-2156-4779-B63B-417B768A9FCA}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="17.0.1008.3"
-  DTS:LocaleID="3072"
+  DTS:LocaleID="1033"
   DTS:ObjectName="FaitFraisFab"
   DTS:PackageType="5"
-  DTS:VersionBuild="46"
-  DTS:VersionGUID="{8405AFA6-7699-4F42-9A61-F0DAD6D095BE}">
+  DTS:VersionBuild="47"
+  DTS:VersionGUID="{28877A5A-0975-4E65-9D2E-61C848E5BA0C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -29,7 +29,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABZ1Dkb+iwKLssh9mUvIOU6mKyhfcoa+ry08kUZ2cMYMQAAAAAOgAAAAAIAACAAAAC7Z2V3reMRJiXtiWOmJyaFCp+qRxvfW8JiWyre350PtRAAAABLErwkRUKwFL6dt0zUqvrQQAAAABbiDhakx0XYuoLAXwqR3sEJmbhRNKmVTtgnfS/IxMkU1LC+WpamLWmryh5gM3g5lhY+QW+U7DIME0kzVSL5wVQ</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABDvYJHfgNpl/ZCm1Fz3V8WH0CEg36H3/rlZApZCVsfIwAAAAAOgAAAAAIAACAAAAAeKepnbr2t0m5F64V7tVVPOSpCYCxf+r4Pp/V7mCGFfRAAAADWAir1sHLSyPP/jcBWfC9MQAAAALt137F5EV5iBKM3OyVI5SPLPmzlouzWFgb9Mzfh6QzOMdIhUm6zNYwMam/ipYfxaLIbOhcGyHQSwBkqq5+9lNw</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>

@@ -8,11 +8,11 @@
   DTS:DTSID="{ACA2D01F-E1D9-40B9-8E91-0D812C34E949}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="17.0.1008.3"
-  DTS:LocaleID="3072"
+  DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="18"
-  DTS:VersionGUID="{923AAFF0-505B-4D67-A245-833C9E64B484}">
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{2F447908-88AB-4B4B-8CAB-67AD2BE5C95F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -29,7 +29,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACSGdjIMyoB/LwqLQFFK/z3fwab2t0s7DB96KiJWLWI8QAAAAAOgAAAAAIAACAAAAALk+ysgWVAWS9jgHHpO8sbyOvpQlZN+3rTZDHMSD+1CxAAAABiI+n/J8wKotFD1pH3yCbaQAAAAPi47dRlAu1Xxa9uSJiJnJQUwGaX2o2m3XgvXzPDnKXBxM9+KpYPk5Ik4eyw6QqeEGAbKtObsikhBOXbkPlpuVA</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACh9NFYsse9siUtp/bElwG/L+TC7vdyWufnwIdlZXDAfAAAAAAOgAAAAAIAACAAAAD1RQ8PouvVQqzNNXSVq/O1ebhuKYZdrURqmpINokLYIhAAAAAJd3iDozbqClo32By/06VoQAAAAPAQQJ0b+63oyj4hau4KN0G7zgsoqEjwr6Il89GMWCWorEXQBraFRZ5va1AdvpPCfV43pXmXL0mJrFFRUsUrpIY</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -1108,7 +1108,7 @@ ORDER BY Doc_Num</property>
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="133,42"
           Id="Package\Data Flow Task\Merge Join"
@@ -1160,7 +1160,9 @@ ORDER BY Doc_Num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1182,7 +1184,9 @@ ORDER BY Doc_Num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1204,7 +1208,9 @@ ORDER BY Doc_Num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1238,7 +1244,9 @@ ORDER BY Doc_Num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

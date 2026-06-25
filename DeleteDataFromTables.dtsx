@@ -8,11 +8,11 @@
   DTS:DTSID="{CD15DB09-2090-40E0-8428-8405AE364545}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="17.0.1008.3"
-  DTS:LocaleID="3072"
+  DTS:LocaleID="1033"
   DTS:ObjectName="DeleteDataFromTables"
   DTS:PackageType="5"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{CB1892D5-C020-4F4A-B2E3-07CF4193FF67}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{E36B5B8C-FAFE-4772-8AA1-2860887F297E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -29,7 +29,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABTT5fLGpfbeIO8Yno6rxEllL7IoxIQMtX8D68CIizV6wAAAAAOgAAAAAIAACAAAAAnVctl46UQTu4sTt2jny8HzjofAsx5Zgk8xKeXV4FDOhAAAACnJnSYEBt4f0Qsx97cPjeiQAAAAPR7lEthSVis7Iacjioda30rk7Vt63exdSHK/0PTbnuPX/8811Z+HEGqr6DqwOIaBsEikBrIBlhe1mQTTHCgtqg</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADUsG17GEPAOq7+xiznfRJoMFYiLqGpO6nUAchJBLm4awAAAAAOgAAAAAIAACAAAAAk1D3dUpXrVRr5kEvDyxLKkIFnDewkzlnhZY1mjVx3XxAAAAAdKCpGwBI2m/JvAQVet1vzQAAAAEs8bXjkfeHqzjk3VBw9S2XHM70jIQquZ/F1mi1VoXUtI3JoufdgNejQIHV5O788H//OjvD0D7hhZSROyT7ozgM</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>

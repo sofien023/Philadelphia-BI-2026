@@ -7,12 +7,12 @@
   DTS:CreatorName="SOFIENLAPTOP\sofien"
   DTS:DTSID="{BABA9E5B-74DE-40D9-BEDB-05A04304BC97}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="17.0.1010.2"
-  DTS:LocaleID="3072"
+  DTS:LastModifiedProductVersion="17.0.1008.3"
+  DTS:LocaleID="1033"
   DTS:ObjectName="charge all"
   DTS:PackageType="5"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{D048FD34-56F5-4491-BF63-30D4462383BC}">
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{BDFBE139-90CA-476E-A4B3-09A12A247D4B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />

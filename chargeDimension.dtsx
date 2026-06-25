@@ -8,11 +8,11 @@
   DTS:DTSID="{404F9424-D9DF-41B4-980B-1EA4BDE77075}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="17.0.1008.3"
-  DTS:LocaleID="3072"
+  DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{EDD517AF-8AF1-4AE3-AB24-36D060D580E0}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{5C0BEB8C-BBBB-4C36-AE56-DEB087CC6F9A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -29,7 +29,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAX4yiWmdeaNTVB6AMYJ4NIx/rpmHv+UXaPnlUjOBb58wAAAAAOgAAAAAIAACAAAAC7vrov6gy1YF28MJeTjW6plry/q2rM8cz8+0yhmFR9bxAAAAC0I+yfwcMlbHIOFkLBdKIOQAAAAIDqNOALEcjLTde2vA4+2O9s/nANYrmbP2ZJDhB13WDBuKHHtVU/R/bxG62K642rkjjN0k1BJtuo2A7IAB3H4C4</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADl9GWp00+wzNmnsG80oIdAVcgSBuH+rajzVx50W8WsmQAAAAAOgAAAAAIAACAAAADeM55qy2ecdKWNAoqg3hpYa9i8EoW3E3Ho3NbckEtTfBAAAABC5y7hoa70e0p4tJMBBxKQQAAAAM0VE/2zGobspNjByrdEdycDi1pg2TULEoOVGACNx/fAJTAJxuBV3CHeq7hfrsrzVuDJIx9IFXl5GIHlrYpDI5w</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -42,7 +42,7 @@
       DTS:Description="Execute SQL Task"
       DTS:DTSID="{D1992979-78AF-4B35-8151-9182D1313174}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
+      DTS:LocaleID="1033"
       DTS:ObjectName="Correction Nomenclature"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
@@ -59,7 +59,7 @@
       DTS:Description="Execute Package Task"
       DTS:DTSID="{DD63CD5A-1EF0-405E-82C3-FD2ACB42B476}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
-      DTS:LocaleID="-1"
+      DTS:LocaleID="1033"
       DTS:ObjectName="Dim Article"
       DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
@@ -76,7 +76,7 @@
       DTS:Description="Execute Package Task"
       DTS:DTSID="{AE9D9B91-C41D-4A82-9BF4-B1A79F8345F4}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
-      DTS:LocaleID="-1"
+      DTS:LocaleID="1033"
       DTS:ObjectName="Dim DocDetails"
       DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
@@ -93,7 +93,7 @@
       DTS:Description="Execute Package Task"
       DTS:DTSID="{FC89075C-0909-4FEC-B8D4-898E29449AA2}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
-      DTS:LocaleID="-1"
+      DTS:LocaleID="1033"
       DTS:ObjectName="Dim Document"
       DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
@@ -110,7 +110,7 @@
       DTS:Description="Execute Package Task"
       DTS:DTSID="{2B3AB787-ACC2-4C83-B281-1DA9C1CAFD74}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
-      DTS:LocaleID="-1"
+      DTS:LocaleID="1033"
       DTS:ObjectName="Dim Nomenclature Ordres de Fabrication"
       DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
@@ -127,7 +127,7 @@
       DTS:Description="Execute Package Task"
       DTS:DTSID="{B986F443-7629-485F-BF25-363ADF2A860D}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
-      DTS:LocaleID="-1"
+      DTS:LocaleID="1033"
       DTS:ObjectName="Dim Ordres Fabrication"
       DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
@@ -144,7 +144,7 @@
       DTS:Description="Execute Package Task"
       DTS:DTSID="{B41AAC2F-3B23-4D1F-B27B-DEBB3BF0F77A}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
-      DTS:LocaleID="-1"
+      DTS:LocaleID="1033"
       DTS:ObjectName="Dim Stock"
       DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
@@ -161,7 +161,7 @@
       DTS:Description="Execute Package Task"
       DTS:DTSID="{FFAEFDBD-19CE-4AE0-965B-E59ECFD1D85F}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
-      DTS:LocaleID="-1"
+      DTS:LocaleID="1033"
       DTS:ObjectName="Dim Suivi Ordres de Fabrication"
       DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
