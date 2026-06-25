@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DimArticle"
   DTS:PackageType="5"
-  DTS:VersionBuild="85"
-  DTS:VersionGUID="{5DA9EFC6-BEA7-49CA-B5C0-10F4E7DE4C02}">
+  DTS:VersionBuild="86"
+  DTS:VersionGUID="{6D4D637E-D518-4305-B0C4-72C82CA5D652}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -165,7 +165,7 @@ WHERE artcat_code IN ('fabvendu', 'fabriqué', 'matière', 'ARCHIVE', 'Sous-trai
                       cachedDataType="wstr"
                       cachedLength="10"
                       cachedName="ArtCat_Code"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Catigorie]"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Categorie]"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ArtCat_Code]" />
                   </inputColumns>
                   <externalMetadataColumns
@@ -181,11 +181,6 @@ WHERE artcat_code IN ('fabvendu', 'fabriqué', 'matière', 'ARCHIVE', 'Sous-trai
                       length="100"
                       name="Description" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Catigorie]"
-                      dataType="wstr"
-                      length="10"
-                      name="Catigorie" />
-                    <externalMetadataColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Famille]"
                       dataType="wstr"
                       length="10"
@@ -195,6 +190,11 @@ WHERE artcat_code IN ('fabvendu', 'fabriqué', 'matière', 'ARCHIVE', 'Sous-trai
                       dataType="wstr"
                       length="50"
                       name="Article_De_Base" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Categorie]"
+                      dataType="wstr"
+                      length="10"
+                      name="Categorie" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
