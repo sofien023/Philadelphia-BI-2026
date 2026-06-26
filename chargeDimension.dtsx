@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{FAFFBA14-8FB4-4D20-BC8F-F80342B50BC4}">
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{C6EDE8E9-6C3D-4ED9-A35D-A193921F92F7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -31,7 +31,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2115C4D9-9213-4070-95F5-17A5B704F1A9}"
-          SQLTask:SqlStatementSource="UPDATE dim_article&#xA;SET article_de_base =&#xA;    CASE&#xA;        WHEN art_code LIKE '%3052' THEN 'BPG3052'&#xA;        WHEN art_code LIKE '%3231' THEN 'BPM3231'&#xA;        WHEN art_code LIKE '%3159' THEN 'BPG3151'&#xA;        WHEN art_code LIKE '%9000' THEN 'BPM9000'&#xA;        WHEN art_code LIKE '%3102' THEN 'BPM3102'&#xA;        ELSE article_de_base&#xA;    END&#xA;WHERE article_de_base IS NULL&#xA;  AND (&#xA;        art_code LIKE '%3052'&#xA;     OR art_code LIKE '%3231'&#xA;     OR art_code LIKE '%3159'&#xA;     OR art_code LIKE '%9000'&#xA;     OR art_code LIKE '%3102'&#xA;  );" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE dim_article&#xA;SET article_de_base =&#xA;    CASE&#xA;        WHEN art_code LIKE '%3052' THEN 'BPG3052'&#xA;        WHEN art_code LIKE '%3231' THEN 'BPM3231'&#xA;        WHEN art_code LIKE '%3159' THEN 'BPG3151'&#xA;        WHEN art_code LIKE '%9000' THEN 'BPM9000'&#xA;        WHEN art_code LIKE '%3102' THEN 'BPM3102'&#xA;        WHEN art_code LIKE '%3022' THEN 'BPM3022'&#xA;        ELSE article_de_base&#xA;    END&#xA;WHERE article_de_base IS NULL&#xA;  AND (&#xA;        art_code LIKE '%3052'&#xA;     OR art_code LIKE '%3231'&#xA;     OR art_code LIKE '%3159'&#xA;     OR art_code LIKE '%9000'&#xA;     OR art_code LIKE '%3102'&#xA;     OR art_code LIKE '%3022'&#xA;  );" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
