@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="replique_replique.TESTPH2.sa"
+  DTS:DTSID="{EC5F974C-43E3-4FEE-BEC2-1476A23E8475}"
+  DTS:CreationName="ADO.NET:Microsoft.Data.SqlClient.SqlConnection, Microsoft.Data.SqlClient, Version=5.0.0.0, Culture=neutral, PublicKeyToken=23ec7fc2d6eaa4a5">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=replique\replique;User ID=sa;Initial Catalog=TESTPH2;Trust Server Certificate=True;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAACAAAAAAAQZgAAAAEAACAAAAATlRtQGV4I1FsKiOPWW9ZTBXmwbu0TuzkMzOvwFb1BWAAAAAAOgAAAAAIAACAAAAAwkKATOvp4jv9BYrJmwhrNGPaX/h1j9eW/15R6R1gxYHAAAACl9nQwCNAFHWRrqeJ2H5549rPTRNgXGgDmkpzBl9p5551BI3vx3e+wknyym236xer8ofg4TOuqaUmtJf5nkDg7gX2d7jteNNX6yLodEDUTBcdllhruJJFfADi4xFpEhxSvL36bcx1ER0bDblRfdJwqQAAAABGxbv+ZGV2zaU3Gtmdt8EJ+RsZ7z5M6D/rvS6ggAfuOq4B4otHd/6UeWAfJaHrBLbTNRjepPd3u0YOwjlzpYwo=</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
