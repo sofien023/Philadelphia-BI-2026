@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{2F447908-88AB-4B4B-8CAB-67AD2BE5C95F}">
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{D9DAE4BB-066A-4B9F-B963-54144CCF5EA4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -29,7 +29,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACh9NFYsse9siUtp/bElwG/L+TC7vdyWufnwIdlZXDAfAAAAAAOgAAAAAIAACAAAAD1RQ8PouvVQqzNNXSVq/O1ebhuKYZdrURqmpINokLYIhAAAAAJd3iDozbqClo32By/06VoQAAAAPAQQJ0b+63oyj4hau4KN0G7zgsoqEjwr6Il89GMWCWorEXQBraFRZ5va1AdvpPCfV43pXmXL0mJrFFRUsUrpIY</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAD3XmveDfw4FsBIuKfYHjrfimSsHMhBKlRmFh9Gc/ltHwAAAAAOgAAAAAIAACAAAAAzTCE77mfx5Hk/SG3dSt6fo5PQSs8lDQYfpdSEjm/PfBAAAABpHuLPVz+kWsu1UOMrCfpJQAAAAA5NtuNQBvSZTd43HZt1x5gZZUveZ5/f52AzSepcD9BvECOsNNrzHM0wvHDACEmwGasl2kKFa5JCJgE79mUbJ8Y</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -126,6 +126,13 @@ WHERE Date &gt;= 20000101 ORDER BY Doc_Num</DTS:VariableValue>
                       cachedScale="3"
                       lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[prix_unitaire_HT]" />
                     <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[Devise]"
+                      cachedDataType="numeric"
+                      cachedName="Devise"
+                      cachedPrecision="18"
+                      cachedScale="8"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Devise]" />
+                    <inputColumn
                       refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[quantite]"
                       cachedDataType="numeric"
                       cachedName="quantite"
@@ -145,25 +152,25 @@ WHERE Date &gt;= 20000101 ORDER BY Doc_Num</DTS:VariableValue>
                   synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Cout Ligne]"
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Cout_ligne]"
                       dataType="r8"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Cout Ligne]"
-                      name="Cout Ligne"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Cout_ligne]"
+                      name="Cout_ligne"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">([SUBSTRING](#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Doc_Num]},1,1) == "A" ? (DT_R8)-1.0 : (DT_R8)1.0) * ((DT_R8)#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[quantite]} * (DT_R8)#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[prix_unitaire_HT]})</property>
+                          name="Expression">([SUBSTRING](#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Doc_Num]},1,1) == "A" ? ((DT_R8)-1.0) : ((DT_R8)1.0)) * ((DT_R8)#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[prix_unitaire_HT]} * (DT_R8)#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Devise]}) * (DT_R8)#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[quantite]}</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">(SUBSTRING(Doc_Num,1,1) == "A" ? (DT_R8)-1.0 : (DT_R8)1.0) * ((DT_R8)quantite * (DT_R8)prix_unitaire_HT)</property>
+                          name="FriendlyExpression">(SUBSTRING(Doc_Num,1,1) == "A" ? ((DT_R8)-1.0) : ((DT_R8)1.0)) * ((DT_R8)prix_unitaire_HT * (DT_R8)Devise) * (DT_R8)quantite</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -238,6 +245,13 @@ WHERE Date &gt;= 20000101 ORDER BY Doc_Num</DTS:VariableValue>
                       cachedDataType="i4"
                       cachedName="Date"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[Devise]"
+                      cachedDataType="numeric"
+                      cachedName="Devise"
+                      cachedPrecision="18"
+                      cachedScale="8"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Devise]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -355,6 +369,21 @@ WHERE Date &gt;= 20000101 ORDER BY Doc_Num</DTS:VariableValue>
                           name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[Art_Code]}</property>
                       </properties>
                     </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Devise]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Devise]"
+                      name="Devise"
+                      precision="18"
+                      scale="8">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[Devise]}</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -470,11 +499,11 @@ WHERE Date &gt;= 20000101 ORDER BY Doc_Num</DTS:VariableValue>
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[art_code]"
                       lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Art_Code]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Cout Ligne]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Cout_ligne]"
                       cachedDataType="r8"
-                      cachedName="Cout Ligne"
+                      cachedName="Cout_ligne"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CA_ligne]"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Cout Ligne]" />
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Cout_ligne]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -567,9 +596,9 @@ WHERE Date &gt;= 20000101 ORDER BY Doc_Num</DTS:VariableValue>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT Doc_Num, Date
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT Doc_Num, Date ,Devise
 FROM dim_document
-ORDER BY Doc_Num</property>
+WHERE Date &gt;= 20000101 ORDER BY Doc_Num</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -586,7 +615,7 @@ ORDER BY Doc_Num</property>
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">3</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -626,6 +655,17 @@ ORDER BY Doc_Num</property>
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Date]"
                       name="Date"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Devise]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Devise]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Devise]"
+                      name="Devise"
+                      precision="18"
+                      scale="8"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -638,6 +678,12 @@ ORDER BY Doc_Num</property>
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Date]"
                       dataType="i4"
                       name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Devise]"
+                      dataType="numeric"
+                      name="Devise"
+                      precision="18"
+                      scale="8" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -656,6 +702,13 @@ ORDER BY Doc_Num</property>
                       dataType="i4"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Date]"
                       name="Date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Devise]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Devise]"
+                      name="Devise"
+                      precision="18"
+                      scale="8" />
                     <outputColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -698,9 +751,10 @@ ORDER BY Doc_Num</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT Doc_Num, Art_Code, quantite, prix_unitaire_HT
-FROM dim_docDetails
-ORDER BY Doc_Num</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT dd.Doc_Num, dd.Art_Code, dd.quantite, dd.prix_unitaire_HT
+FROM dim_docDetails dd
+INNER JOIN dim_document d ON dd.Doc_Num = d.Doc_Num
+WHERE d.Date &gt;= 20000101 ORDER BY dd.Doc_Num</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -717,7 +771,7 @@ ORDER BY Doc_Num</property>
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">3</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -984,19 +1038,19 @@ ORDER BY Doc_Num</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="151,42"
+          Size="151.2,41.6"
           Id="Package\Data Flow Task"
           TopLeft="430.714285662588,224.588235267306" />
         <NodeLayout
-          Size="163,42"
+          Size="163.2,41.6"
           Id="Package\Execute SQL Task"
           TopLeft="354,122" />
         <NodeLayout
-          Size="158,42"
+          Size="158.4,41.6"
           Id="Package\Read Watermark"
           TopLeft="334.571428376801,29.894117815973" />
         <NodeLayout
-          Size="167,42"
+          Size="167.2,41.6"
           Id="Package\Update Watermark"
           TopLeft="476.999999978713,360.247058782641" />
         <EdgeLayout
@@ -1108,25 +1162,21 @@ ORDER BY Doc_Num</property>
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="133,42"
+          Size="132.8,41.6"
           Id="Package\Data Flow Task\Merge Join"
           TopLeft="477,216" />
         <NodeLayout
-          Size="177,42"
+          Size="176.8,41.6"
           Id="Package\Data Flow Task\OLE DB Destination"
           TopLeft="450,433" />
         <NodeLayout
-          Size="158,42"
-          Id="Package\Data Flow Task\Derived Column"
-          TopLeft="462,314" />
-        <NodeLayout
-          Size="166,42"
+          Size="166.4,41.6"
           Id="Package\Data Flow Task\OLE DB Source 1"
           TopLeft="558.708335097672,58.6666666063997" />
         <NodeLayout
-          Size="157,42"
+          Size="156.8,41.6"
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="361,60" />
         <EdgeLayout
@@ -1160,57 +1210,7 @@ ORDER BY Doc_Num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Merge Join Output]"
-          TopLeft="542.25,258">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,56"
-              Start="0,0"
-              End="0,48.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,48.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output]"
-          TopLeft="539.75,356">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,77"
-              Start="0,0"
-              End="0,69.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,69.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1244,9 +1244,55 @@ ORDER BY Doc_Num</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="158.4,41.6"
+          Id="Package\Data Flow Task\Derived Column"
+          TopLeft="462,314" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Merge Join Output]"
+          TopLeft="542.25,258">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56"
+              Start="0,0"
+              End="0,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="539.8,355.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,77.4"
+              Start="0,0"
+              End="0,69.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,69.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

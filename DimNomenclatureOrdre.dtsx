@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DimNomenclatureOrdre"
   DTS:PackageType="5"
-  DTS:VersionBuild="53"
-  DTS:VersionGUID="{CBED9189-D89A-4221-AECC-F92716052AF0}">
+  DTS:VersionBuild="55"
+  DTS:VersionGUID="{B7B9C1C0-D2DA-442C-8515-765B9EE91528}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -29,7 +29,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADbXRoQ69rfosK5UZGtyYUVhB2T9R+107DW+jArhchxYQAAAAAOgAAAAAIAACAAAADGKAEyzkU/dgdyHfT8/h0gPyxQMWkdRsAjFhrIhopvPBAAAAC376TY0QyGdiezJAlJTYI6QAAAAJarS0dOyg4QW1VMGsLGh90uxT1oB7io75R3BxMus9y7XHZdiGE4zdGbNtLH5XxddVF+sT/GRtwK6KuVQ/ZsLbc</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACqkzb3SjhiwLls1kKjvvQJZHVnU0YYROsrqg4EmuqAQAAAAAAOgAAAAAIAACAAAABskGJHKdML+wRd/3/45maMzDq62y2QoUY6FxXuwk6gghAAAAAfXTkDw5yAATPyVMdjXBDWQAAAAAqty1PXiRYsjLmB6zA+eCZcxJiqf9ualLwoJtNJnkLw5Nz9zRu+pCWUGiWEedOvZkWtbx4WnEt1SHQ15IObKL8</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -46,7 +46,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABxh+rZY/SCPOivWzprYy2umwLn7qx3EYqCQejH9zaQeQAAAAAOgAAAAAIAACAAAAB6Nq0JFfDTUet4iQ0cy5vX1BLM0KNFZxcDg/QJXxjgRRAAAAAEhSvBx9n/Mss2j8Xmjm0NQAAAAGB+p+Zca8ucGU6O0IrQgM8lrLPyaLyGT6EMEf1Lxs0OC2tX5G06IAxN3JrEtqfHeeQ+JuNoU9jL3pKiB83rz6o</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAe5K3BG4cBGI4QeYuSJLAO3NOpM44bTOPHF4PSYtx4oQAAAAAOgAAAAAIAACAAAABrsg1WbIevhUwEeW/XtST0WBGx3VOd/cjJEZ1VuhoDZxAAAADP82qBrx1I5bBl6Hy30chTQAAAAHVgWpC+C3Fr3s3ZLx2IFh4oTdDUBys3HRuubOhQmEqsuHy2k8MRaIPeT10yiqiSTDFP96ZISY/rgEFp6C5dEgc</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -101,6 +101,171 @@ WHERE o.Date_Create &gt;= '2021-01-01'
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\Data Flow Task\ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="ADO NET Source"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">@[User::SourceQuery]</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\ADO NET Source.Connections[IDbConnection]"
+                  connectionManagerID="{EC5F974C-43E3-4FEE-BEC2-1476A23E8475}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[replique_replique.TESTPH2.sa]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[OF_Num]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[OF_Num]"
+                      length="20"
+                      lineageId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[OF_Num]"
+                      name="OF_Num"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[OFDN_Composant]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[OFDN_Composant]"
+                      length="20"
+                      lineageId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[OFDN_Composant]"
+                      name="OFDN_Composant"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[OFDN_Q]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[OFDN_Q]"
+                      lineageId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[OFDN_Q]"
+                      name="OFDN_Q"
+                      precision="18"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[OFDN_Unite]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[OFDN_Unite]"
+                      length="20"
+                      lineageId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[OFDN_Unite]"
+                      name="OFDN_Unite"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[OF_Num]"
+                      dataType="wstr"
+                      length="20"
+                      name="OF_Num" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[OFDN_Composant]"
+                      dataType="wstr"
+                      length="20"
+                      name="OFDN_Composant" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[OFDN_Q]"
+                      dataType="numeric"
+                      name="OFDN_Q"
+                      precision="18"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[OFDN_Unite]"
+                      dataType="wstr"
+                      length="20"
+                      name="OFDN_Unite" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[OF_Num]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[OF_Num]"
+                      name="OF_Num" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[OFDN_Composant]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[OFDN_Composant]"
+                      name="OFDN_Composant" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[OFDN_Q]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[OFDN_Q]"
+                      name="OFDN_Q"
+                      precision="18"
+                      scale="6" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[OFDN_Unite]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[OFDN_Unite]"
+                      name="OFDN_Unite" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\Data Flow Task\OLE DB Destination"
               componentClassID="Microsoft.OLEDBDestination"
@@ -179,14 +344,14 @@ WHERE o.Date_Create &gt;= '2021-01-01'
                       cachedLength="20"
                       cachedName="OF_Num"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[of_num]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[OF_Num]" />
+                      lineageId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[OF_Num]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OFDN_Unite]"
                       cachedDataType="wstr"
                       cachedLength="20"
                       cachedName="OFDN_Unite"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[unite]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[OFDN_Unite]" />
+                      lineageId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[OFDN_Unite]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OFDN_Q]"
                       cachedDataType="numeric"
@@ -194,14 +359,14 @@ WHERE o.Date_Create &gt;= '2021-01-01'
                       cachedPrecision="18"
                       cachedScale="6"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[quantite]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[OFDN_Q]" />
+                      lineageId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[OFDN_Q]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OFDN_Composant]"
                       cachedDataType="wstr"
                       cachedLength="20"
                       cachedName="OFDN_Composant"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cmp_code]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[OFDN_Composant]" />
+                      lineageId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output].Columns[OFDN_Composant]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -449,10 +614,10 @@ and ofdn.OFDN_Composant not like 'fp%';</property>
           </components>
           <paths>
             <path
-              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              refId="Package\Data Flow Task.Paths[ADO NET Source Output]"
               endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
-              name="OLE DB Source Output"
-              startId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]" />
+              name="ADO NET Source Output"
+              startId="Package\Data Flow Task\ADO NET Source.Outputs[ADO NET Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -528,7 +693,7 @@ and ofdn.OFDN_Composant not like 'fp%';</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150,42"
+          Size="151,42"
           Id="Package\Data Flow Task"
           TopLeft="201.999999552965,193.352941217359" />
         <NodeLayout
@@ -541,30 +706,30 @@ and ofdn.OFDN_Composant not like 'fp%';</property>
           TopLeft="243.571427312432,333.647058851011" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="235.200000234161,113.776470591587">
+          TopLeft="235.000000234161,114.176470591587">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="41.9999993188039,79.5764706257718"
+              EndConnector="42.499999318804,79.1764706257722"
               Start="0,0"
-              End="41.9999993188039,72.0764706257718">
+              End="42.499999318804,71.6764706257722">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,35.7882353128859" />
+                    End="0,35.5882353128861" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,35.7882353128859"
-                    Point2="0,39.7882353128859"
-                    Point3="4,39.7882353128859" />
+                    Point1="0,35.5882353128861"
+                    Point2="0,39.5882353128861"
+                    Point3="4,39.5882353128861" />
                   <mssgle:LineSegment
-                    End="37.9999993188039,39.7882353128859" />
+                    End="38.499999318804,39.5882353128861" />
                   <mssgle:CubicBezierSegment
-                    Point1="37.9999993188039,39.7882353128859"
-                    Point2="41.9999993188039,39.7882353128859"
-                    Point3="41.9999993188039,43.7882353128859" />
+                    Point1="38.499999318804,39.5882353128861"
+                    Point2="42.499999318804,39.5882353128861"
+                    Point3="42.499999318804,43.5882353128861" />
                   <mssgle:LineSegment
-                    End="41.9999993188039,72.0764706257718" />
+                    End="42.499999318804,71.6764706257722" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -575,30 +740,30 @@ and ofdn.OFDN_Composant not like 'fp%';</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="277.199999552965,234.952941217359">
+          TopLeft="277.499999552965,235.352941217359">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="50.3714277594673,98.694117633653"
+              EndConnector="50.071427759467,98.294117633652"
               Start="0,0"
-              End="50.3714277594673,91.194117633653">
+              End="50.071427759467,90.794117633652">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,45.3470588168265" />
+                    End="0,45.147058816826" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,45.3470588168265"
-                    Point2="0,49.3470588168265"
-                    Point3="4,49.3470588168265" />
+                    Point1="0,45.147058816826"
+                    Point2="0,49.147058816826"
+                    Point3="4,49.147058816826" />
                   <mssgle:LineSegment
-                    End="46.3714277594673,49.3470588168265" />
+                    End="46.071427759467,49.147058816826" />
                   <mssgle:CubicBezierSegment
-                    Point1="46.3714277594673,49.3470588168265"
-                    Point2="50.3714277594673,49.3470588168265"
-                    Point3="50.3714277594673,53.3470588168265" />
+                    Point1="46.071427759467,49.147058816826"
+                    Point2="50.071427759467,49.147058816826"
+                    Point3="50.071427759467,53.147058816826" />
                   <mssgle:LineSegment
-                    End="50.3714277594673,91.194117633653" />
+                    End="50.071427759467,90.794117633652" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -623,32 +788,36 @@ and ofdn.OFDN_Composant not like 'fp%';</property>
           Size="157,42"
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="263,73" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Data Flow Task\ADO NET Source"
+          TopLeft="81.4285716019115,70.3529411148035" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="341.4,114.6">
+          Id="Package\Data Flow Task.Paths[ADO NET Source Output]"
+          TopLeft="160.228571601911,111.952941114804">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="46.7999990527118,144.635294209477"
+              EndConnector="227.571427450801,147.282353094673"
               Start="0,0"
-              End="46.7999990527118,137.135294209477">
+              End="227.571427450801,139.782353094673">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,68.3176471047387" />
+                    End="0,69.6411765473367" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,68.3176471047387"
-                    Point2="0,72.3176471047387"
-                    Point3="4,72.3176471047387" />
+                    Point1="0,69.6411765473367"
+                    Point2="0,73.6411765473367"
+                    Point3="4,73.6411765473367" />
                   <mssgle:LineSegment
-                    End="42.7999990527118,72.3176471047387" />
+                    End="223.571427450801,73.6411765473367" />
                   <mssgle:CubicBezierSegment
-                    Point1="42.7999990527118,72.3176471047387"
-                    Point2="46.7999990527118,72.3176471047387"
-                    Point3="46.7999990527118,76.3176471047387" />
+                    Point1="223.571427450801,73.6411765473367"
+                    Point2="227.571427450801,73.6411765473367"
+                    Point3="227.571427450801,77.6411765473367" />
                   <mssgle:LineSegment
-                    End="46.7999990527118,137.135294209477" />
+                    End="227.571427450801,139.782353094673" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -675,6 +844,14 @@ and ofdn.OFDN_Composant not like 'fp%';</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\ADO NET Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
