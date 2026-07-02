@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DimDocument"
   DTS:PackageType="5"
-  DTS:VersionBuild="49"
-  DTS:VersionGUID="{5F6C1DE2-2F68-4339-9792-97A275CDDD4B}">
+  DTS:VersionBuild="51"
+  DTS:VersionGUID="{D036F589-C565-4EC8-B25C-2D39776DB6AE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -29,7 +29,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABLTcWwXyeqPAt766G3U0VMFDfD2ZzJwjeA3U0UGVRFCwAAAAAOgAAAAAIAACAAAACWkSyt+IMfcqDuXSNJCPL4mttJ4mlzkDzdQqW9cwuDQRAAAACRX+qW1RzSjT4wpocAYxYDQAAAAJqpBIlZ1UdK36cOAS0tgxJCiCgMccpfJtmgu5g7eolLBOjSyep7OUwCkPptovK7EORMrP1zuMVYNPXe2+Cy7lE</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAASXgV80saMzWy72O26AqKWg8TW8fN3EVKRFqIJXaCsowAAAAAOgAAAAAIAACAAAAAJexGXreONYqsnSrp/JeqmdSZU6yoY+M1fvBEz4NFKVBAAAAB55JZOpjP8o6d+F3bGkJ8gQAAAANK9shMSEQ4LJA1GKLpdDc2WTiEM2DAS2FeG5+xpHZ8Zaz4bcEgNWq7YbyFhNViyBmpQvOZaYjSfeSCx0pEiOOo</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -46,7 +46,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACPxeqDWq5Lfd/uwBFr9fnRUjQ+5tBZxktoWBXnlJ/MyAAAAAAOgAAAAAIAACAAAAASWPYWTw5DPrZhGGDi2D+bSJ5hab2Fr0MrULTly1d5mxAAAABQHa8iPqNZMTyabR6gRZLOQAAAAGKUIy0czmY818C7K4OzAxScaNNKkXtQQw/f1znGBPeV8mAqrh758g388g0lAYXYlIdlQhs2Elt74YASTluAPXU</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAB496ec0W2zSf5SIbodFDn6RFSl6VUhYkWpbwwhhG83+AAAAAAOgAAAAAIAACAAAABumlzEOKnEaVWOG+oTL3JgP+zUG9D2BYMQG4MzcCo0sBAAAAB9EJt/bkkrjmCPQTmbp3WAQAAAAO42kfV9FOsdf2ppWFpOSdlNjrFpulxjRkW20VanALSf/C3Cw56GCRlntK41HFPebpdqAFkzZjdo0GWrp4WbuO8</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -65,7 +65,7 @@
       DTS:CreationName=""
       DTS:DTSID="{0BB26145-6B2B-4E40-B758-311AD256A3AE}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT DISTINCT&#xA;    Doc_Num,&#xA;    Doc_DateSys,&#xA;    Doc_Type &#xA;FROM TESTPH2.dbo.Document&#xA;&#xA;WHERE Doc_Type IN ('Fact', 'AVOI')  AND Doc_Valide = 2&#xA;  AND Doc_DateSys &gt;= '&quot; +&#xA;(DT_STR, 10, 1252)(DT_DBDATE) @[User::LastRunDate]&#xA;+ &quot;'&quot;"
+      DTS:Expression="&quot;SELECT DISTINCT&#xA;    Doc_Num,&#xA;    Doc_DateSys,&#xA;    Doc_Type , Doc_Devise_Cours &#xA;FROM TESTPH2.dbo.Document&#xA;&#xA;WHERE Doc_Type IN ('Fact', 'AVOI')  AND Doc_Valide = 2&#xA;  AND Doc_DateSys &gt;= '&quot; +&#xA;(DT_STR, 10, 1252)(DT_DBDATE) @[User::LastRunDate]&#xA;+ &quot;'&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="SourceQuery">
@@ -73,7 +73,7 @@
         DTS:DataType="8">SELECT DISTINCT
     Doc_Num,
     Doc_DateSys,
-    Doc_Type 
+    Doc_Type , Doc_Devise_Cours 
 FROM TESTPH2.dbo.Document
 
 WHERE Doc_Type IN ('Fact', 'AVOI')  AND Doc_Valide = 2
@@ -828,7 +828,7 @@ WHERE
         <NodeLayout
           Size="158,42"
           Id="Package\Data Flow Task\ADO NET Source"
-          TopLeft="180.714286098979,37.4705882024497" />
+          TopLeft="180.714286098979,36.4705882024497" />
         <NodeLayout
           Size="170,42"
           Id="Package\Data Flow Task\OLE DB Destination"
@@ -869,30 +869,30 @@ WHERE
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[ADO NET Source Output]"
-          TopLeft="259.514286098979,79.0705882024497">
+          TopLeft="259.714286098979,78.4705882024497">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="148.542856136268,79.3411764162943"
+              EndConnector="148.142856136268,79.9411764162943"
               Start="0,0"
-              End="148.542856136268,71.8411764162943">
+              End="148.142856136268,72.4411764162943">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,35.6705882081472" />
+                    End="0,35.9705882081471" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,35.6705882081472"
-                    Point2="0,39.6705882081472"
-                    Point3="4,39.6705882081472" />
+                    Point1="0,35.9705882081471"
+                    Point2="0,39.9705882081471"
+                    Point3="4,39.9705882081471" />
                   <mssgle:LineSegment
-                    End="144.542856136268,39.6705882081472" />
+                    End="144.142856136268,39.9705882081471" />
                   <mssgle:CubicBezierSegment
-                    Point1="144.542856136268,39.6705882081472"
-                    Point2="148.542856136268,39.6705882081472"
-                    Point3="148.542856136268,43.6705882081472" />
+                    Point1="144.142856136268,39.9705882081471"
+                    Point2="148.142856136268,39.9705882081471"
+                    Point3="148.142856136268,43.9705882081471" />
                   <mssgle:LineSegment
-                    End="148.542856136268,71.8411764162943" />
+                    End="148.142856136268,72.4411764162943" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
