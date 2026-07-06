@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DimDocumentDetails"
   DTS:PackageType="5"
-  DTS:VersionBuild="29"
-  DTS:VersionGUID="{BA02E5F3-08C4-4D42-B1B2-F168100B1315}">
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{553EA2E9-1D28-42FC-A4E3-7264C82240DC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -29,7 +29,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAALh5JSqFI2pCTB87u5Z9nJWKkftznpb5WP5fTX3ByFbgAAAAAOgAAAAAIAACAAAABKREBqRI2YDvt9NxBd5c/ZBlFTBC9HGYrBcoCV9cfObRAAAAAdVgU6Phfr1/snSPFGbgBSQAAAAPavLxz5gtO9mJG9uxroWRDFIBsDi9EyaYwjkdkJTCN6iKX4cXwpw8GJQicAIDFJ9b5p3QPu9v7Vt5ljQxNgOAI</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABisKUfTVVyo296ssDDqwSTMqd9jUcJFBMVBv0kTtOb4gAAAAAOgAAAAAIAACAAAABqRqIKpGd0Kjl5wsnhK+8U6BEX75X71VR5PI/Fb6RBYhAAAADTiSeHFVz+bRKVLBxxL1j3QAAAAJZwINSGHn7iVk24naaIWcF9jvXFVZXiuBfiH47Zvi3Ppjf4TmBho3FVt59E96W9mdMytxvyj4srl3N8jELL1A4</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -46,7 +46,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABU2RHtDkRmecqhssjCkuA7yGjb8z+wzdLprzAHWwTH5wAAAAAOgAAAAAIAACAAAABjL0CQ9Oh1DJjeLibuMxD7NgO3s2DYUlEkLENib22xHxAAAABDA51+yXjpxDHk8iK7uGv/QAAAAA6XeESP03r3Pykdok95/mOOrsiLUKjjfh+n+1WJJGWnC/4FtHebY+9aKaR/4v4lodU6fLjcksqAq96rHRc4u7Q</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADuTWCTst1eAbz6XU7cUHnriJpICu9WiXavMdFzjPYYDwAAAAAOgAAAAAIAACAAAAAcepC664W0XSUQLDympGwHPBSKM6H4BLWpiFc1TjUwrhAAAACtB6bn5vxWhTbLmUF32GRhQAAAANvoZZ06M84qsc4Z7ZOtYVBV5n4ZhCV+T1k5lggkKaYGLjsqSWd8jilUiEWsKrQ7ElhTIShdKBCiWyzdh3FqwoQ</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -99,81 +99,6 @@ JOIN TESTPH2.dbo.Document d
         <pipeline
           version="1">
           <components>
-            <component
-              refId="Package\Data Flow Task\Derived Column"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Derived Column"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[Art_Code]"
-                      cachedDataType="wstr"
-                      cachedLength="20"
-                      cachedName="Art_Code"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Art_Code]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[LEN]([TRIM](#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Art_Code]})) &gt; 7 ? [SUBSTRING]([TRIM](#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Art_Code]}),1,7) : [TRIM](#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Art_Code]})</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">LEN(TRIM(Art_Code)) &gt; 7 ? SUBSTRING(TRIM(Art_Code),1,7) : TRIM(Art_Code)</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
             <component
               refId="Package\Data Flow Task\OLE DB Destination"
               componentClassID="Microsoft.OLEDBDestination"
@@ -555,13 +480,8 @@ WHERE
           </components>
           <paths>
             <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output]"
-              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
-              name="Derived Column Output"
-              startId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]" />
-            <path
               refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
-              endId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]" />
           </paths>
@@ -639,15 +559,15 @@ WHERE
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150,42"
+          Size="150.4,41.6"
           Id="Package\Data Flow Task"
           TopLeft="179.714285130403,153.823529453993" />
         <NodeLayout
-          Size="158,42"
+          Size="158.4,41.6"
           Id="Package\Read Watermark"
           TopLeft="158.571428813192,34.5294117747603" />
         <NodeLayout
-          Size="167,42"
+          Size="167.2,41.6"
           Id="Package\Update Watermark"
           TopLeft="272.99999902078,284.588235449626" />
         <EdgeLayout
@@ -725,79 +645,41 @@ WHERE
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="171,42"
+          Size="170.4,41.6"
           Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="663,308" />
+          TopLeft="360.142856498154,236.882353003514" />
         <NodeLayout
-          Size="157,42"
+          Size="156.8,41.6"
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="302,71" />
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Data Flow Task\Derived Column"
-          TopLeft="493,198" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="380.5,113">
+          TopLeft="380.4,112.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="189.5,85"
+              EndConnector="64.9428564981537,124.282353003514"
               Start="0,0"
-              End="189.5,77.5">
+              End="64.9428564981537,116.782353003514">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.5" />
+                    End="0,58.1411765017569" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,38.5"
-                    Point2="0,42.5"
-                    Point3="4,42.5" />
+                    Point1="0,58.1411765017569"
+                    Point2="0,62.1411765017569"
+                    Point3="4,62.1411765017569" />
                   <mssgle:LineSegment
-                    End="185.5,42.5" />
+                    End="60.9428564981537,62.1411765017569" />
                   <mssgle:CubicBezierSegment
-                    Point1="185.5,42.5"
-                    Point2="189.5,42.5"
-                    Point3="189.5,46.5" />
+                    Point1="60.9428564981537,62.1411765017569"
+                    Point2="64.9428564981537,62.1411765017569"
+                    Point3="64.9428564981537,66.1411765017569" />
                   <mssgle:LineSegment
-                    End="189.5,77.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output]"
-          TopLeft="570,240">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="178.5,68"
-              Start="0,0"
-              End="178.5,60.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,30"
-                    Point2="0,34"
-                    Point3="4,34" />
-                  <mssgle:LineSegment
-                    End="174.5,34" />
-                  <mssgle:CubicBezierSegment
-                    Point1="174.5,34"
-                    Point2="178.5,34"
-                    Point3="178.5,38" />
-                  <mssgle:LineSegment
-                    End="178.5,60.5" />
+                    End="64.9428564981537,116.782353003514" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
