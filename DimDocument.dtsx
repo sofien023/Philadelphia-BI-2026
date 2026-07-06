@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DimDocument"
   DTS:PackageType="5"
-  DTS:VersionBuild="35"
-  DTS:VersionGUID="{F121A77C-1C6F-404F-9490-9F66F4E482B6}">
+  DTS:VersionBuild="39"
+  DTS:VersionGUID="{A6F9157E-338A-461C-B710-DAA6BC5572DB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -29,7 +29,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACGkkGC4+1pUnV4QcIN2kT+FQeGYj8A//mmKlBKX4S1VQAAAAAOgAAAAAIAACAAAABxiuKNKHOCVZ2UE3O4SU+FUJSXlUaTnMw1Z6o8oel3fBAAAACFqWXAx5QSU1fodPal4UvvQAAAACoDUGD6PsIISEYfZ/IIrDyHtMgVleAvzPc6sebGZms7I/vQRrZnqJsEkrWGxw+y4r6yhJr1GOnxpdrKGXAB7uM</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADCxacIHOv+4iayc4mVA3cglINzwJkedbp6CSC4Gd3xRQAAAAAOgAAAAAIAACAAAACn1uDcnAXCO80tlZbtL7hI1qHghRF97iWKPDOUam8qJhAAAADrdy+cgwfk0DXziirLlJIMQAAAAJIOmDCYUtDeIH5PqX/Ip6KntDuMUfMU1arpJVljiHmmV56GOUjtRyo5Jdtr8sEbc4cVDRLqL3muNucXXsZJLZ8</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -46,7 +46,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAA8997ePRwA44GM/7NX7sobuitpOiX5AKz2f57XosIRqgAAAAAOgAAAAAIAACAAAABx07EX06CAExfKAUO0fvX0bzYEwWDjQKSnu8qmmqdKlxAAAAAijyDUg1QvKg1YP4WzTn1RQAAAAJP5VMC8O3109KDai2NVS46r8lj3DRbW8CrELcOPSY/y1UAT7jVe3Kid1CWhnQ9MSn/UHR02gjrUOaMD3Nz7qDc</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABLRLJtGt4i7K0Ui7XzhenZImRltUS91BBYyj8CLf/8rgAAAAAOgAAAAAIAACAAAAB+lNlDVoaM39rbWh/C7r9+6+eHtRQxp1Mt4NuNAdEzBBAAAACE6J0EdqcDa2P39IByIuTeQAAAAC+iB6nuYIfiv1kpm5j8VImXs9okFI9c+uCCS/gCUT2cBVZGiQJiepcIlN6ngqzGmyK60VV686Hb6f17YnmAcyY</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -65,19 +65,19 @@
       DTS:CreationName=""
       DTS:DTSID="{0BB26145-6B2B-4E40-B758-311AD256A3AE}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT DISTINCT&#xA;    Doc_Num,&#xA;    Doc_Date,&#xA;    Doc_Type&#xA;FROM TESTPH2.dbo.Document&#xA;WHERE Doc_Type IN ('Fact', 'AVOI')&#xA;  AND Doc_Valide = 2&#xA;  AND Doc_Date &gt;= '&quot; +&#xA;(DT_STR, 10, 1252)(DT_DBDATE) @[User::LastRunDate]&#xA;+ &quot;'&quot;"
+      DTS:Expression="&quot;SELECT DISTINCT&#xA;    Doc_Num,&#xA;    Date_Create,&#xA;    Doc_Type , Doc_Devise_Cours &#xA;FROM TESTPH2.dbo.Document&#xA;&#xA;WHERE Doc_Type IN ('Fact', 'AVOI')  AND Doc_Valide = 2&#xA;  AND Doc_DateSys &gt;= '&quot; +&#xA;(DT_STR, 10, 1252)(DT_DBDATE) @[User::LastRunDate]&#xA;+ &quot;'&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="SourceQuery">
       <DTS:VariableValue
         DTS:DataType="8">SELECT DISTINCT
     Doc_Num,
-    Doc_Date,
-    Doc_Type
+    Date_Create,
+    Doc_Type , Doc_Devise_Cours 
 FROM TESTPH2.dbo.Document
-WHERE Doc_Type IN ('Fact', 'AVOI')
-  AND Doc_Valide = 2
-  AND Doc_Date &gt;= '2000-01-01'</DTS:VariableValue>
+
+WHERE Doc_Type IN ('Fact', 'AVOI')  AND Doc_Valide = 2
+  AND Doc_DateSys &gt;= '2000-01-01'</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -109,10 +109,10 @@ WHERE Doc_Type IN ('Fact', 'AVOI')
                   name="Derived Column Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[Doc_Date]"
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[Date_Create]"
                       cachedDataType="dbTimeStamp"
-                      cachedName="Doc_Date"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Doc_Date]" />
+                      cachedName="Date_Create"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Date_Create]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -138,13 +138,13 @@ WHERE Doc_Type IN ('Fact', 'AVOI')
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">(DT_I4)(([YEAR](#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Doc_Date]}) * 10000) + ([MONTH](#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Doc_Date]}) * 100) + [DAY](#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Doc_Date]}))</property>
+                          name="Expression">(DT_I4)(([YEAR](#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Date_Create]}) * 10000) + ([MONTH](#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Date_Create]}) * 100) + [DAY](#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Date_Create]}))</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">(DT_I4)((YEAR(Doc_Date) * 10000) + (MONTH(Doc_Date) * 100) + DAY(Doc_Date))</property>
+                          name="FriendlyExpression">(DT_I4)((YEAR(Date_Create) * 10000) + (MONTH(Date_Create) * 100) + DAY(Date_Create))</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -255,6 +255,12 @@ WHERE Doc_Type IN ('Fact', 'AVOI')
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[doc_num]"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Doc_Num]" />
                     <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column 1]"
+                      cachedDataType="i4"
+                      cachedName="Derived Column 1"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Derived Column 1]" />
+                    <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Doc_Type]"
                       cachedDataType="wstr"
                       cachedLength="10"
@@ -262,11 +268,13 @@ WHERE Doc_Type IN ('Fact', 'AVOI')
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Type]"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Doc_Type]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column 1]"
-                      cachedDataType="i4"
-                      cachedName="Derived Column 1"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Derived Column 1]" />
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Doc_Devise_Cours]"
+                      cachedDataType="numeric"
+                      cachedName="Doc_Devise_Cours"
+                      cachedPrecision="18"
+                      cachedScale="8"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Devise]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Doc_Devise_Cours]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -284,6 +292,12 @@ WHERE Doc_Type IN ('Fact', 'AVOI')
                       dataType="wstr"
                       length="10"
                       name="Type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Devise]"
+                      dataType="numeric"
+                      name="Devise"
+                      precision="18"
+                      scale="8" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -391,15 +405,6 @@ WHERE
                       name="Doc_Num"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Doc_Date]"
-                      dataType="dbTimeStamp"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Doc_Date]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Doc_Date]"
-                      name="Doc_Date"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Doc_Type]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
@@ -408,6 +413,26 @@ WHERE
                       length="10"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Doc_Type]"
                       name="Doc_Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Doc_Devise_Cours]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Doc_Devise_Cours]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Doc_Devise_Cours]"
+                      name="Doc_Devise_Cours"
+                      precision="18"
+                      scale="8"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Date_Create]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Date_Create]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Date_Create]"
+                      name="Date_Create"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -418,14 +443,20 @@ WHERE
                       length="30"
                       name="Doc_Num" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Doc_Date]"
-                      dataType="dbTimeStamp"
-                      name="Doc_Date" />
-                    <externalMetadataColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Doc_Type]"
                       dataType="wstr"
                       length="10"
                       name="Doc_Type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Doc_Devise_Cours]"
+                      dataType="numeric"
+                      name="Doc_Devise_Cours"
+                      precision="18"
+                      scale="8" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Date_Create]"
+                      dataType="dbTimeStamp"
+                      name="Date_Create" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -440,16 +471,23 @@ WHERE
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Doc_Num]"
                       name="Doc_Num" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Doc_Date]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Date_Create]"
                       dataType="dbTimeStamp"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Doc_Date]"
-                      name="Doc_Date" />
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Date_Create]"
+                      name="Date_Create" />
                     <outputColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Doc_Type]"
                       dataType="wstr"
                       length="10"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Doc_Type]"
                       name="Doc_Type" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Doc_Devise_Cours]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Doc_Devise_Cours]"
+                      name="Doc_Devise_Cours"
+                      precision="18"
+                      scale="8" />
                     <outputColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -642,43 +680,39 @@ WHERE
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="170,42"
-          Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="339.714284532837,281.882352980724" />
-        <NodeLayout
           Size="158,42"
           Id="Package\Data Flow Task\Derived Column"
-          TopLeft="328.857142235247,158.411764618744" />
+          TopLeft="327.857142235247,157.411764618744" />
         <NodeLayout
           Size="157,42"
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="361,59" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="439.4,100.6">
+          TopLeft="439.5,101">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-31.3428577647528,57.8117646187441"
+              EndConnector="-32.642857764753,56.411764618744"
               Start="0,0"
-              End="-31.3428577647528,50.3117646187441">
+              End="-32.642857764753,48.911764618744">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.9058823093721" />
+                    End="0,24.205882309372" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,24.9058823093721"
-                    Point2="0,28.9058823093721"
-                    Point3="-4,28.9058823093721" />
+                    Point1="0,24.205882309372"
+                    Point2="0,28.205882309372"
+                    Point3="-4,28.205882309372" />
                   <mssgle:LineSegment
-                    End="-27.3428577647528,28.9058823093721" />
+                    End="-28.642857764753,28.205882309372" />
                   <mssgle:CubicBezierSegment
-                    Point1="-27.3428577647528,28.9058823093721"
-                    Point2="-31.3428577647528,28.9058823093721"
-                    Point3="-31.3428577647528,32.9058823093721" />
+                    Point1="-28.642857764753,28.205882309372"
+                    Point2="-32.642857764753,28.205882309372"
+                    Point3="-32.642857764753,32.205882309372" />
                   <mssgle:LineSegment
-                    End="-31.3428577647528,50.3117646187441" />
+                    End="-32.642857764753,48.911764618744" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -687,32 +721,36 @@ WHERE
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="430,328" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Derived Column Output]"
-          TopLeft="408.057142235247,200.011764618744">
+          TopLeft="406.857142235247,199.411764618744">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="16.8571422975895,81.8705883619797"
+              EndConnector="108.642857764753,128.588235381256"
               Start="0,0"
-              End="16.8571422975895,74.3705883619797">
+              End="108.642857764753,121.088235381256">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36.9352941809899" />
+                    End="0,60.294117690628" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,36.9352941809899"
-                    Point2="0,40.9352941809899"
-                    Point3="4,40.9352941809899" />
+                    Point1="0,60.294117690628"
+                    Point2="0,64.294117690628"
+                    Point3="4,64.294117690628" />
                   <mssgle:LineSegment
-                    End="12.8571422975895,40.9352941809899" />
+                    End="104.642857764753,64.294117690628" />
                   <mssgle:CubicBezierSegment
-                    Point1="12.8571422975895,40.9352941809899"
-                    Point2="16.8571422975895,40.9352941809899"
-                    Point3="16.8571422975895,44.9352941809899" />
+                    Point1="104.642857764753,64.294117690628"
+                    Point2="108.642857764753,64.294117690628"
+                    Point3="108.642857764753,68.294117690628" />
                   <mssgle:LineSegment
-                    End="16.8571422975895,74.3705883619797" />
+                    End="108.642857764753,121.088235381256" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -725,6 +763,14 @@ WHERE
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\OLE DB Destination">
     <Properties>
       <Property>
@@ -734,14 +780,6 @@ WHERE
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DimDocumentDetails"
   DTS:PackageType="5"
-  DTS:VersionBuild="27"
-  DTS:VersionGUID="{D2B36AC6-17BD-46D1-832D-3B2C2AC2FC46}">
+  DTS:VersionBuild="29"
+  DTS:VersionGUID="{BA02E5F3-08C4-4D42-B1B2-F168100B1315}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -29,7 +29,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAX3bMzeT3jzbL1loIWKkv6tn/9uT0DiEGAeDZAiN0blwAAAAAOgAAAAAIAACAAAAB6z+1tmgxTQi36UCjDmC+ms2gMrQRz43oGtHvrtpNKqhAAAADUBeb2dkjGsoOXG7PdQB5HQAAAABelOq4s3TR4iS6DohIaizLt9tTr7MxBvB3XUbC4Q51OtPfA5o4m9ar6GWGnx/hEraRyMLn82XH490Q2c56xWzU</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAALh5JSqFI2pCTB87u5Z9nJWKkftznpb5WP5fTX3ByFbgAAAAAOgAAAAAIAACAAAABKREBqRI2YDvt9NxBd5c/ZBlFTBC9HGYrBcoCV9cfObRAAAAAdVgU6Phfr1/snSPFGbgBSQAAAAPavLxz5gtO9mJG9uxroWRDFIBsDi9EyaYwjkdkJTCN6iKX4cXwpw8GJQicAIDFJ9b5p3QPu9v7Vt5ljQxNgOAI</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -46,7 +46,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACxtgjP61qPXQI0D4CSfA3cNcvhTHnnBHcreDgbtkevmAAAAAAOgAAAAAIAACAAAAD9WejOzAqzHFTxhB1yQWjqx7dH3wvU22rgoWTT6IJjGRAAAAA3C27mQpDbUhNix8l0bVm+QAAAAPaTapVw/Mbyn/QqsEBwRAIh3ruSzNwy7rtUpKogI68Kd4MfYBqCMI4T0Y20PLehhAto+TZLHcUzlotmrIrW8k4</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABU2RHtDkRmecqhssjCkuA7yGjb8z+wzdLprzAHWwTH5wAAAAAOgAAAAAIAACAAAABjL0CQ9Oh1DJjeLibuMxD7NgO3s2DYUlEkLENib22xHxAAAABDA51+yXjpxDHk8iK7uGv/QAAAAA6XeESP03r3Pykdok95/mOOrsiLUKjjfh+n+1WJJGWnC/4FtHebY+9aKaR/4v4lodU6fLjcksqAq96rHRc4u7Q</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -65,7 +65,7 @@
       DTS:CreationName=""
       DTS:DTSID="{B6964290-E457-4271-A40B-8CD004C6A7F3}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT&#xA;    dd.DocD_Id,&#xA;    dd.Doc_Num,&#xA;    dd.Art_Code,&#xA;    dd.DocD_Q,&#xA;    dd.DocD_PUHTB&#xA;FROM TESTPH2.dbo.DocumentD dd&#xA;JOIN TESTPH2.dbo.Document d&#xA;    ON d.Doc_Num = dd.Doc_Num&#xA; WHERE d.Doc_Type IN ('Fact', 'AVOI')&#xA;  AND d.Doc_Valide = 2&#xA;  AND dd.Art_Code &lt;&gt; 'ANNULER'&#xA;  AND d.Doc_Date &gt;= '&quot; +&#xA;(DT_STR, 10, 1252)(DT_DBDATE) @[User::LastRunDate]&#xA;+ &quot;'&quot;"
+      DTS:Expression="&quot;SELECT&#xA;    dd.DocD_Id,&#xA;    dd.Doc_Num,&#xA;    dd.Art_Code,&#xA;    dd.DocD_Q,&#xA;    dd.DocD_PUHTB&#xA;FROM TESTPH2.dbo.DocumentD dd&#xA;JOIN TESTPH2.dbo.Document d&#xA;    ON d.Doc_Num = dd.Doc_Num&#xA; WHERE d.Doc_Type IN ('Fact', 'AVOI')&#xA;  AND d.Doc_Valide = 2&#xA;   AND d.Doc_DateSys &gt;= '&quot; +&#xA;(DT_STR, 10, 1252)(DT_DBDATE) @[User::LastRunDate]&#xA;+ &quot;'&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="SourceQuery">
@@ -81,8 +81,7 @@ JOIN TESTPH2.dbo.Document d
     ON d.Doc_Num = dd.Doc_Num
  WHERE d.Doc_Type IN ('Fact', 'AVOI')
   AND d.Doc_Valide = 2
-  AND dd.Art_Code &lt;&gt; 'ANNULER'
-  AND d.Doc_Date &gt;= '2000-01-01'</DTS:VariableValue>
+   AND d.Doc_DateSys &gt;= '2000-01-01'</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>

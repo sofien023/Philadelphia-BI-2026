@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DimArticle"
   DTS:PackageType="5"
-  DTS:VersionBuild="86"
-  DTS:VersionGUID="{6D4D637E-D518-4305-B0C4-72C82CA5D652}">
+  DTS:VersionBuild="87"
+  DTS:VersionGUID="{82B56077-D498-4FA4-AC77-393354301E91}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -29,7 +29,7 @@
       DTS:CreationName=""
       DTS:DTSID="{22FBC244-92B0-47A1-AC6D-1DE6E66AC1D4}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT &#xA;    [Art_Code],&#xA;    [Art_Des],&#xA;    [ArtCat_Code],&#xA;    [Art_Famille1],&#xA;    [Art_Calc_DP]&#xA;FROM [TESTPH2].[dbo].[art]&#xA;WHERE artcat_code IN ('fabvendu', 'fabriqué', 'matière', 'ARCHIVE', 'Sous-trait')&#xA;  AND Date_Create &gt;= '&quot; +&#xA;(DT_STR, 10, 1252)(DT_DBDATE) @[User::LastRunDate]&#xA;+ &quot;'&quot;"
+      DTS:Expression="&quot;SELECT &#xA;    [Art_Code],&#xA;    [Art_Des],&#xA;    [ArtCat_Code],&#xA;    [Art_Famille1],&#xA;    [Art_Calc_DP]&#xA;FROM [TESTPH2].[dbo].[art]&#xA;WHERE Date_Create &gt;= '&quot; +&#xA;(DT_STR, 10, 1252)(DT_DBDATE) @[User::LastRunDate]&#xA;+ &quot;'&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="SourceQuery">
@@ -41,8 +41,7 @@
     [Art_Famille1],
     [Art_Calc_DP]
 FROM [TESTPH2].[dbo].[art]
-WHERE artcat_code IN ('fabvendu', 'fabriqué', 'matière', 'ARCHIVE', 'Sous-trait')
-  AND Date_Create &gt;= '2000-01-01'</DTS:VariableValue>
+WHERE Date_Create &gt;= '2000-01-01'</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
