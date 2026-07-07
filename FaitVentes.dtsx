@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="27"
-  DTS:VersionGUID="{7859602B-AC57-43DF-B899-6161F50C7D98}">
+  DTS:VersionBuild="29"
+  DTS:VersionGUID="{9A43F847-4033-4954-8D69-82702C6A8E02}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -29,7 +29,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADV8dDI35IGkNEBniYmLKZOJaM/xLGa2gdH44t9B+yGiQAAAAAOgAAAAAIAACAAAAA/1x7smUk6cHZmkvgV0Ud+5J52kT4Lh5Q2sbB9uinGFRAAAAAb5RjztXzqoE933E8SPSWBQAAAAFslyETBls85CmMRMDlV1hge4iHxntZgW/90ZrNXOo1CtLNt2Eh08kRPtx6kSR1FN3VIgSfs3SxjDJWPifCgdh0</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADKkYvl+IwMjepHjhKpzpYGx7djy2T/S4bhXfULpID6HwAAAAAOgAAAAAIAACAAAADol2A+5Ty7EhqK+O+fVVjVDwmtFN2KfHkykLMg8EoC7hAAAACV0M6ATrIkFAvvrAleCZnfQAAAAFTy4fn5Ur/DeBy2/xDpT3NV5Zy4vdZ0v/kwf6k4UCbyjmjPsOXlR02HE6wk/G2PzHO8gGq9go6utN8recQ3XhU</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -208,24 +208,17 @@ WHERE Date &gt;= 20000101 ORDER BY Doc_Num</DTS:VariableValue>
                       cachedSortKeyPosition="1"
                       lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Doc_Num]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[prix_unitaire_HT]"
+                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[quantite]"
                       cachedDataType="numeric"
-                      cachedName="prix_unitaire_HT"
+                      cachedName="quantite"
                       cachedPrecision="18"
                       cachedScale="3"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[prix_unitaire_HT]" />
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[quantite]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[Quantite1]"
+                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[prix]"
                       cachedDataType="r8"
-                      cachedName="Quantite1"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Quantite1]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[Devise]"
-                      cachedDataType="numeric"
-                      cachedName="Devise"
-                      cachedPrecision="18"
-                      cachedScale="8"
-                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Devise]" />
+                      cachedName="prix"
+                      lineageId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output].Columns[prix]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -251,13 +244,13 @@ WHERE Date &gt;= 20000101 ORDER BY Doc_Num</DTS:VariableValue>
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">([SUBSTRING](#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Doc_Num]},1,1) == "A" ? (DT_R8)-1.0 : (DT_R8)1.0) * ((DT_R8)#{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Quantite1]} * ((DT_R8)#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[prix_unitaire_HT]} * #{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Devise]}))</property>
+                          name="Expression">(([SUBSTRING](#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Doc_Num]},1,1) == "A") ? -1.0 : 1.0) * ((DT_R8)#{Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output].Columns[prix]} * (DT_R8)#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[quantite]})</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">(SUBSTRING(Doc_Num,1,1) == "A" ? (DT_R8)-1.0 : (DT_R8)1.0) * ((DT_R8)Quantite1 * ((DT_R8)prix_unitaire_HT * Devise))</property>
+                          name="FriendlyExpression">((SUBSTRING(Doc_Num,1,1) == "A") ? -1.0 : 1.0) * ((DT_R8)prix * (DT_R8)quantite)</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -281,6 +274,95 @@ WHERE Date &gt;= 20000101 ORDER BY Doc_Num</DTS:VariableValue>
                       refId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Derived Column 2"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 2"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input].Columns[prix_unitaire_HT]"
+                      cachedDataType="numeric"
+                      cachedName="prix_unitaire_HT"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[prix_unitaire_HT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input].Columns[Devise]"
+                      cachedDataType="numeric"
+                      cachedName="Devise"
+                      cachedPrecision="18"
+                      cachedScale="8"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Devise]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output].Columns[prix]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output].Columns[prix]"
+                      name="prix"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">((DT_R8)#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[prix_unitaire_HT]} * (DT_R8)#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Devise]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">((DT_R8)prix_unitaire_HT * (DT_R8)Devise)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -997,14 +1079,19 @@ ORDER BY Doc_Num</property>
           <paths>
             <path
               refId="Package\Data Flow Task.Paths[Derived Column Output]"
-              endId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input]"
-              name="Derived Column Output"
-              startId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output1]"
               endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
               startId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output1]"
+              endId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output2]"
+              endId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output]" />
             <path
               refId="Package\Data Flow Task.Paths[Merge Join Output]"
               endId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
@@ -1253,17 +1340,17 @@ ORDER BY Doc_Num</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="177,42"
-          Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="450,433" />
-        <NodeLayout
-          Size="162,42"
-          Id="Package\Data Flow Task\Derived Column 1"
-          TopLeft="241.428571942509,354.376470375082" />
-        <NodeLayout
           Size="157,42"
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="361,60" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\Data Flow Task\Derived Column 1"
+          TopLeft="128.428571942509,438.376470375082" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="476,529" />
         <NodeLayout
           Size="133,42"
           Id="Package\Data Flow Task\Merge Join"
@@ -1276,6 +1363,40 @@ ORDER BY Doc_Num</property>
           Size="158,42"
           Id="Package\Data Flow Task\Derived Column"
           TopLeft="462,314" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="209.428571942509,480.376470375082">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="355.071428057491,48.623529624918"
+              Start="0,0"
+              End="355.071428057491,41.123529624918">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.311764812459" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.311764812459"
+                    Point2="0,24.311764812459"
+                    Point3="4,24.311764812459" />
+                  <mssgle:LineSegment
+                    End="351.071428057491,24.311764812459" />
+                  <mssgle:CubicBezierSegment
+                    Point1="351.071428057491,24.311764812459"
+                    Point2="355.071428057491,24.311764812459"
+                    Point3="355.071428057491,28.311764812459" />
+                  <mssgle:LineSegment
+                    End="355.071428057491,41.123529624918" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output1]"
           TopLeft="439.5,102">
@@ -1366,32 +1487,36 @@ ORDER BY Doc_Num</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Data Flow Task\Derived Column 2"
+          TopLeft="218,344" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Derived Column Output1]"
-          TopLeft="322.628571942509,395.976470375082">
+          TopLeft="462,335">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="215.771428057491,37.0235296249183"
+              EndConnector="-81,30"
               Start="0,0"
-              End="215.771428057491,29.5235296249183">
+              End="-73.5,30">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,14.5117648124591" />
+                    End="-36.5,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,14.5117648124591"
-                    Point2="0,18.5117648124591"
-                    Point3="4,18.5117648124591" />
+                    Point1="-36.5,0"
+                    Point2="-40.5,0"
+                    Point3="-40.5,4" />
                   <mssgle:LineSegment
-                    End="211.771428057491,18.5117648124591" />
+                    End="-40.5,26" />
                   <mssgle:CubicBezierSegment
-                    Point1="211.771428057491,18.5117648124591"
-                    Point2="215.771428057491,18.5117648124591"
-                    Point3="215.771428057491,22.5117648124591" />
+                    Point1="-40.5,26"
+                    Point2="-40.5,30"
+                    Point3="-44.5,30" />
                   <mssgle:LineSegment
-                    End="215.771428057491,29.5235296249183" />
+                    End="-73.5,30" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1401,31 +1526,31 @@ ORDER BY Doc_Num</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output]"
-          TopLeft="462,334.8">
+          Id="Package\Data Flow Task.Paths[Derived Column Output2]"
+          TopLeft="299.5,386">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-58.1714280574906,40.3764703750817"
+              EndConnector="-90.071428057491,52.376470375082"
               Start="0,0"
-              End="-50.6714280574906,40.3764703750817">
+              End="-90.071428057491,44.876470375082">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-25.0857140287453,0" />
+                    End="0,22.188235187541" />
                   <mssgle:CubicBezierSegment
-                    Point1="-25.0857140287453,0"
-                    Point2="-29.0857140287453,0"
-                    Point3="-29.0857140287453,4" />
+                    Point1="0,22.188235187541"
+                    Point2="0,26.188235187541"
+                    Point3="-4,26.188235187541" />
                   <mssgle:LineSegment
-                    End="-29.0857140287453,36.3764703750817" />
+                    End="-86.071428057491,26.188235187541" />
                   <mssgle:CubicBezierSegment
-                    Point1="-29.0857140287453,36.3764703750817"
-                    Point2="-29.0857140287453,40.3764703750817"
-                    Point3="-33.0857140287453,40.3764703750817" />
+                    Point1="-86.071428057491,26.188235187541"
+                    Point2="-90.071428057491,26.188235187541"
+                    Point3="-90.071428057491,30.188235187541" />
                   <mssgle:LineSegment
-                    End="-50.6714280574906,40.3764703750817" />
+                    End="-90.071428057491,44.876470375082" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1438,6 +1563,14 @@ ORDER BY Doc_Num</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\OLE DB Destination">
     <Properties>
       <Property>
@@ -1447,14 +1580,6 @@ ORDER BY Doc_Num</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

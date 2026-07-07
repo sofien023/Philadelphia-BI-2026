@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DimDocumentDetails"
   DTS:PackageType="5"
-  DTS:VersionBuild="30"
-  DTS:VersionGUID="{553EA2E9-1D28-42FC-A4E3-7264C82240DC}">
+  DTS:VersionBuild="33"
+  DTS:VersionGUID="{3D11394E-178A-4268-9E75-D181007B8732}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -29,7 +29,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABisKUfTVVyo296ssDDqwSTMqd9jUcJFBMVBv0kTtOb4gAAAAAOgAAAAAIAACAAAABqRqIKpGd0Kjl5wsnhK+8U6BEX75X71VR5PI/Fb6RBYhAAAADTiSeHFVz+bRKVLBxxL1j3QAAAAJZwINSGHn7iVk24naaIWcF9jvXFVZXiuBfiH47Zvi3Ppjf4TmBho3FVt59E96W9mdMytxvyj4srl3N8jELL1A4</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADEjw3LIZScHWR0D+A+NQBNFUmBdU5frGzz1E4B9ToYYwAAAAAOgAAAAAIAACAAAABqKlponFN4QswIT5w4+PvyuX/nYbqdLw8NlEKkvdfqdhAAAAAvLdHq/LRWuB/k1KZisg0nQAAAAJ1hczd46pew9ZuxteGxkK9e7t9Od4YAYyLNH+GBvWTnOZivfQxg2IdbzNHuGVQL5FcLzDgRIx20ztS8bKrkm+Q</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -46,7 +46,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADuTWCTst1eAbz6XU7cUHnriJpICu9WiXavMdFzjPYYDwAAAAAOgAAAAAIAACAAAAAcepC664W0XSUQLDympGwHPBSKM6H4BLWpiFc1TjUwrhAAAACtB6bn5vxWhTbLmUF32GRhQAAAANvoZZ06M84qsc4Z7ZOtYVBV5n4ZhCV+T1k5lggkKaYGLjsqSWd8jilUiEWsKrQ7ElhTIShdKBCiWyzdh3FqwoQ</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABvtX+LdpXRTR7kG3pTEya5mdCWRNI5QmSFoucB3Xn/wwAAAAAOgAAAAAIAACAAAAB6lrqG3gOVniP5B+U8OQ6XzTYTRwC7XWv/Bjre4sI5OhAAAAAzU9r7cCOWNuNmgi2iOdP5QAAAAO44vQsv76X7taplgL6JtYs8QAkAtbQgOnaxJrQ/v207L8X7j6tEkEk2d8coSE3Wsmwudt4k2CcRCPkriOibeek</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -65,7 +65,7 @@
       DTS:CreationName=""
       DTS:DTSID="{B6964290-E457-4271-A40B-8CD004C6A7F3}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT&#xA;    dd.DocD_Id,&#xA;    dd.Doc_Num,&#xA;    dd.Art_Code,&#xA;    dd.DocD_Q,&#xA;    dd.DocD_PUHTB&#xA;FROM TESTPH2.dbo.DocumentD dd&#xA;JOIN TESTPH2.dbo.Document d&#xA;    ON d.Doc_Num = dd.Doc_Num&#xA; WHERE d.Doc_Type IN ('Fact', 'AVOI')&#xA;  AND d.Doc_Valide = 2&#xA;   AND d.Doc_DateSys &gt;= '&quot; +&#xA;(DT_STR, 10, 1252)(DT_DBDATE) @[User::LastRunDate]&#xA;+ &quot;'&quot;"
+      DTS:Expression="&quot;SELECT&#xA;    dd.DocD_Id,&#xA;    dd.Doc_Num,&#xA;    dd.Art_Code,&#xA;    dd.DocD_Q,&#xA;    dd.DocD_PUHTN &#xA;FROM TESTPH2.dbo.DocumentD dd&#xA;JOIN TESTPH2.dbo.Document d&#xA;    ON d.Doc_Num = dd.Doc_Num&#xA; WHERE d.Doc_Type IN ('Fact', 'AVOI')&#xA;  AND d.Doc_Valide = 2&#xA;   AND d.Doc_DateSys &gt;= '&quot; +&#xA;(DT_STR, 10, 1252)(DT_DBDATE) @[User::LastRunDate]&#xA;+ &quot;'&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="SourceQuery">
@@ -75,7 +75,7 @@
     dd.Doc_Num,
     dd.Art_Code,
     dd.DocD_Q,
-    dd.DocD_PUHTB
+    dd.DocD_PUHTN 
 FROM TESTPH2.dbo.DocumentD dd
 JOIN TESTPH2.dbo.Document d
     ON d.Doc_Num = dd.Doc_Num
@@ -201,13 +201,13 @@ JOIN TESTPH2.dbo.Document d
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Quantite]"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[DocD_Q]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DocD_PUHTB]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DocD_PUHTN]"
                       cachedDataType="numeric"
-                      cachedName="DocD_PUHTB"
+                      cachedName="DocD_PUHTN"
                       cachedPrecision="18"
                       cachedScale="3"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Prix_unitaire_HT]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[DocD_PUHTB]" />
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[DocD_PUHTN]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -371,17 +371,6 @@ WHERE
                       scale="3"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[DocD_PUHTB]"
-                      dataType="numeric"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DocD_PUHTB]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[DocD_PUHTB]"
-                      name="DocD_PUHTB"
-                      precision="18"
-                      scale="3"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[DocD_Id]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
@@ -390,6 +379,17 @@ WHERE
                       length="20"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[DocD_Id]"
                       name="DocD_Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[DocD_PUHTN]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DocD_PUHTN]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[DocD_PUHTN]"
+                      name="DocD_PUHTN"
+                      precision="18"
+                      scale="3"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -411,16 +411,16 @@ WHERE
                       precision="18"
                       scale="3" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DocD_PUHTB]"
-                      dataType="numeric"
-                      name="DocD_PUHTB"
-                      precision="18"
-                      scale="3" />
-                    <externalMetadataColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DocD_Id]"
                       dataType="wstr"
                       length="20"
                       name="DocD_Id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DocD_PUHTN]"
+                      dataType="numeric"
+                      name="DocD_PUHTN"
+                      precision="18"
+                      scale="3" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -454,10 +454,10 @@ WHERE
                       precision="18"
                       scale="3" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DocD_PUHTB]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DocD_PUHTN]"
                       dataType="numeric"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DocD_PUHTB]"
-                      name="DocD_PUHTB"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DocD_PUHTN]"
+                      name="DocD_PUHTN"
                       precision="18"
                       scale="3" />
                     <outputColumn
@@ -559,43 +559,43 @@ WHERE
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150.4,41.6"
+          Size="151,42"
           Id="Package\Data Flow Task"
           TopLeft="179.714285130403,153.823529453993" />
         <NodeLayout
-          Size="158.4,41.6"
+          Size="158,42"
           Id="Package\Read Watermark"
           TopLeft="158.571428813192,34.5294117747603" />
         <NodeLayout
-          Size="167.2,41.6"
+          Size="167,42"
           Id="Package\Update Watermark"
           TopLeft="272.99999902078,284.588235449626" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="237.771428813192,76.1294117747603">
+          TopLeft="237.571428813192,76.5294117747603">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="17.1428563172111,77.6941176792329"
+              EndConnector="17.642856317211,77.2941176792327"
               Start="0,0"
-              End="17.1428563172111,70.1941176792329">
+              End="17.642856317211,69.7941176792327">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,34.8470588396165" />
+                    End="0,34.6470588396163" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,34.8470588396165"
-                    Point2="0,38.8470588396165"
-                    Point3="4,38.8470588396165" />
+                    Point1="0,34.6470588396163"
+                    Point2="0,38.6470588396163"
+                    Point3="4,38.6470588396163" />
                   <mssgle:LineSegment
-                    End="13.1428563172111,38.8470588396165" />
+                    End="13.642856317211,38.6470588396163" />
                   <mssgle:CubicBezierSegment
-                    Point1="13.1428563172111,38.8470588396165"
-                    Point2="17.1428563172111,38.8470588396165"
-                    Point3="17.1428563172111,42.8470588396165" />
+                    Point1="13.642856317211,38.6470588396163"
+                    Point2="17.642856317211,38.6470588396163"
+                    Point3="17.642856317211,42.6470588396163" />
                   <mssgle:LineSegment
-                    End="17.1428563172111,70.1941176792329" />
+                    End="17.642856317211,69.7941176792327" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -606,30 +606,30 @@ WHERE
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="254.914285130403,195.423529453993">
+          TopLeft="255.214285130403,195.823529453993">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="101.685713890377,89.1647059956329"
+              EndConnector="101.285713890377,88.764705995633"
               Start="0,0"
-              End="101.685713890377,81.6647059956329">
+              End="101.285713890377,81.264705995633">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,40.5823529978165" />
+                    End="0,40.3823529978165" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,40.5823529978165"
-                    Point2="0,44.5823529978165"
-                    Point3="4,44.5823529978165" />
+                    Point1="0,40.3823529978165"
+                    Point2="0,44.3823529978165"
+                    Point3="4,44.3823529978165" />
                   <mssgle:LineSegment
-                    End="97.685713890377,44.5823529978165" />
+                    End="97.285713890377,44.3823529978165" />
                   <mssgle:CubicBezierSegment
-                    Point1="97.685713890377,44.5823529978165"
-                    Point2="101.685713890377,44.5823529978165"
-                    Point3="101.685713890377,48.5823529978165" />
+                    Point1="97.285713890377,44.3823529978165"
+                    Point2="101.285713890377,44.3823529978165"
+                    Point3="101.285713890377,48.3823529978165" />
                   <mssgle:LineSegment
-                    End="101.685713890377,81.6647059956329" />
+                    End="101.285713890377,81.264705995633" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -647,11 +647,11 @@ WHERE
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="170.4,41.6"
+          Size="170,42"
           Id="Package\Data Flow Task\OLE DB Destination"
           TopLeft="360.142856498154,236.882353003514" />
         <NodeLayout
-          Size="156.8,41.6"
+          Size="157,42"
           Id="Package\Data Flow Task\OLE DB Source"
           TopLeft="302,71" />
         <EdgeLayout

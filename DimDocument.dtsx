@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DimDocument"
   DTS:PackageType="5"
-  DTS:VersionBuild="41"
-  DTS:VersionGUID="{FC5195A4-7DFD-4A0C-84C6-058CD0815307}">
+  DTS:VersionBuild="42"
+  DTS:VersionGUID="{0DB9D0DF-9F1A-4CDD-8585-07D33811D737}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -29,7 +29,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADzX0mGSkzp0QnlWyGB8PLmvG/w4q+Ae3VSAkzF2v5NbgAAAAAOgAAAAAIAACAAAABXOMYcVUQfduBCacCx+Pzaqaf50nbZ760f8LdfFAwSshAAAABmQ+DbITc9HbiwkJN2IBc4QAAAADlkgYP9knV4LKODr+z5hB2kZBOyG3G8IUBLlQMOHuOp+PjYvxASRlox5+O7o/ZEThYc0q4yp/vWacsMJSGY72M</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACjeky5O2B8c3vDaHdBkoULj5MaOVaQEd7+qEkC0OspVwAAAAAOgAAAAAIAACAAAAAmlxJgqQZmNbjrzIyNZWiZIkeoy1aK8EBFbxp/gLAfhhAAAACnfccJqkw6fp+Tqg106CNkQAAAAF0c0p8ez7GAeoGBO6YfR1Wt6fiOcFsbHvB0j3/NlnbS/rr8+1gBWEGpdKCUP1zme4iXKkgP2pPqbgfr5Yvvi+4</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -46,7 +46,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAuISHs2/wnvY+2bAdBoSOl+FbIU+wp0dk2jSKnHio3YQAAAAAOgAAAAAIAACAAAAAE0lbWbxV5T/mmKSZzdx4CM4VMCkFRqmXwYnvPPSMNbxAAAACjhNLNJxxHZhtWxQKYVgfmQAAAAA/yFpKj++rlOiPRzXjXg8IMDc28Brn8SVOEL+0NbCJVaZBQS/G5CcTHJfdFOCAnpoSi1c6Bii1CaBisWNF1yxw</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgl8Aa0UkpEqWL9biHrIKgwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACKxI1+1wkMn3lkbNWyH15I+G2M9EGlkfiGk6CorAJl/AAAAAAOgAAAAAIAACAAAABs+zU4WrEwfCLBVvAwIicfT89N6pNsHk2TgI2ohkYzphAAAAD56CUD4Y1nwBUx8uTBQpqIQAAAANtO8EX68jjbo/lzY4LRvqcJdBgnjzznmyv4v1GI2zYGB4yvZCDsMXigyMawio9F70bBxf+TJdOhejGzIdoRgRY</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -65,7 +65,7 @@
       DTS:CreationName=""
       DTS:DTSID="{0BB26145-6B2B-4E40-B758-311AD256A3AE}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT DISTINCT&#xA;    Doc_Num,&#xA;    Date_Create,&#xA;    Doc_Type , Doc_Devise_Cours FROM TESTPH2.dbo.Document&#xA;&#xA;WHERE Doc_Type IN ('Fact', 'AVOI')  AND Doc_Valide = 2&#xA;  AND Doc_DateSys &gt;= '&quot; +&#xA;(DT_STR, 10, 1252)(DT_DBDATE) @[User::LastRunDate]&#xA;+ &quot;'&quot;"
+      DTS:Expression="&quot;SELECT DISTINCT&#xA;    Doc_Num,&#xA;    Date_Create,&#xA;    Doc_Type , Doc_Devise_Cours,Doc_THT FROM TESTPH2.dbo.Document&#xA;&#xA;WHERE Doc_Type IN ('Fact', 'AVOI')  AND Doc_Valide = 2&#xA;  AND Doc_DateSys &gt;= '&quot; +&#xA;(DT_STR, 10, 1252)(DT_DBDATE) @[User::LastRunDate]&#xA;+ &quot;'&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="SourceQuery">
@@ -73,7 +73,7 @@
         DTS:DataType="8">SELECT DISTINCT
     Doc_Num,
     Date_Create,
-    Doc_Type , Doc_Devise_Cours FROM TESTPH2.dbo.Document
+    Doc_Type , Doc_Devise_Cours,Doc_THT FROM TESTPH2.dbo.Document
 
 WHERE Doc_Type IN ('Fact', 'AVOI')  AND Doc_Valide = 2
   AND Doc_DateSys &gt;= '2000-01-01'</DTS:VariableValue>
@@ -274,6 +274,14 @@ WHERE Doc_Type IN ('Fact', 'AVOI')  AND Doc_Valide = 2
                       cachedScale="8"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Devise]"
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Doc_Devise_Cours]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Doc_THT]"
+                      cachedDataType="numeric"
+                      cachedName="Doc_THT"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Doc_THT]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -439,6 +447,17 @@ WHERE
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Date_Create]"
                       name="Date_Create"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Doc_THT]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Doc_THT]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Doc_THT]"
+                      name="Doc_THT"
+                      precision="18"
+                      scale="3"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -462,6 +481,12 @@ WHERE
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Date_Create]"
                       dataType="dbTimeStamp"
                       name="Date_Create" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Doc_THT]"
+                      dataType="numeric"
+                      name="Doc_THT"
+                      precision="18"
+                      scale="3" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -493,6 +518,13 @@ WHERE
                       name="Doc_Devise_Cours"
                       precision="18"
                       scale="8" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Doc_THT]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Doc_THT]"
+                      name="Doc_THT"
+                      precision="18"
+                      scale="3" />
                     <outputColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -697,40 +729,6 @@ WHERE
           Id="Package\Data Flow Task\Derived Column"
           TopLeft="327.857142235247,157.411764618744" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output]"
-          TopLeft="406.857142235247,199.411764618744">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="108.642857764753,128.588235381256"
-              Start="0,0"
-              End="108.642857764753,121.088235381256">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,60.294117690628" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,60.294117690628"
-                    Point2="0,64.294117690628"
-                    Point3="4,64.294117690628" />
-                  <mssgle:LineSegment
-                    End="104.642857764753,64.294117690628" />
-                  <mssgle:CubicBezierSegment
-                    Point1="104.642857764753,64.294117690628"
-                    Point2="108.642857764753,64.294117690628"
-                    Point3="108.642857764753,68.294117690628" />
-                  <mssgle:LineSegment
-                    End="108.642857764753,121.088235381256" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
           TopLeft="439.5,101">
           <EdgeLayout.Curve>
@@ -756,6 +754,40 @@ WHERE
                     Point3="-32.642857764753,32.205882309372" />
                   <mssgle:LineSegment
                     End="-32.642857764753,48.911764618744" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="406.857142235247,199.411764618744">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="108.642857764753,128.588235381256"
+              Start="0,0"
+              End="108.642857764753,121.088235381256">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.294117690628" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,60.294117690628"
+                    Point2="0,64.294117690628"
+                    Point3="4,64.294117690628" />
+                  <mssgle:LineSegment
+                    End="104.642857764753,64.294117690628" />
+                  <mssgle:CubicBezierSegment
+                    Point1="104.642857764753,64.294117690628"
+                    Point2="108.642857764753,64.294117690628"
+                    Point3="108.642857764753,68.294117690628" />
+                  <mssgle:LineSegment
+                    End="108.642857764753,121.088235381256" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
